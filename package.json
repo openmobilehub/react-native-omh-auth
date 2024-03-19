@@ -1,0 +1,8 @@
+{
+  "name": "rn-omh-auth",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}
