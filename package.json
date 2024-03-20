@@ -1,5 +1,5 @@
 {
-  "name": "rn-omh-auth",
+  "name": "react-native-omh-auth",
   "private": true,
   "workspaces": [
     "apps/*",
