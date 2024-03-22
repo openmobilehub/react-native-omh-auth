@@ -64,3 +64,6 @@ apps/sample-app/ios/Pods/
 
 # testing
 /coverage
+
+# VS Code
+.vscode/
