@@ -5,8 +5,8 @@ pre-commit:
       glob: '*.{js,ts,jsx,tsx}'
       run: bunx eslint {staged_files}
     types:
-      glob: '*.{js,ts, jsx, tsx}'
-      run: bunx tsc --noEmit
+      glob: '*.{ts,tsx}'
+      run: bunx tsc-files {staged_files}
 commit-msg:
   parallel: true
   commands:

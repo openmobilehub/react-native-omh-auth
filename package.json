@@ -1,6 +1,10 @@
 {
   "name": "react-native-omh-auth",
   "private": true,
+  "scripts": {
+    "lint": "eslint .",
+    "types": "tsc --noEmit"
+  },
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -8,6 +12,8 @@
   "devDependencies": {
     "@commitlint/config-conventional": "^19.1.0",
     "commitlint": "^19.2.1",
-    "lefthook": "^1.6.7"
+    "lefthook": "^1.6.7",
+    "tsc-files": "^1.1.4",
+    "typescript": "5.0.4"
   }
 }
