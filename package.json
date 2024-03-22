@@ -13,7 +13,6 @@
     "@commitlint/config-conventional": "^19.1.0",
     "commitlint": "^19.2.1",
     "lefthook": "^1.6.7",
-    "tsc-files": "^1.1.4",
-    "typescript": "5.0.4"
+    "tsc-files": "^1.1.4"
   }
 }
