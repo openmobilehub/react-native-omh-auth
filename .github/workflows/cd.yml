@@ -1,0 +1,46 @@
+name: Distribute Sample App to App Center
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      SAMPLE_APP_PATH: 'apps/sample-app/android'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Build release
+        run: |
+          cd ${{ env.SAMPLE_APP_PATH }}
+          ./gradlew assembleRelease
+
+      - name: Upload .apk to App Center
+        uses: wzieba/AppCenter-Github-Action@v1
+        with:
+          appName: Callstack-dev/React-Native-Auth-Sample-App
+          group: Testers
+          token: ${{ secrets.APP_CENTER_TOKEN }}
+          file: ${{ env.SAMPLE_APP_PATH }}/app/build/outputs/apk/release/app-release.apk
+          notifyTesters: true
+          debug: true
+          gitReleaseNotes: true
