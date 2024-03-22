@@ -6,7 +6,7 @@ pre-commit:
       run: bunx eslint {staged_files}
     typecheck:
       glob: '*.{ts,tsx}'
-      run: bunx tsc-files {staged_files}
+      run: bunx tsc-files --noEmit {staged_files}
 commit-msg:
   parallel: true
   commands:
