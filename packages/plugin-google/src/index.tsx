@@ -6,8 +6,8 @@ const LINKING_ERROR =
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo Go\n';
 
-const RnOmhAuthPluginGoogle = NativeModules.RnOmhAuthPluginGoogle
-  ? NativeModules.RnOmhAuthPluginGoogle
+const OmhGoogle = NativeModules.OmhGoogle
+  ? NativeModules.OmhGoogle
   : new Proxy(
       {},
       {
@@ -18,5 +18,5 @@ const RnOmhAuthPluginGoogle = NativeModules.RnOmhAuthPluginGoogle
     );
 
 export function multiply(a: number, b: number): Promise<number> {
-  return RnOmhAuthPluginGoogle.multiply(a, b);
+  return OmhGoogle.multiply(a, b);
 }

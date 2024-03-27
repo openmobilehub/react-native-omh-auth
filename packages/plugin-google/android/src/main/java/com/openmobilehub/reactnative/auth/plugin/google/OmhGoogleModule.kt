@@ -1,11 +1,14 @@
-package com.rnomhauthplugingoogle
+package com.openmobilehub.reactnative.auth.plugin.google
 
+import android.content.Context
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.Promise
+import com.openmobilehub.android.auth.core.OmhAuthClient
+import com.openmobilehub.android.auth.core.OmhAuthProvider
 
-class RnOmhAuthPluginGoogleModule(reactContext: ReactApplicationContext) :
+class OmhGoogleModule(reactContext: ReactApplicationContext) :
   ReactContextBaseJavaModule(reactContext) {
 
   override fun getName(): String {
@@ -20,6 +23,6 @@ class RnOmhAuthPluginGoogleModule(reactContext: ReactApplicationContext) :
   }
 
   companion object {
-    const val NAME = "RnOmhAuthPluginGoogle"
+    const val NAME = "OmhGoogle"
   }
 }
