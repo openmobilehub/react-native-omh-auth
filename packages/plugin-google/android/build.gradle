@@ -83,6 +83,8 @@ repositories {
 }
 
 def kotlin_version = getExtOrDefault("kotlinVersion")
+def omh_google_gms_version = getExtOrDefault("omhGoogleGmsVersion")
+def omh_google_non_gms_version = getExtOrDefault("omhGoogleNonGmsVersion")
 
 dependencies {
   // For < 0.71, this will be from the local maven repo
@@ -90,5 +92,9 @@ dependencies {
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+  // OMH
+  implementation "com.openmobilehub.android.auth:plugin-google-gms:$omh_google_gms_version"
+  implementation "com.openmobilehub.android.auth:plugin-google-non-gms:$omh_google_non_gms_version"
 }
 
