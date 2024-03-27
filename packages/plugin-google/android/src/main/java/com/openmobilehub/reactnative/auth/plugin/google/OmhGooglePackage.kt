@@ -7,11 +7,11 @@ import com.facebook.react.uimanager.ViewManager
 
 
 class OmhGooglePackage : ReactPackage {
-  override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
-    return listOf(OmhGoogleModule(reactContext))
-  }
+    override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
+        return listOf(OmhGoogleModule(reactContext))
+    }
 
-  override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {
-    return emptyList()
-  }
+    override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {
+        return emptyList()
+    }
 }

@@ -17,6 +17,6 @@ const OmhGoogle = NativeModules.OmhGoogle
       },
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return OmhGoogle.multiply(a, b);
+export function login(): Promise<void> {
+  return OmhGoogle.login();
 }

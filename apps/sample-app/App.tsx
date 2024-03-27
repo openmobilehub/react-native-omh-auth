@@ -1,18 +1,20 @@
 import * as React from 'react';
+import {StyleSheet, View, Text, Button} from 'react-native';
 
-import {StyleSheet, View, Text} from 'react-native';
-import {multiply} from '@omh/react-native-auth-google';
+import {login} from '@omh/react-native-auth-google';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  const [loggedIn, setLoggedIn] = React.useState<boolean>(false);
 
-  React.useEffect(() => {
-    multiply(3, 2).then(setResult);
-  }, []);
+  function onGoogleLogin() {
+    login().then(() => setLoggedIn(true));
+  }
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>Logged in: {loggedIn.toString()}</Text>
+
+      <Button onPress={onGoogleLogin} title="Google Login" />
     </View>
   );
 }
@@ -22,10 +24,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
+    rowGap: 20,
   },
 });
