@@ -11,6 +11,9 @@ buildscript {
     classpath "com.android.tools.build:gradle:7.2.1"
     // noinspection DifferentKotlinGradleVersion
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+    // Secrets Gradle Plugin
+    classpath "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.1"
   }
 }
 
@@ -24,6 +27,9 @@ apply plugin: "kotlin-android"
 if (isNewArchitectureEnabled()) {
   apply plugin: "com.facebook.react"
 }
+
+// Secrets Gradle Plugin
+apply plugin: "com.google.android.libraries.mapsplatform.secrets-gradle-plugin"
 
 def getExtOrDefault(name) {
   return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties["OmhGoogle_" + name]
