@@ -17,6 +17,37 @@ const OmhGoogle = NativeModules.OmhGoogle
       },
     );
 
+type OmhUserProfile = {
+  name?: string;
+  surname?: string;
+  email?: string;
+  profileImage?: string;
+};
+
+export function initialize(): Promise<void> {
+  return OmhGoogle.initialize();
+}
+
 export function signIn(): Promise<void> {
   return OmhGoogle.signIn();
+}
+
+export function getAccessToken(): Promise<string | undefined> {
+  return OmhGoogle.getAccessToken();
+}
+
+export function getUser(): Promise<OmhUserProfile> {
+  return OmhGoogle.getUser();
+}
+
+export function refreshAccessToken(): Promise<string | undefined> {
+  return OmhGoogle.refreshAccessToken();
+}
+
+export function revokeAccessToken(): Promise<void> {
+  return OmhGoogle.revokeAccessToken();
+}
+
+export function signOut(): Promise<void> {
+  return OmhGoogle.signOut();
 }
