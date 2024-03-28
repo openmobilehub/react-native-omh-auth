@@ -14,7 +14,7 @@ class OmhGoogleModule(reactContext: ReactApplicationContext) :
     ReactContextBaseJavaModule(reactContext) {
     private var googleOmhAuthClient: OmhAuthClient
 
-    private var activityPromise: Promise? = null
+    private var loginActivityPromise: Promise? = null
 
     private val activityEventListener =
         object : BaseActivityEventListener() {
@@ -24,19 +24,19 @@ class OmhGoogleModule(reactContext: ReactApplicationContext) :
                 resultCode: Int,
                 intent: Intent?
             ) {
-                activityPromise?.let { promise ->
+                loginActivityPromise?.let { promise ->
                     when (resultCode) {
                         Activity.RESULT_CANCELED -> {
                             val error = intent?.getStringExtra("errorMessage")
 
-                            promise.reject(E_LOGIN_CANCELED, error)
+                            promise.reject(E_SIGN_IN_CANCELED, error)
                         }
 
                         Activity.RESULT_OK ->
                             promise.resolve(null)
                     }
 
-                    activityPromise = null
+                    loginActivityPromise = null
                 }
             }
         }
@@ -61,7 +61,7 @@ class OmhGoogleModule(reactContext: ReactApplicationContext) :
     }
 
     @ReactMethod
-    fun login(promise: Promise) {
+    fun signIn(promise: Promise) {
         val activity = currentActivity
 
         if (activity == null) {
@@ -69,7 +69,7 @@ class OmhGoogleModule(reactContext: ReactApplicationContext) :
             return
         }
 
-        activityPromise = promise
+        loginActivityPromise = promise
 
         val loginIntent = googleOmhAuthClient.getLoginIntent()
 
@@ -80,6 +80,6 @@ class OmhGoogleModule(reactContext: ReactApplicationContext) :
         const val NAME = "OmhGoogle"
         const val LOGIN_REQUEST = 1
         const val E_ACTIVITY_DOES_NOT_EXIST = "E_ACTIVITY_DOES_NOT_EXIST"
-        const val E_LOGIN_CANCELED = "E_LOGIN_CANCELLED"
+        const val E_SIGN_IN_CANCELED = "E_SIGN_IN_CANCELLED"
     }
 }

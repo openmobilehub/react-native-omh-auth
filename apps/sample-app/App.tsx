@@ -1,20 +1,20 @@
 import * as React from 'react';
 import {StyleSheet, View, Text, Button} from 'react-native';
 
-import {login} from '@omh/react-native-auth-google';
+import {signIn} from '@omh/react-native-auth-google';
 
 export default function App() {
-  const [loggedIn, setLoggedIn] = React.useState<boolean>(false);
+  const [signedIn, setSignedIn] = React.useState<boolean>(false);
 
-  function onGoogleLogin() {
-    login().then(() => setLoggedIn(true));
+  function onGoogleSignIn() {
+    signIn().then(() => setSignedIn(true));
   }
 
   return (
     <View style={styles.container}>
-      <Text>Logged in: {loggedIn.toString()}</Text>
+      <Text>Signed in: {signedIn.toString()}</Text>
 
-      <Button onPress={onGoogleLogin} title="Google Login" />
+      <Button onPress={onGoogleSignIn} title="Google Sign in" />
     </View>
   );
 }

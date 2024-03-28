@@ -17,6 +17,6 @@ const OmhGoogle = NativeModules.OmhGoogle
       },
     );
 
-export function login(): Promise<void> {
-  return OmhGoogle.login();
+export function signIn(): Promise<void> {
+  return OmhGoogle.signIn();
 }
