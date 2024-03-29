@@ -24,6 +24,9 @@ const MyTheme = {
 
 function RootStack() {
   const {signedInProvider} = useContext(SignedInProviderContext);
+  const signedInProviderName = signedInProvider
+    ? signedInProvider.charAt(0).toUpperCase() + signedInProvider.slice(1)
+    : '';
 
   return (
     <Stack.Navigator>
@@ -37,7 +40,9 @@ function RootStack() {
         <Stack.Screen
           name="SignedIn"
           component={SignedInScreen}
-          options={{title: signedInProvider}}
+          options={{
+            title: signedInProviderName,
+          }}
         />
       )}
     </Stack.Navigator>
