@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 
 import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -23,7 +23,8 @@ const MyTheme = {
 };
 
 function RootStack() {
-  const {signedInProvider} = useContext(SignedInProviderContext);
+  const {signedInProvider} = React.useContext(SignedInProviderContext);
+
   const signedInProviderName = signedInProvider
     ? signedInProvider.charAt(0).toUpperCase() + signedInProvider.slice(1)
     : '';

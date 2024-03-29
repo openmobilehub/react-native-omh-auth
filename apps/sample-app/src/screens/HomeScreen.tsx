@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Button, StyleSheet, View} from 'react-native';
 
 import {initialize, signIn} from '@omh/react-native-auth-google';
@@ -6,7 +6,7 @@ import {initialize, signIn} from '@omh/react-native-auth-google';
 import {SignedInProviderContext} from '@/app/SignedInProvider';
 
 export default function HomeScreen() {
-  const {signInWithProvider} = useContext(SignedInProviderContext);
+  const {signInWithProvider} = React.useContext(SignedInProviderContext);
 
   async function onGoogleSignIn() {
     await initialize();
