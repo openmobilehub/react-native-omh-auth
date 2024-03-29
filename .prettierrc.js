@@ -4,4 +4,16 @@ module.exports = {
   bracketSpacing: false,
   singleQuote: true,
   trailingComma: 'all',
+  plugins: ['@ianvs/prettier-plugin-sort-imports'],
+  importOrder: [
+    '^react$',
+    '^react-native$',
+    '<BUILTIN_MODULES>',
+    '',
+    '<THIRD_PARTY_MODULES>',
+    '',
+    '^@/',
+    '',
+    '^[./]',
+  ],
 };

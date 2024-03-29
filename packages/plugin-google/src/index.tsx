@@ -6,8 +6,8 @@ const LINKING_ERROR =
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo Go\n';
 
-const RnOmhAuthPluginGoogle = NativeModules.RnOmhAuthPluginGoogle
-  ? NativeModules.RnOmhAuthPluginGoogle
+const OmhGoogle = NativeModules.OmhGoogle
+  ? NativeModules.OmhGoogle
   : new Proxy(
       {},
       {
@@ -17,6 +17,37 @@ const RnOmhAuthPluginGoogle = NativeModules.RnOmhAuthPluginGoogle
       },
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return RnOmhAuthPluginGoogle.multiply(a, b);
+type OmhUserProfile = {
+  name?: string;
+  surname?: string;
+  email?: string;
+  profileImage?: string;
+};
+
+export function initialize(): Promise<void> {
+  return OmhGoogle.initialize();
+}
+
+export function signIn(): Promise<void> {
+  return OmhGoogle.signIn();
+}
+
+export function getAccessToken(): Promise<string | undefined> {
+  return OmhGoogle.getAccessToken();
+}
+
+export function getUser(): Promise<OmhUserProfile> {
+  return OmhGoogle.getUser();
+}
+
+export function refreshAccessToken(): Promise<string | undefined> {
+  return OmhGoogle.refreshAccessToken();
+}
+
+export function revokeAccessToken(): Promise<void> {
+  return OmhGoogle.revokeAccessToken();
+}
+
+export function signOut(): Promise<void> {
+  return OmhGoogle.signOut();
 }
