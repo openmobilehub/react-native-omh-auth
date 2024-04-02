@@ -21,5 +21,29 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="${FACEBOOK_APP_ID}" />
+        <meta-data
+            android:name="com.facebook.sdk.ClientToken"
+            android:value="${FACEBOOK_CLIENT_TOKEN}" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="OMH" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="fb${FACEBOOK_APP_ID}" />
+            </intent-filter>
+        </activity>
     </application>
 </manifest>

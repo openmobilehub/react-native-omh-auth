@@ -1,6 +1,7 @@
 apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
+apply plugin: "com.google.android.libraries.mapsplatform.secrets-gradle-plugin"
 
 /**
  * This is the configuration block to customize your React Native Android app.
@@ -81,6 +82,14 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+
+//        facebookAppId = properties["FACEBOOK_APP_ID"] as String
+//        facebookClientToken = properties["FACEBOOK_CLIENT_TOKEN"] as String
+//
+//        resValue("string", "facebook_app_id", facebookAppId)
+//        resValue("string", "facebook_client_token", facebookClientToken)
+//        resValue("string", "fb_login_protocol_scheme", "fb${facebookAppId}")
+
     }
     signingConfigs {
         debug {
