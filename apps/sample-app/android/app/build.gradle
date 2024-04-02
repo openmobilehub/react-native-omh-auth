@@ -74,9 +74,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.sampleapp"
+    namespace "com.openmobilehub.reactnative.auth.sample"
     defaultConfig {
-        applicationId "com.sampleapp"
+        applicationId "com.openmobilehub.reactnative.auth.sample"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

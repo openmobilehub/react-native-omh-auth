@@ -1,4 +1,4 @@
-package com.sampleapp
+package com.openmobilehub.reactnative.auth.sample
 
 import android.app.Application
 import com.facebook.react.PackageList
