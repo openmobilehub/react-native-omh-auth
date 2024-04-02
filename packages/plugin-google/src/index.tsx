@@ -17,7 +17,7 @@ const OmhGoogle = NativeModules.OmhGoogle
       },
     );
 
-type OmhUserProfile = {
+export type OmhUserProfile = {
   name?: string;
   surname?: string;
   email?: string;
