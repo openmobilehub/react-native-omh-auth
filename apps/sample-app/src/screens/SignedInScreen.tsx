@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 
-import {type OmhUserProfile} from '@omh/react-native-auth-google';
+import {type OmhUserProfile} from '@omh/react-native-auth-core';
 
 import {getAuthProvider, SignedInProviderContext} from '@/app/SignedInProvider';
 

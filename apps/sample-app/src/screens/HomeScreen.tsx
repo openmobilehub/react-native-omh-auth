@@ -1,8 +1,8 @@
 import React from 'react';
 import {Button, StyleSheet, View} from 'react-native';
 
-import * as FacebookAuth from '@omh/react-native-auth-facebook';
-import * as GoogleAuth from '@omh/react-native-auth-google';
+import FacebookAuth from '@omh/react-native-auth-facebook';
+import GoogleAuth from '@omh/react-native-auth-google';
 
 import {SignedInProviderContext} from '@/app/SignedInProvider';
 
