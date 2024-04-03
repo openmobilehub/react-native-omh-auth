@@ -29,6 +29,10 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
+      - name: Add secrets to `local.properties`
+        run: |
+          echo GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }} >> ./local.properties
+
       - name: Build release
         run: |
           cd ${{ env.SAMPLE_APP_PATH }}
