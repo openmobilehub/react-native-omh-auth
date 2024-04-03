@@ -1,4 +1,4 @@
-package com.openmobilehub.reactnative.auth.plugin.facebook
+package com.openmobilehub.reactnative.auth.core
 
 import android.app.Activity
 import android.content.Intent
@@ -8,14 +8,15 @@ import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
+import com.facebook.react.bridge.ReadableArray
 import com.openmobilehub.android.auth.core.OmhAuthClient
 import java.lang.Exception
 
-abstract class OmhAuthModule(
+class OmhAuthModule(
     reactContext: ReactApplicationContext,
+    private val name: String,
+    private val createOmhAuthClient: (ArrayList<String>) -> OmhAuthClient
 ): ReactContextBaseJavaModule(reactContext) {
-    abstract fun createOmhAuthClient(scopes: ArrayList<String>): OmhAuthClient
-
     private var omhAuthClient: OmhAuthClient? = null
     private fun getAuthClient(): OmhAuthClient {
         if (omhAuthClient == null) {
@@ -56,9 +57,13 @@ abstract class OmhAuthModule(
         reactContext.addActivityEventListener(activityEventListener)
     }
 
+    override fun getName(): String {
+        return name
+    }
+
     @ReactMethod
-    fun initialize(scopes: ArrayList<String>, promise: Promise) {
-        omhAuthClient = createOmhAuthClient(scopes)
+    fun initialize(scopes: ReadableArray, promise: Promise) {
+        omhAuthClient = createOmhAuthClient(scopes.toArrayList() as ArrayList<String>)
 
         try {
             val client = getAuthClient()

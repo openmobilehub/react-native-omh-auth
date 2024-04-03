@@ -1,6 +1,6 @@
 buildscript {
   // Buildscript is evaluated before everything else so we can't use getExtOrDefault
-  def kotlin_version = rootProject.ext.has("kotlinVersion") ? rootProject.ext.get("kotlinVersion") : project.properties["RnOmhAuthPluginFacebook_kotlinVersion"]
+  def kotlin_version = rootProject.ext.has("kotlinVersion") ? rootProject.ext.get("kotlinVersion") : project.properties["RnOmhCore_kotlinVersion"]
 
   repositories {
     google()
@@ -26,11 +26,11 @@ if (isNewArchitectureEnabled()) {
 }
 
 def getExtOrDefault(name) {
-  return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties["RnOmhAuthPluginFacebook_" + name]
+  return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties["RnOmhCore_" + name]
 }
 
 def getExtOrIntegerDefault(name) {
-  return rootProject.ext.has(name) ? rootProject.ext.get(name) : (project.properties["RnOmhAuthPluginFacebook_" + name]).toInteger()
+  return rootProject.ext.has(name) ? rootProject.ext.get(name) : (project.properties["RnOmhCore_" + name]).toInteger()
 }
 
 def supportsNamespace() {
@@ -44,7 +44,7 @@ def supportsNamespace() {
 
 android {
   if (supportsNamespace()) {
-    namespace "com.openmobilehub.reactnative.auth.plugin.facebook"
+    namespace "com.openmobilehub.reactnative.auth.core"
 
     sourceSets {
       main {
@@ -83,7 +83,7 @@ repositories {
 }
 
 def kotlin_version = getExtOrDefault("kotlinVersion")
-def omh_facebook_version = getExtOrDefault("omhFacebookVersion")
+def omh_core_version = getExtOrDefault("omhCoreVersion")
 
 dependencies {
   // For < 0.71, this will be from the local maven repo
@@ -91,6 +91,6 @@ dependencies {
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-  implementation "com.openmobilehub.android.auth:plugin-facebook:$omh_facebook_version"
-  api project(":omh-auth-core")
+  implementation "com.openmobilehub.android.auth:core:$omh_core_version"
 }
+

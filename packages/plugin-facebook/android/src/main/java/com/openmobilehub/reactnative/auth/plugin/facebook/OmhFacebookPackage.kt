@@ -8,7 +8,7 @@ import com.facebook.react.uimanager.ViewManager
 
 class OmhFacebookPackage : ReactPackage {
   override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
-    return listOf(OmhFacebookModule(reactContext))
+    return listOf(OmhFacebookModule(reactContext).getOmhFacebookModule())
   }
 
   override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {

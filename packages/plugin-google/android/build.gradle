@@ -103,5 +103,6 @@ dependencies {
     // OMH
     implementation "com.openmobilehub.android.auth:plugin-google-gms:$omh_google_gms_version"
     implementation "com.openmobilehub.android.auth:plugin-google-non-gms:$omh_google_non_gms_version"
+    api project(":omh-auth-core")
 }
 

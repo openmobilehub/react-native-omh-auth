@@ -9,19 +9,15 @@ import {
   View,
 } from 'react-native';
 
-import {
-  getAccessToken,
-  getUser,
-  refreshAccessToken,
-  revokeAccessToken,
-  signOut,
-  type OmhUserProfile,
-} from '@omh/react-native-auth-google';
+import {type OmhUserProfile} from '@omh/react-native-auth-google';
 
-import {SignedInProviderContext} from '@/app/SignedInProvider';
+import {getAuthProvider, SignedInProviderContext} from '@/app/SignedInProvider';
 
 export default function SignedInScreen() {
-  const {signInWithProvider} = React.useContext(SignedInProviderContext);
+  const {signedInProvider, signInWithProvider} = React.useContext(
+    SignedInProviderContext,
+  );
+  const authProvider = getAuthProvider(signedInProvider);
 
   const [accessToken, setAccessToken] = React.useState<string | undefined>();
   const [userProfile, setUserProfile] = React.useState<
@@ -31,11 +27,12 @@ export default function SignedInScreen() {
   React.useEffect(() => {
     onGetAccessToken();
     onGetUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function onGetAccessToken() {
     try {
-      const currentAccessToken = await getAccessToken();
+      const currentAccessToken = await authProvider.getAccessToken();
 
       setAccessToken(currentAccessToken);
 
@@ -47,7 +44,7 @@ export default function SignedInScreen() {
 
   async function onGetUser() {
     try {
-      const currentUserProfile = await getUser();
+      const currentUserProfile = await authProvider.getUser();
 
       setUserProfile(currentUserProfile);
 
@@ -59,7 +56,7 @@ export default function SignedInScreen() {
 
   async function onRefreshAccessToken() {
     try {
-      const currentAccessToken = await refreshAccessToken();
+      const currentAccessToken = await authProvider.refreshAccessToken();
 
       setAccessToken(currentAccessToken);
 
@@ -71,7 +68,7 @@ export default function SignedInScreen() {
 
   async function onRevokeAccessToken() {
     try {
-      await revokeAccessToken();
+      await authProvider.revokeAccessToken();
 
       ToastAndroid.show('Revoke Access Token', ToastAndroid.SHORT);
     } catch (error: any) {
@@ -81,7 +78,7 @@ export default function SignedInScreen() {
 
   async function onSignOut() {
     try {
-      await signOut();
+      await authProvider.signOut();
 
       signInWithProvider(null);
 

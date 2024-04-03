@@ -1,0 +1,8 @@
+{
+  "name": "@omh/react-native-auth-core",
+  "version": "1.0.0-beta",
+  "main": "src/index",
+  "peerDependencies": {
+    "react-native": "*"
+  }
+}

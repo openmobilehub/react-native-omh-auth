@@ -24,8 +24,8 @@ export type OmhUserProfile = {
   profileImage?: string;
 };
 
-export function initialize(): Promise<void> {
-  return OmhGoogle.initialize();
+export function initialize(scopes: Array<string>): Promise<void> {
+  return OmhGoogle.initialize(scopes);
 }
 
 export function signIn(): Promise<void> {
