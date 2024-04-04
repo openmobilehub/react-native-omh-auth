@@ -1,4 +1,4 @@
-name: Lint and typecheck files
+name: Lint, typecheck files and run unit tests
 
 on:
   pull_request:
@@ -25,3 +25,6 @@ jobs:
 
       - name: Typecheck files
         run: bun typecheck
+
+      - name: Run unit tests
+        run: bun test

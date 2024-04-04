@@ -1,5 +1,5 @@
 {
-  "name": "SampleApp",
+  "name": "react-native-auth-sample",
   "version": "1.0.0-beta",
   "private": true,
   "scripts": {
