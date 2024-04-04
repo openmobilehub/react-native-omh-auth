@@ -1,6 +1,6 @@
 buildscript {
     // Buildscript is evaluated before everything else so we can't use getExtOrDefault
-    def kotlin_version = rootProject.ext.has("kotlinVersion") ? rootProject.ext.get("kotlinVersion") : project.properties["OmhGoogle_kotlinVersion"]
+    def kotlin_version = rootProject.ext.has("kotlinVersion") ? rootProject.ext.get("kotlinVersion") : project.properties["OmhFacebook_kotlinVersion"]
     def secrets_gradle_plugin = project.properties["OmhGoogle_secretsGradlePlugin"]
 
     repositories {
@@ -33,11 +33,11 @@ if (isNewArchitectureEnabled()) {
 apply plugin: "com.google.android.libraries.mapsplatform.secrets-gradle-plugin"
 
 def getExtOrDefault(name) {
-    return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties["OmhGoogle_" + name]
+    return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties["OmhFacebook_" + name]
 }
 
 def getExtOrIntegerDefault(name) {
-    return rootProject.ext.has(name) ? rootProject.ext.get(name) : (project.properties["OmhGoogle_" + name]).toInteger()
+    return rootProject.ext.has(name) ? rootProject.ext.get(name) : (project.properties["OmhFacebook_" + name]).toInteger()
 }
 
 def supportsNamespace() {
@@ -51,7 +51,7 @@ def supportsNamespace() {
 
 android {
     if (supportsNamespace()) {
-        namespace "com.openmobilehub.reactnative.auth.plugin.google"
+        namespace "com.openmobilehub.reactnative.auth.plugin.facebook"
 
         sourceSets {
             main {
@@ -90,8 +90,7 @@ repositories {
 }
 
 def kotlin_version = getExtOrDefault("kotlinVersion")
-def omh_google_gms_version = getExtOrDefault("gmsVersion")
-def omh_google_non_gms_version = getExtOrDefault("nonGmsVersion")
+def omh_facebook_version = getExtOrDefault("omhFacebookVersion")
 
 dependencies {
     // For < 0.71, this will be from the local maven repo
@@ -101,8 +100,6 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     // OMH
-    implementation "com.openmobilehub.android.auth:plugin-google-gms:$omh_google_gms_version"
-    implementation "com.openmobilehub.android.auth:plugin-google-non-gms:$omh_google_non_gms_version"
+    implementation "com.openmobilehub.android.auth:plugin-facebook:$omh_facebook_version"
     api project(":omh-auth-core")
 }
-

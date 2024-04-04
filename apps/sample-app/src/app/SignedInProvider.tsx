@@ -1,5 +1,7 @@
 import React from 'react';
 
+import FacebookAuth from '@omh/react-native-auth-facebook';
+import GoogleAuth from '@omh/react-native-auth-google';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type SignedInProviderContextValue = {
@@ -12,6 +14,17 @@ export const SignedInProviderContext =
     signedInProvider: null,
     signInWithProvider: (_: string | null) => {},
   });
+
+export const getAuthProvider = (provider: string | null) => {
+  switch (provider) {
+    case 'google':
+      return GoogleAuth;
+    case 'facebook':
+      return FacebookAuth;
+    default:
+      throw new Error('No provider selected');
+  }
+};
 
 export default function SignedInProvider({
   children,

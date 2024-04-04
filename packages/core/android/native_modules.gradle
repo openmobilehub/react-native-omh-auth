@@ -1,0 +1,2 @@
+include ":omh-auth-core"
+project(":omh-auth-core").projectDir = file(".")

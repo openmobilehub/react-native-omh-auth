@@ -1,7 +1,8 @@
 import React from 'react';
 import {Button, StyleSheet, View} from 'react-native';
 
-import {initialize, signIn} from '@omh/react-native-auth-google';
+import FacebookAuth from '@omh/react-native-auth-facebook';
+import GoogleAuth from '@omh/react-native-auth-google';
 
 import {SignedInProviderContext} from '@/app/SignedInProvider';
 
@@ -9,16 +10,25 @@ export default function HomeScreen() {
   const {signInWithProvider} = React.useContext(SignedInProviderContext);
 
   async function onGoogleSignIn() {
-    await initialize();
+    await GoogleAuth.initialize(['openid', 'email', 'profile']);
 
-    await signIn();
+    await GoogleAuth.signIn();
 
     signInWithProvider('google');
+  }
+
+  async function onFacebookSignIn() {
+    await FacebookAuth.initialize(['public_profile', 'email']);
+
+    await FacebookAuth.signIn();
+
+    signInWithProvider('facebook');
   }
 
   return (
     <View style={styles.container}>
       <Button onPress={onGoogleSignIn} title="Sign in with Google" />
+      <Button onPress={onFacebookSignIn} title="Sign in with Facebook" />
     </View>
   );
 }
