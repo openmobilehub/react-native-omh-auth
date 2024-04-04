@@ -1,7 +1,7 @@
 buildscript {
     // Buildscript is evaluated before everything else so we can't use getExtOrDefault
     def kotlin_version = rootProject.ext.has("kotlinVersion") ? rootProject.ext.get("kotlinVersion") : project.properties["OmhFacebook_kotlinVersion"]
-    def secrets_gradle_plugin = project.properties["OmhGoogle_secretsGradlePlugin"]
+    def secrets_gradle_plugin = project.properties["OmhFacebook_secretsGradlePlugin"]
 
     repositories {
         google()
