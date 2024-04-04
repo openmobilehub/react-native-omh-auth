@@ -90,8 +90,8 @@ repositories {
 }
 
 def kotlin_version = getExtOrDefault("kotlinVersion")
-def omh_google_gms_version = getExtOrDefault("gmsVersion")
-def omh_google_non_gms_version = getExtOrDefault("nonGmsVersion")
+def omh_google_gms_version = getExtOrDefault("omhGoogleGmsVersion")
+def omh_google_non_gms_version = getExtOrDefault("omhGoogleNonGmsVersion")
 
 dependencies {
     // For < 0.71, this will be from the local maven repo
