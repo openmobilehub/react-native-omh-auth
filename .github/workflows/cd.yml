@@ -33,7 +33,8 @@ jobs:
         run: |
           echo GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }} >> ${{ env.SAMPLE_APP_PATH }}/local.properties &&
           echo FACEBOOK_APP_ID=${{ secrets.FACEBOOK_APP_ID }} >> ${{ env.SAMPLE_APP_PATH }}/local.properties &&
-          echo FACEBOOK_CLIENT_TOKEN=${{ secrets.FACEBOOK_CLIENT_TOKEN }} >> ${{ env.SAMPLE_APP_PATH }}/local.properties
+          echo FACEBOOK_CLIENT_TOKEN=${{ secrets.FACEBOOK_CLIENT_TOKEN }} >> ${{ env.SAMPLE_APP_PATH }}/local.properties &&
+          echo DROPBOX_APP_KEY=${{ secrets.DROPBOX_APP_KEY }} >> ${{ env.SAMPLE_APP_PATH }}/local.properties
 
       - name: Build release
         run: |
