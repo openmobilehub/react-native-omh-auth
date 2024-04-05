@@ -151,7 +151,7 @@ class OmhAuthModule(
     }
 
     @ReactMethod
-    fun revokeToken(promise: Promise) {
+    fun revokeAccessToken(promise: Promise) {
         try {
             getAuthClient().revokeToken()
                 .addOnSuccess {
