@@ -1,34 +1,44 @@
 import React from 'react';
 import {Button, StyleSheet, View} from 'react-native';
 
-import FacebookAuth from '@omh/react-native-auth-facebook';
-import GoogleAuth from '@omh/react-native-auth-google';
-
-import {SignedInProviderContext} from '@/app/SignedInProvider';
+import {
+  getAuthProvider,
+  PROVIDER_NAMES,
+  SignedInProviderContext,
+} from '@/app/SignedInProvider';
 
 export default function HomeScreen() {
   const {signInWithProvider} = React.useContext(SignedInProviderContext);
 
   async function onGoogleSignIn() {
-    await GoogleAuth.initialize(['openid', 'email', 'profile']);
+    const googleAuthProvider = await getAuthProvider(PROVIDER_NAMES.GOOGLE);
 
-    await GoogleAuth.signIn();
+    await googleAuthProvider.signIn();
 
-    signInWithProvider('google');
+    signInWithProvider(PROVIDER_NAMES.GOOGLE);
   }
 
   async function onFacebookSignIn() {
-    await FacebookAuth.initialize(['public_profile', 'email']);
+    const facebookAuthProvider = await getAuthProvider(PROVIDER_NAMES.FACEBOOK);
 
-    await FacebookAuth.signIn();
+    await facebookAuthProvider.signIn();
 
-    signInWithProvider('facebook');
+    signInWithProvider(PROVIDER_NAMES.FACEBOOK);
+  }
+
+  async function onDropboxSignIn() {
+    const dropboxAuthProvider = await getAuthProvider(PROVIDER_NAMES.DROPBOX);
+
+    await dropboxAuthProvider.signIn();
+
+    signInWithProvider(PROVIDER_NAMES.DROPBOX);
   }
 
   return (
     <View style={styles.container}>
       <Button onPress={onGoogleSignIn} title="Sign in with Google" />
       <Button onPress={onFacebookSignIn} title="Sign in with Facebook" />
+      <Button onPress={onDropboxSignIn} title="Sign in with Dropbox" />
     </View>
   );
 }

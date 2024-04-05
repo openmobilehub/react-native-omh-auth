@@ -3,13 +3,13 @@ import React from 'react';
 import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {SignedInProviderContext} from '@/app/SignedInProvider';
+import {Providers, SignedInProviderContext} from '@/app/SignedInProvider';
 import HomeScreen from '@/screens/HomeScreen';
 import SignedInScreen from '@/screens/SignedInScreen';
 
 export type RootStackParamList = {
   Home: undefined;
-  SignedIn: undefined;
+  SignedIn: {provider: Providers};
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -44,6 +44,7 @@ function RootStack() {
           options={{
             title: signedInProviderName,
           }}
+          initialParams={{provider: signedInProvider}}
         />
       )}
     </Stack.Navigator>
