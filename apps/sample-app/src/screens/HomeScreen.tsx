@@ -34,11 +34,22 @@ export default function HomeScreen() {
     signInWithProvider(PROVIDER_NAMES.DROPBOX);
   }
 
+  async function onMicrosoftSignIn() {
+    const microsoftAuthProvider = await getAuthProvider(
+      PROVIDER_NAMES.MICROSOFT,
+    );
+
+    await microsoftAuthProvider.signIn();
+
+    signInWithProvider(PROVIDER_NAMES.MICROSOFT);
+  }
+
   return (
     <View style={styles.container}>
       <Button onPress={onGoogleSignIn} title="Sign in with Google" />
       <Button onPress={onFacebookSignIn} title="Sign in with Facebook" />
       <Button onPress={onDropboxSignIn} title="Sign in with Dropbox" />
+      <Button onPress={onMicrosoftSignIn} title="Sign in with Microsoft" />
     </View>
   );
 }

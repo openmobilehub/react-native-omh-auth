@@ -8,16 +8,15 @@ import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
-import com.facebook.react.bridge.ReadableArray
+import com.facebook.react.bridge.ReadableMap
 import com.openmobilehub.android.auth.core.OmhAuthClient
 
 class OmhAuthModule(
     reactContext: ReactApplicationContext,
     private val name: String,
-    private val createOmhAuthClient: (ArrayList<String>) -> OmhAuthClient
+    private val createOmhAuthClient: (config: HashMap<String, Any>) -> OmhAuthClient
 ) : ReactContextBaseJavaModule(reactContext) {
     private var omhAuthClient: OmhAuthClient? = null
-
     private fun getAuthClient(): OmhAuthClient {
         if (omhAuthClient == null) {
             throw Exception("OmhAuthClient is not initialized")
@@ -26,8 +25,8 @@ class OmhAuthModule(
         return omhAuthClient!!
     }
 
+    // TODO: Extract to separate class
     private var loginActivityPromise: Promise? = null
-
     private val activityEventListener =
         object : BaseActivityEventListener() {
             override fun onActivityResult(
@@ -62,11 +61,13 @@ class OmhAuthModule(
     }
 
     @ReactMethod
-    fun initialize(scopes: ReadableArray, promise: Promise) {
-        omhAuthClient = createOmhAuthClient(scopes.toArrayList() as ArrayList<String>)
+    fun initialize(config: ReadableMap, promise: Promise) {
+        omhAuthClient = createOmhAuthClient(config.toHashMap())
 
         try {
-            getAuthClient().initialize().addOnSuccess {
+            val client = getAuthClient()
+
+            client.initialize().addOnSuccess {
                 promise.resolve(null)
             }.addOnFailure {
                 promise.reject(E_INITIALIZED_FAILED, it.message)
@@ -89,7 +90,6 @@ class OmhAuthModule(
 
         try {
             val loginIntent = getAuthClient().getLoginIntent()
-
             activity.startActivityForResult(loginIntent, LOGIN_REQUEST)
         } catch (e: Exception) {
             promise.reject(E_SIGN_IN_FAILED, e.message)
