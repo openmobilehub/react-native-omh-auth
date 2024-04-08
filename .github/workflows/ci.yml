@@ -1,4 +1,4 @@
-name: Lint, typecheck files and run unit tests
+name: Lint, typecheck files & run unit tests
 
 on:
   pull_request:
@@ -6,8 +6,9 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  lint:
+  lint-typecheck-unit-test:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
