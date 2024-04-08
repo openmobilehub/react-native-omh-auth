@@ -10,15 +10,21 @@ import {
 } from 'react-native';
 
 import {type OmhUserProfile} from '@omh/react-native-auth-core';
+import {useRoute} from '@react-navigation/native';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
+import {RootStackParamList} from '@/app/navigation';
 import {getAuthProvider, SignedInProviderContext} from '@/app/SignedInProvider';
 
-export default function SignedInScreen() {
-  const {signedInProvider, signInWithProvider} = React.useContext(
-    SignedInProviderContext,
-  );
-  const authProvider = getAuthProvider(signedInProvider);
+type Props = NativeStackScreenProps<RootStackParamList, 'SignedIn'>;
+type SignedInRouteProp = Props['route'];
 
+export default function SignedInScreen() {
+  const route = useRoute<SignedInRouteProp>();
+
+  const {provider} = route.params;
+
+  const {signInWithProvider} = React.useContext(SignedInProviderContext);
   const [accessToken, setAccessToken] = React.useState<string | undefined>();
   const [userProfile, setUserProfile] = React.useState<
     OmhUserProfile | undefined
@@ -32,6 +38,8 @@ export default function SignedInScreen() {
 
   async function onGetAccessToken() {
     try {
+      const authProvider = await getAuthProvider(provider);
+
       const currentAccessToken = await authProvider.getAccessToken();
 
       setAccessToken(currentAccessToken);
@@ -44,6 +52,8 @@ export default function SignedInScreen() {
 
   async function onGetUser() {
     try {
+      const authProvider = await getAuthProvider(provider);
+
       const currentUserProfile = await authProvider.getUser();
 
       setUserProfile(currentUserProfile);
@@ -56,6 +66,8 @@ export default function SignedInScreen() {
 
   async function onRefreshAccessToken() {
     try {
+      const authProvider = await getAuthProvider(provider);
+
       const currentAccessToken = await authProvider.refreshAccessToken();
 
       setAccessToken(currentAccessToken);
@@ -68,6 +80,8 @@ export default function SignedInScreen() {
 
   async function onRevokeAccessToken() {
     try {
+      const authProvider = await getAuthProvider(provider);
+
       await authProvider.revokeAccessToken();
 
       ToastAndroid.show('Revoke Access Token', ToastAndroid.SHORT);
@@ -78,6 +92,8 @@ export default function SignedInScreen() {
 
   async function onSignOut() {
     try {
+      const authProvider = await getAuthProvider(provider);
+
       await authProvider.signOut();
 
       signInWithProvider(null);

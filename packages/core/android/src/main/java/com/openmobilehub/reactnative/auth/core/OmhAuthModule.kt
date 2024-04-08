@@ -10,14 +10,14 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.ReadableArray
 import com.openmobilehub.android.auth.core.OmhAuthClient
-import java.lang.Exception
 
 class OmhAuthModule(
     reactContext: ReactApplicationContext,
     private val name: String,
     private val createOmhAuthClient: (ArrayList<String>) -> OmhAuthClient
-): ReactContextBaseJavaModule(reactContext) {
+) : ReactContextBaseJavaModule(reactContext) {
     private var omhAuthClient: OmhAuthClient? = null
+
     private fun getAuthClient(): OmhAuthClient {
         if (omhAuthClient == null) {
             throw Exception("OmhAuthClient is not initialized")
@@ -26,8 +26,8 @@ class OmhAuthModule(
         return omhAuthClient!!
     }
 
-    // TODO: Extract to separate class
     private var loginActivityPromise: Promise? = null
+
     private val activityEventListener =
         object : BaseActivityEventListener() {
             override fun onActivityResult(
@@ -66,9 +66,7 @@ class OmhAuthModule(
         omhAuthClient = createOmhAuthClient(scopes.toArrayList() as ArrayList<String>)
 
         try {
-            val client = getAuthClient()
-
-            client.initialize().addOnSuccess {
+            getAuthClient().initialize().addOnSuccess {
                 promise.resolve(null)
             }.addOnFailure {
                 promise.reject(E_INITIALIZED_FAILED, it.message)
@@ -91,6 +89,7 @@ class OmhAuthModule(
 
         try {
             val loginIntent = getAuthClient().getLoginIntent()
+
             activity.startActivityForResult(loginIntent, LOGIN_REQUEST)
         } catch (e: Exception) {
             promise.reject(E_SIGN_IN_FAILED, e.message)
@@ -127,8 +126,7 @@ class OmhAuthModule(
 
             promise.resolve(credentials.accessToken)
         } catch (e: Exception) {
-            // TODO: XD
-            promise.reject("", e.message)
+            promise.reject(E_GET_ACCESS_TOKEN_FAILED, e.message)
         }
     }
 
@@ -189,6 +187,7 @@ class OmhAuthModule(
         const val E_SIGN_IN_FAILED = "E_SIGN_IN_FAILED"
         const val E_SIGN_IN_CANCELED = "E_SIGN_IN_CANCELLED"
         const val E_GET_USER_FAILED = "E_GET_USER_FAILED"
+        const val E_GET_ACCESS_TOKEN_FAILED = "E_GET_ACCESS_TOKEN_FAILED"
         const val E_REFRESH_TOKEN_FAILED = "E_REFRESH_TOKEN_FAILED"
         const val E_REVOKE_TOKEN_FAILED = "E_REVOKE_TOKEN_FAILED"
         const val E_SIGN_OUT_FAILED = "E_SIGN_OUT_FAILED"

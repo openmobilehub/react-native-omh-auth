@@ -10,8 +10,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "@omh/react-native-auth-core": "workspace:*",
     "@omh/react-native-auth-google": "workspace:*",
     "@omh/react-native-auth-facebook": "workspace:*",
+    "@omh/react-native-auth-dropbox": "workspace:*",
     "@react-native-async-storage/async-storage": "^1.23.1",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
