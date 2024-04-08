@@ -111,31 +111,47 @@ export default function SignedInScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.userProfileContainer}>
-        <Image style={styles.userProfileImage} source={{uri: profileImage}} />
+        <Image
+          style={styles.userProfileImage}
+          source={{uri: profileImage}}
+          testID="profile-image"
+        />
 
         <View style={styles.userProfileContents}>
-          <Text>Name: {userProfile?.name}</Text>
+          <Text testID="name">Name: {userProfile?.name}</Text>
 
-          <Text>Surname: {userProfile?.surname}</Text>
+          <Text testID="surname">Surname: {userProfile?.surname}</Text>
 
-          <Text>Email: {userProfile?.email}</Text>
+          <Text testID="email">Email: {userProfile?.email}</Text>
 
           <Text>Token:</Text>
         </View>
       </View>
 
-      <Text>{accessToken}</Text>
+      <Text testID="token">{accessToken}</Text>
 
       <View style={styles.actionButtons}>
-        <Button onPress={onGetAccessToken} title="Get access token" />
+        <Button
+          onPress={onGetAccessToken}
+          title="Get access token"
+          testID="get-access-token"
+        />
 
-        <Button onPress={onGetUser} title="Get user" />
+        <Button onPress={onGetUser} title="Get user" testID="get-user" />
 
-        <Button onPress={onRefreshAccessToken} title="Refresh access token" />
+        <Button
+          onPress={onRefreshAccessToken}
+          title="Refresh access token"
+          testID="refresh-access-token"
+        />
 
-        <Button onPress={onRevokeAccessToken} title="Revoke access token" />
+        <Button
+          onPress={onRevokeAccessToken}
+          title="Revoke access token"
+          testID="revoke-access-token"
+        />
 
-        <Button onPress={onSignOut} title="Sign out" />
+        <Button onPress={onSignOut} title="Sign out" testID="sign-out" />
       </View>
     </View>
   );
