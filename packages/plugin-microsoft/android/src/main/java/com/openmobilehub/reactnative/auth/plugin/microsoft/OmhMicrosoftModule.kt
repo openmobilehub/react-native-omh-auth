@@ -23,7 +23,6 @@ class OmhMicrosoftModule(private val reactContext: ReactApplicationContext) {
         return MicrosoftAuthClient(
             context = reactContext,
             scopes = scopes,
-//            configFileResourceId = R.raw.microsoft_auth_config
             configFileResourceId = configFile
         )
     }

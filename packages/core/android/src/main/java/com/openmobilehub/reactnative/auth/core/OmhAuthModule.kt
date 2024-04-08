@@ -65,9 +65,7 @@ class OmhAuthModule(
         omhAuthClient = createOmhAuthClient(config.toHashMap())
 
         try {
-            val client = getAuthClient()
-
-            client.initialize().addOnSuccess {
+            getAuthClient().initialize().addOnSuccess {
                 promise.resolve(null)
             }.addOnFailure {
                 promise.reject(E_INITIALIZED_FAILED, it.message)
