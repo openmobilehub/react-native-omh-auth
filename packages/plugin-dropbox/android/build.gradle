@@ -8,8 +8,6 @@ buildscript {
         mavenCentral()
     }
 
-    
-
     dependencies {
         classpath "com.android.tools.build:gradle:7.2.1"
         // noinspection DifferentKotlinGradleVersion
@@ -84,8 +82,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
-    
 }
 
 repositories {
