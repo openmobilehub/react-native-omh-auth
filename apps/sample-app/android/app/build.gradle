@@ -81,6 +81,34 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+
+        def properties = new Properties()
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
+        file("./src/main/res/raw/ms_auth_config.json").write(
+                """
+{
+  "client_id": "${properties.getProperty("MICROSOFT_CLIENT_ID")}",
+  "authorization_user_agent": "DEFAULT",
+  "redirect_uri": "msauth://${properties.getProperty("MICROSOFT_HOST_PATH")}/${
+                    URLEncoder.encode(
+                            properties.getProperty("MICROSOFT_SIGNATURE_HASH"),
+                            "UTF-8"
+                    )
+                }",
+  "authorities": [
+    {
+      "type": "AAD",
+      "audience": {
+        "type": "AzureADandPersonalMicrosoftAccount",
+        "tenant_id": "common"
+      }
+    }
+  ],
+  "account_mode": "SINGLE"
+}
+            """.strip().stripIndent()
+        )
     }
     signingConfigs {
         debug {

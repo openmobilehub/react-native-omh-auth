@@ -1,0 +1,11 @@
+{
+  "name": "@omh/react-native-auth-microsoft",
+  "version": "1.0.0-beta",
+  "main": "src/index",
+  "dependencies": {
+    "@omh/react-native-auth-core": "workspace:*"
+  },
+  "peerDependencies": {
+    "react-native": "*"
+  }
+}

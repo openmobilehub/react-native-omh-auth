@@ -1,8 +1,8 @@
 import {NativeModules} from 'react-native';
 
-import {OmhUserProfile} from './types';
+import {BaseAuthConfig, OmhUserProfile} from './types';
 
-export default class AuthModule {
+export default class AuthModule<C = BaseAuthConfig> {
   authNativeModule: any;
 
   constructor(moduleName: string) {
@@ -15,8 +15,8 @@ export default class AuthModule {
     this.authNativeModule = authNativeModule;
   }
 
-  initialize(scopes: Array<string>): Promise<void> {
-    return this.authNativeModule.initialize(scopes);
+  initialize(config: C): Promise<void> {
+    return this.authNativeModule.initialize(config);
   }
 
   signIn(): Promise<void> {

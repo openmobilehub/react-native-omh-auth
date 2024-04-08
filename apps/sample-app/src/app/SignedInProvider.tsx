@@ -3,12 +3,14 @@ import React from 'react';
 import DropboxAuth from '@omh/react-native-auth-dropbox';
 import FacebookAuth from '@omh/react-native-auth-facebook';
 import GoogleAuth from '@omh/react-native-auth-google';
+import MicrosoftAuth from '@omh/react-native-auth-microsoft';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const PROVIDER_NAMES = {
   GOOGLE: 'google',
   FACEBOOK: 'facebook',
   DROPBOX: 'dropbox',
+  MICROSOFT: 'microsoft',
 } as const;
 
 type ObjectValues<T> = T[keyof T];
@@ -18,14 +20,20 @@ export type Providers = ObjectValues<typeof PROVIDER_NAMES>;
 export const getAuthProvider = async (provider: Providers) => {
   switch (provider) {
     case PROVIDER_NAMES.GOOGLE:
-      await GoogleAuth.initialize(['openid', 'email', 'profile']);
+      await GoogleAuth.initialize({scopes: ['openid', 'email', 'profile']});
       return GoogleAuth;
     case PROVIDER_NAMES.FACEBOOK:
-      await FacebookAuth.initialize(['public_profile', 'email']);
+      await FacebookAuth.initialize({scopes: ['public_profile', 'email']});
       return FacebookAuth;
     case PROVIDER_NAMES.DROPBOX:
-      await DropboxAuth.initialize(['account_info.read']);
+      await DropboxAuth.initialize({scopes: ['account_info.read']});
       return DropboxAuth;
+    case PROVIDER_NAMES.MICROSOFT:
+      await MicrosoftAuth.initialize({
+        scopes: ['User.Read'],
+        configFileName: 'ms_auth_config',
+      });
+      return MicrosoftAuth;
   }
 };
 

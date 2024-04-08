@@ -14,7 +14,9 @@ class OmhDropboxModule(private val reactContext: ReactApplicationContext) {
         )
     }
 
-    private fun createOmhAuthClient(scopes: ArrayList<String>): OmhAuthClient {
+    private fun createOmhAuthClient(config: HashMap<String, Any>): OmhAuthClient {
+        val scopes = config["scopes"] as ArrayList<String>
+
         return DropboxAuthClient(
             scopes = scopes,
             context = reactContext,

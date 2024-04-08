@@ -14,11 +14,12 @@ class OmhGoogleModule(private val reactContext: ReactApplicationContext) {
         )
     }
 
-    private fun createOmhAuthClient(scopes: ArrayList<String>): OmhAuthClient {
+    private fun createOmhAuthClient(config: HashMap<String, Any>): OmhAuthClient {
         val omhAuthProvider = OmhAuthProvider.Builder()
             .addNonGmsPath("com.openmobilehub.android.auth.plugin.google.nongms.presentation.OmhAuthFactoryImpl")
             .addGmsPath("com.openmobilehub.android.auth.plugin.google.gms.OmhAuthFactoryImpl")
             .build()
+        val scopes = config["scopes"] as ArrayList<String>
 
         return omhAuthProvider.provideAuthClient(
             scopes = scopes,
