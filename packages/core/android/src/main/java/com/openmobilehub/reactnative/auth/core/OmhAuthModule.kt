@@ -1,9 +1,6 @@
 package com.openmobilehub.reactnative.auth.core
 
-import android.app.Activity
-import android.content.Intent
 import com.facebook.react.bridge.Arguments
-import com.facebook.react.bridge.BaseActivityEventListener
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
@@ -25,35 +22,10 @@ class OmhAuthModule(
         return omhAuthClient!!
     }
 
-    // TODO: Extract to separate class
-    private var loginActivityPromise: Promise? = null
-    private val activityEventListener =
-        object : BaseActivityEventListener() {
-            override fun onActivityResult(
-                activity: Activity?,
-                requestCode: Int,
-                resultCode: Int,
-                intent: Intent?
-            ) {
-                loginActivityPromise?.let { promise ->
-                    when (resultCode) {
-                        Activity.RESULT_CANCELED -> {
-                            val error = intent?.getStringExtra("errorMessage")
-
-                            promise.reject(E_SIGN_IN_CANCELED, error)
-                        }
-
-                        Activity.RESULT_OK ->
-                            promise.resolve(null)
-                    }
-
-                    loginActivityPromise = null
-                }
-            }
-        }
+    private val loginActivityEventListener = OmhLoginActivityListener()
 
     init {
-        reactContext.addActivityEventListener(activityEventListener)
+        reactContext.addActivityEventListener(loginActivityEventListener)
     }
 
     override fun getName(): String {
@@ -84,7 +56,7 @@ class OmhAuthModule(
             return
         }
 
-        loginActivityPromise = promise
+        loginActivityEventListener.loginPromise = promise
 
         try {
             val loginIntent = getAuthClient().getLoginIntent()
