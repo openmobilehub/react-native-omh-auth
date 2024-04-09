@@ -122,6 +122,10 @@ const config: Config = {
               label: 'Twitter',
               href: 'https://twitter.com/openmobilehub',
             },
+            {
+              label: 'Discord',
+              href: 'https://discord.com/invite/yTAFKbeVMw',
+            },
           ],
         },
         {
