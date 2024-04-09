@@ -46,10 +46,26 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <Button onPress={onGoogleSignIn} title="Sign in with Google" />
-      <Button onPress={onFacebookSignIn} title="Sign in with Facebook" />
-      <Button onPress={onDropboxSignIn} title="Sign in with Dropbox" />
-      <Button onPress={onMicrosoftSignIn} title="Sign in with Microsoft" />
+      <Button
+        onPress={onGoogleSignIn}
+        title="Sign in with Google"
+        testID="sign-in-google"
+      />
+      <Button
+        onPress={onFacebookSignIn}
+        title="Sign in with Facebook"
+        testID="sign-in-facebook"
+      />
+      <Button
+        onPress={onMicrosoftSignIn}
+        title="Sign in with Microsoft"
+        testID="sign-in-microsoft"
+      />
+      <Button
+        onPress={onDropboxSignIn}
+        title="Sign in with Dropbox"
+        testID="sign-in-dropbox"
+      />
     </View>
   );
 }
