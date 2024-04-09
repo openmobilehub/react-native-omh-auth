@@ -8,8 +8,12 @@
   },
   "workspaces": [
     "apps/*",
+    "docs",
     "packages/*"
   ],
+  "dependencies": {
+    "react-loadable": "npm:@docusaurus/react-loadable@5.5.2"
+  },
   "devDependencies": {
     "@commitlint/config-conventional": "^19.1.0",
     "@ianvs/prettier-plugin-sort-imports": "^4.2.1",

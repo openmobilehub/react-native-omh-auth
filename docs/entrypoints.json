@@ -1,0 +1,7 @@
+[
+  "../packages/core/src/index.tsx",
+  "../packages/plugin-google/src/index.tsx",
+  "../packages/plugin-facebook/src/index.tsx",
+  "../packages/plugin-microsoft/src/index.tsx",
+  "../packages/plugin-dropbox/src/index.tsx"
+]
