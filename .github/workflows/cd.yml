@@ -2,13 +2,13 @@ name: Distribute Sample App to App Center
 
 on:
   push:
-    branches: [main]
-
-env:
-  SAMPLE_APP_PATH: 'apps/sample-app/android'
+    branches: [main, ci]
 
 jobs:
-  build-sample-app:
+  build-and-deploy-sample-app:
+    env:
+      SAMPLE_APP_PATH: 'apps/sample-app/android'
+
     runs-on: ubuntu-latest
 
     steps:
@@ -44,12 +44,6 @@ jobs:
           cd ${{ env.SAMPLE_APP_PATH }}
           ./gradlew assembleRelease
 
-  deploy-sample-app:
-    needs: build-sample-app
-
-    runs-on: ubuntu-latest
-
-    steps:
       - name: Upload .apk to App Center
         uses: wzieba/AppCenter-Github-Action@v1
         with:
