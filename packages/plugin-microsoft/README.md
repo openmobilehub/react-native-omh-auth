@@ -29,8 +29,8 @@ npm add @omh/react-native-auth-microsoft
 To access Microsoft APIs, generate a unique **Client ID** & **Signature Hash** for your app in the [Microsoft Azure](https://portal.azure.com) and follow the additional [setup instructions](https://learn.microsoft.com/en-us/azure/active-directory-b2c/configure-authentication-sample-android-app?tabs=kotlin). Once finished, add a new entry to your **android/local.properties** file:
 
 ```bash
-MICROSOFT_CLIENT_ID=<YOUR_MICROSOFT_CLIENT_ID>
 MICROSOFT_SIGNATURE_HASH=<YOUR_MICROSOFT_SIGNATURE_HASH>
+MICROSOFT_HOST_PATH=<YOUR_ANDROID_PACKAGE_NAME.MainApplication>
 ```
 
 ## Usage

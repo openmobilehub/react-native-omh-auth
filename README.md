@@ -35,16 +35,6 @@ This is the main directory of the mono-repo for React Native OMH Auth. If you're
 - [Quick Start](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started)
 - [Reference API](https://special-barnacle-93vn82m.pages.github.io/docs/api)
 
-## Troubleshooting
-
-### Jettifier
-
-> Failed to transform jackson-core-2.15.0.jar (com.fasterxml.jackson.core:jackson-core:2.15.0) to match attributes {artifactType=android-classes-jar, org.gradle.category=library, org.gradle.dependency.bundling=external, org.gradle.libraryelements=jar, org.gradle.status=release, org.gradle.usage=java-api}.
-
-If you see the above error during the android build process, please add `android.jetifier.ignorelist=jackson-core,fastdoubleparser` to your **android/gradle.properties** file.
-
-Related [GitHub issue](https://github.com/dropbox/dropbox-sdk-java/issues/517)
-
 ## Contributing
 
 - [Overview](https://special-barnacle-93vn82m.pages.github.io/docs/contributing)
