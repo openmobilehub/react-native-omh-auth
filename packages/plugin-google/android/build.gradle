@@ -1,3 +1,11 @@
+repositories {
+    google()
+    mavenCentral()
+    maven {
+        url("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+    }
+}
+
 buildscript {
     // Buildscript is evaluated before everything else so we can't use getExtOrDefault
     def kotlin_version = rootProject.ext.has("kotlinVersion") ? rootProject.ext.get("kotlinVersion") : project.properties["OmhGoogle_kotlinVersion"]
