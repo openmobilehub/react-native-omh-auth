@@ -28,17 +28,32 @@ npm add @omh/react-native-auth-microsoft
 
 To access Microsoft APIs, generate a unique **Client ID** & **Signature Hash** for your app in the [Microsoft Azure](https://portal.azure.com) and follow the additional [setup instructions](https://learn.microsoft.com/en-us/azure/active-directory-b2c/configure-authentication-sample-android-app?tabs=kotlin). Once finished, add a new entry to your **android/local.properties** file:
 
-```bash
+```bash title="android/local.properties"
 MICROSOFT_SIGNATURE_HASH=<YOUR_MICROSOFT_SIGNATURE_HASH>
-MICROSOFT_HOST_PATH=<YOUR_ANDROID_PACKAGE_NAME.MainApplication>
+MICROSOFT_HOST_PATH=<YOUR_ANDROID_PACKAGE_NAME>.MainApplication
 ```
+
+Additionally, you will have to download the **ms_auth_config.json** file from the [Microsoft Azure](https://portal.azure.com) and add it in the **android/app/src/main/res/raw** directory.
 
 ## Usage
 
-Interacting with the Dropbox provider is identical to other providers as they all inherit the `AuthModule` from the [core](/packages/core). That means there are no additional methods that you need to learn!
+### Initializing
 
-- [Reference API](https://special-barnacle-93vn82m.pages.github.io/docs/api/classes/core_src.AuthModule#methods)
+Before interacting with Microsoft, initialization of the Microsoft Auth Client is necessary, requiring specific `scopes` and the `configFileName` to be configured.
+
+```typescript
+import MicrosoftAuthClient from '@omh/react-native-auth-microsoft';
+
+await MicrosoftAuthClient.initialize({
+  scopes: ['User.Read'],
+  configFileName: 'ms_auth_config',
+});
+```
+
+### Other methods
+
+Interacting with the Microsoft provider follows the same pattern as other providers since they all implement the `AuthModule` interface. For a comprehensive list of available methods, refer to the [Quick Start](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#sign-in) guide.
 
 ## License
 
-- See [LICENSE](/LICENSE)
+- See [LICENSE](https://github.com/openmobilehub/react-native-omh-auth/blob/main/LICENSE)

@@ -28,17 +28,27 @@ npm add @omh/react-native-auth-facebook
 
 To access Facebook APIs, generate a unique **App ID** & **Client Token** for your app in the [Meta for Developers](https://developers.facebook.com/apps) and follow the additional [setup instructions](https://developers.facebook.com/docs/facebook-login/android). Once finished, add a new entry to your **android/local.properties** file:
 
-```bash
+```bash title="android/local.properties"
 FACEBOOK_APP_ID=<YOUR_FACEBOOK_APP_ID>
 FACEBOOK_CLIENT_TOKEN=<YOUR_FACEBOOK_CLIENT_TOKEN>
 ```
 
 ## Usage
 
-Interacting with the Dropbox provider is identical to other providers as they all inherit the `AuthModule` from the [core](/packages/core). That means there are no additional methods that you need to learn!
+### Initializing
 
-- [Reference API](https://special-barnacle-93vn82m.pages.github.io/docs/api/classes/core_src.AuthModule#methods)
+Before interacting with Facebook, initialization of the Facebook Auth Client is necessary, requiring specific `scopes` to be configured.
+
+```typescript
+import FacebookAuthClient from '@omh/react-native-auth-facebook';
+
+await FacebookAuthClient.initialize({scopes: ['public_profile', 'email']});
+```
+
+### Other methods
+
+Interacting with the Facebook provider follows the same pattern as other providers since they all implement the `AuthModule` interface. For a comprehensive list of available methods, refer to the [Quick Start](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#sign-in) guide.
 
 ## License
 
-- See [LICENSE](/LICENSE)
+- See [LICENSE](https://github.com/openmobilehub/react-native-omh-auth/blob/main/LICENSE)

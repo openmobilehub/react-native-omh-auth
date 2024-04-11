@@ -28,16 +28,26 @@ npm add @omh/react-native-auth-dropbox
 
 To access Dropbox APIs, generate a unique **App Key** for your app in the [Dropbox Console](https://www.dropbox.com/developers/apps). Once finished, add a new entry to your **android/local.properties** file:
 
-```bash
+```bash title="android/local.properties"
 DROPBOX_APP_KEY=<YOUR_DROPBOX_APP_KEY>
 ```
 
 ## Usage
 
-Interacting with the Dropbox provider is identical to other providers as they all inherit the `AuthModule` from the [core](/packages/core). That means there are no additional methods that you need to learn!
+### Initializing
 
-- [Reference API](https://special-barnacle-93vn82m.pages.github.io/docs/api/classes/core_src.AuthModule#methods)
+Before interacting with Dropbox, initialization of the Dropbox Auth Client is necessary, requiring specific `scopes` to be configured.
+
+```typescript
+import DropboxAuthClient from '@omh/react-native-auth-dropbox';
+
+await DropboxAuthClient.initialize({scopes: ['account_info.read']});
+```
+
+### Other methods
+
+Interacting with the Dropbox provider follows the same pattern as other providers since they all implement the `AuthModule` interface. For a comprehensive list of available methods, refer to the [Quick Start](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#sign-in) guide.
 
 ## License
 
-- See [LICENSE](/LICENSE)
+- See [LICENSE](https://github.com/openmobilehub/react-native-omh-auth/blob/main/LICENSE)

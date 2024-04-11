@@ -24,11 +24,11 @@
 
 This is the main directory of the mono-repo for React Native OMH Auth. If you're searching for a particular package, please click on the corresponding package link below.
 
-- [Core](/packages/core)
-- [Google](/packages/plugin-google)
-- [Facebook](/packages/plugin-facebook)
-- [Microsoft](/packages/plugin-microsoft)
-- [Dropbox](/packages/plugin-dropbox)
+- [Core](/packages/core/README.md)
+- [Google](/packages/plugin-google/README.md)
+- [Facebook](/packages/plugin-facebook/README.md)
+- [Microsoft](/packages/plugin-microsoft/README.md)
+- [Dropbox](/packages/plugin-dropbox/README.md)
 
 ## Documentation
 
@@ -43,4 +43,4 @@ This is the main directory of the mono-repo for React Native OMH Auth. If you're
 
 ## License
 
-- See [LICENSE](/LICENSE)
+- See [LICENSE](https://github.com/openmobilehub/react-native-omh-auth/blob/main/LICENSE)

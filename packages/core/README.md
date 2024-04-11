@@ -26,14 +26,16 @@ npm add @omh/react-native-auth-core
 
 ## Usage
 
-The core modules exposes the `OmhUserProfile` type which you might find useful when working in a TypeScript React Native app.
+The core modules exposes the [`OmhUserProfile`](https://special-barnacle-93vn82m.pages.github.io/docs/api/modules/core_src#omhuserprofile) type which you might find useful when working in a TypeScript React Native app.
 
 ```typescript
 import {type OmhUserProfile} from '@omh/react-native-auth-core';
-```
 
-- [Reference API](https://special-barnacle-93vn82m.pages.github.io/docs/api/modules/core_src#omhuserprofile)
+// ... Auth Client initialization and sign in
+
+const user: OmhUserProfile = await AuthClient.getUser();
+```
 
 ## License
 
-- See [LICENSE](/LICENSE)
+- See [LICENSE](https://github.com/openmobilehub/react-native-omh-auth/blob/main/LICENSE)

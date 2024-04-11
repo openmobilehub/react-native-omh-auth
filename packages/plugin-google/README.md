@@ -28,16 +28,26 @@ npm add @omh/react-native-auth-google
 
 To access Google APIs, generate a unique **Client ID** for your app in the [Google Console](https://console.cloud.google.com/projectselector2) and follow the additional [setup instructions](https://developers.google.com/identity/protocols/oauth2/native-app#android). Once finished, add a new entry to your **android/local.properties** file:
 
-```bash
+```bash title="android/local.properties"
 GOOGLE_CLIENT_ID=<YOUR_GOOGLE_CLIENT_ID>
 ```
 
 ## Usage
 
-Interacting with the Dropbox provider is identical to other providers as they all inherit the `AuthModule` from the [core](/packages/core). That means there are no additional methods that you need to learn!
+### Initializing
 
-- [Reference API](https://special-barnacle-93vn82m.pages.github.io/docs/api/classes/core_src.AuthModule#methods)
+Before interacting with Google, initialization of the Google Auth Client is necessary, requiring specific `scopes` to be configured.
+
+```typescript
+import GoogleAuthClient from '@omh/react-native-auth-google';
+
+await GoogleAuthClient.initialize({scopes: ['openid', 'email', 'profile']});
+```
+
+### Other methods
+
+Interacting with the Google provider follows the same pattern as other providers since they all implement the `AuthModule` interface. For a comprehensive list of available methods, refer to the [Quick Start](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#sign-in) guide.
 
 ## License
 
-- See [LICENSE](/LICENSE)
+- See [LICENSE](https://github.com/openmobilehub/react-native-omh-auth/blob/main/LICENSE)
