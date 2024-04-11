@@ -1,3 +1,8 @@
+/**
+ * React Native OMH Auth Microsoft Plugin
+ * @module @omh/react-native-auth-microsoft
+ */
+
 import {AuthModule} from '@omh/react-native-auth-core';
 
 import {MicrosoftAuthConfig} from './types';
