@@ -100,6 +100,7 @@ export default function SignedInScreen() {
 
       ToastAndroid.show('Sign Out', ToastAndroid.SHORT);
     } catch (error: any) {
+      signInWithProvider(null);
       Alert.alert('Error', error?.message);
     }
   }
