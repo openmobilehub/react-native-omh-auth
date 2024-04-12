@@ -25,15 +25,15 @@ export const getAuthProvider = async (provider: Providers) => {
     case PROVIDER_NAMES.FACEBOOK:
       await FacebookAuth.initialize({scopes: ['public_profile', 'email']});
       return FacebookAuth;
-    case PROVIDER_NAMES.DROPBOX:
-      await DropboxAuth.initialize({scopes: ['account_info.read']});
-      return DropboxAuth;
     case PROVIDER_NAMES.MICROSOFT:
       await MicrosoftAuth.initialize({
         scopes: ['User.Read'],
         configFileName: 'ms_auth_config',
       });
       return MicrosoftAuth;
+    case PROVIDER_NAMES.DROPBOX:
+      await DropboxAuth.initialize({scopes: ['account_info.read']});
+      return DropboxAuth;
   }
 };
 

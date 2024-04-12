@@ -141,7 +141,7 @@ android {
 
     // BUG: https://github.com/auth0/Auth0.Android/issues/598
     packagingOptions {
-        exclude 'META-INF/DEPENDENCIES'
+        resources.excludes.add("META-INF/DEPENDENCIES")
     }
 }
 

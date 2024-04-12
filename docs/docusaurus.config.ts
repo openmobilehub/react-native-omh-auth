@@ -71,12 +71,6 @@ const config: Config = {
           position: 'left',
           label: 'API',
         },
-        // {
-        //   type: 'docSidebar',
-        //   sidebarId: 'advancedUsageSidebar',
-        //   position: 'left',
-        //   label: 'Advanced usage',
-        // },
         {
           type: 'docSidebar',
           sidebarId: 'contributingSidebar',
@@ -100,10 +94,6 @@ const config: Config = {
               label: 'Getting started',
               to: '/docs/getting-started',
             },
-            // {
-            //   label: 'Advanced usage',
-            //   to: '/docs/advanced-usage',
-            // },
           ],
         },
         {
@@ -121,6 +111,10 @@ const config: Config = {
             {
               label: 'Twitter',
               href: 'https://twitter.com/openmobilehub',
+            },
+            {
+              label: 'Discord',
+              href: 'https://discord.com/invite/yTAFKbeVMw',
             },
           ],
         },
@@ -164,8 +158,24 @@ const config: Config = {
           inIncludedFiles: true,
           replacements: [
             {
-              pattern: ']\\(CONTRIBUTING.md\\)',
-              replace: '](../contributing.mdx)',
+              pattern: ']\\(/packages/core/README.md',
+              replace: '](../core.mdx',
+            },
+            {
+              pattern: ']\\(/packages/plugin-google/README.md',
+              replace: '](../google.mdx',
+            },
+            {
+              pattern: ']\\(/packages/plugin-facebook/README.md',
+              replace: '](../facebook.mdx',
+            },
+            {
+              pattern: ']\\(/packages/plugin-microsoft/README.md',
+              replace: '](../microsoft.mdx',
+            },
+            {
+              pattern: ']\\(/packages/plugin-dropbox/README.md',
+              replace: '](../dropbox.mdx',
             },
           ],
         },
