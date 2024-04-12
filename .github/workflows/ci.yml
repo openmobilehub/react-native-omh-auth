@@ -1,4 +1,4 @@
-name: Lint, typecheck files & run unit tests
+name: Lint, typecheck files, run unit tests & build docs
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  lint-typecheck-unit-test:
+  lint-typecheck-unit-test-build-docs:
     runs-on: ubuntu-latest
 
     steps:
@@ -29,3 +29,8 @@ jobs:
 
       - name: Run unit tests
         run: bun run test
+
+      - name: Build docs
+        run: |
+          cd docs
+          bun run build

@@ -33,11 +33,11 @@
 
 This is the main directory of the mono-repo for React Native OMH Auth. If you're searching for a particular package, please click on the corresponding package link below.
 
-- [Core](/packages/core/README.md)
-- [Google](/packages/plugin-google/README.md)
-- [Facebook](/packages/plugin-facebook/README.md)
-- [Microsoft](/packages/plugin-microsoft/README.md)
-- [Dropbox](/packages/plugin-dropbox/README.md)
+- [Core](https://special-barnacle-93vn82m.pages.github.io/docs/core)
+- [Google](https://special-barnacle-93vn82m.pages.github.io/docs/google)
+- [Facebook](https://special-barnacle-93vn82m.pages.github.io/docs/facebook)
+- [Microsoft](https://special-barnacle-93vn82m.pages.github.io/docs/microsoft)
+- [Dropbox](https://special-barnacle-93vn82m.pages.github.io/docs/dropbox)
 
 ## Documentation
 
