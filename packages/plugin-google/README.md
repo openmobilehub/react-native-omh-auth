@@ -46,6 +46,12 @@ await GoogleAuthClient.initialize({scopes: ['openid', 'email', 'profile']});
 
 ### Other methods
 
+:::warning[KNOWN LIMITATIONS]
+
+On a [**GMS**](https://www.android.com/gms) enabled device, Google SDK automatically refreshes the access token in the background. Refreshing the access token manually on a GMS enabled device is not supported as of now. Instead the current access token will be returned when calling the `refreshAccessToken` method.
+
+:::
+
 Interacting with the Google provider follows the same pattern as other providers since they all implement the `AuthModule` interface. For a comprehensive list of available methods, refer to the [Quick Start](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#sign-in) guide.
 
 ## License
