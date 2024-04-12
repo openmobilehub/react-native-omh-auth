@@ -52,6 +52,12 @@ await MicrosoftAuthClient.initialize({
 
 ### Other methods
 
+:::warning[Known limitations"]
+
+Due to current [limitations](https://github.com/AzureAD/microsoft-authentication-library-for-android/issues/1037) to the underlying Microsoft SDK, revoking a token is not supported as of now. Instead an error with the **"Method not supported."** message will be thrown when calling the `revokeAccessToken` method.
+
+:::
+
 Interacting with the Microsoft provider follows the same pattern as other providers since they all implement the `AuthModule` interface. For a comprehensive list of available methods, refer to the [Quick Start](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#sign-in) guide.
 
 ## License
