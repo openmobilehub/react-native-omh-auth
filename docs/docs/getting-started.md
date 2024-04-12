@@ -41,10 +41,10 @@ npm add @omh/react-native-auth-<provider-name>
 
 Each provider requires you to specify different secrets. Please follow the individual provider configuration:
 
-- [Google](/packages/plugin-google/README.md#configuration)
-- [Facebook](/packages/plugin-facebook/README.md#configuration)
-- [Microsoft](/packages/plugin-microsoft/README.md#configuration)
-- [Dropbox](/packages/plugin-dropbox/README.md#configuration)
+- [Google](https://special-barnacle-93vn82m.pages.github.io/docs/google#configuration)
+- [Facebook](https://special-barnacle-93vn82m.pages.github.io/docs/facebook#configuration)
+- [Microsoft](https://special-barnacle-93vn82m.pages.github.io/docs/microsoft#configuration)
+- [Dropbox](https://special-barnacle-93vn82m.pages.github.io/docs/dropbox#configuration)
 
 ## Manual linking of the core package
 
@@ -135,7 +135,7 @@ For a more in depth view on the available methods, access the [Reference API](ht
 
 ## Sample app
 
-Explore the [sample app](/apps/sample-app) included in the repository to see the implementation of authentication with Google and other providers.
+Explore the [sample app](https://github.com/openmobilehub/react-native-omh-auth/tree/main/apps/sample-app) included in the repository to see the implementation of authentication with Google and other providers.
 
 ## Troubleshooting
 
