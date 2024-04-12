@@ -18,7 +18,16 @@
 
 ---
 
-**React Native OMH Auth** simplifies the process of connecting your React Native app to various authentication provider services. Each module acts as a lightweight bridge between your JavaScript code and the native OMH Auth SDKs on iOS and Android platforms.
+**React Native OMH Auth** streamlines connecting your React Native app to authentication provider services by providing lightweight bridges to native OMH Auth SDKs on both iOS and Android. Supporting both Google Mobile Services (GMS) and non-GMS configurations, with a unified interface for easy incorporation of Google, Facebook, Microsoft, Dropbox and other supported third-party authentication providers.
+
+## Features
+
+- 📱 GMS and non-GMS support for all auth providers
+- 🔗 Identical API across all providers
+- 🌱 Easy configuration and setup
+- ⚡️ Instant sign-in with native GMS, Facebook and Dropbox apps
+- 🌐 Custom Tabs support for Android
+- 💨 Lightweight modules
 
 ## OMH Auth Modules
 
