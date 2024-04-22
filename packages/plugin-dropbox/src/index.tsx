@@ -3,9 +3,14 @@
  * @module @omh/react-native-dropbox-google
  */
 
-import {AuthModule} from '@omh/react-native-auth-core';
+import {createAuthModule} from '@omh/react-native-auth-core';
 
 const DROPBOX_MODULE_NAME = 'OmhDropbox';
-const dropboxModule = new AuthModule(DROPBOX_MODULE_NAME);
+const dropboxModule = createAuthModule({
+  moduleName: DROPBOX_MODULE_NAME,
+  getUser: () => {
+    throw new Error('Not implemented');
+  },
+});
 
 export default dropboxModule;

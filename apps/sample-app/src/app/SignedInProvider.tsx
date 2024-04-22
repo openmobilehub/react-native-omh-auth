@@ -20,18 +20,26 @@ export type Providers = ObjectValues<typeof PROVIDER_NAMES>;
 export const getAuthProvider = async (provider: Providers) => {
   switch (provider) {
     case PROVIDER_NAMES.GOOGLE:
-      await GoogleAuth.initialize({scopes: ['openid', 'email', 'profile']});
+      await GoogleAuth.initialize({
+        scopes: ['openid', 'email', 'profile'],
+        issuer: 'https://accounts.google.com',
+        clientId: `${process.env.GOOGLE_APP_GUID}.apps.googleusercontent.com`,
+        redirectUrl: `com.googleusercontent.apps.${process.env.GOOGLE_APP_GUID}:/oauth2redirect/google`,
+      });
       return GoogleAuth;
     case PROVIDER_NAMES.FACEBOOK:
+      // @ts-ignore add iOS config
       await FacebookAuth.initialize({scopes: ['public_profile', 'email']});
       return FacebookAuth;
     case PROVIDER_NAMES.MICROSOFT:
+      // @ts-ignore add iOS config
       await MicrosoftAuth.initialize({
         scopes: ['User.Read'],
         configFileName: 'ms_auth_config',
       });
       return MicrosoftAuth;
     case PROVIDER_NAMES.DROPBOX:
+      // @ts-ignore add iOS config
       await DropboxAuth.initialize({scopes: ['account_info.read']});
       return DropboxAuth;
   }
