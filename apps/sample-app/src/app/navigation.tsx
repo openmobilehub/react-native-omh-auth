@@ -2,6 +2,7 @@ import React from 'react';
 
 import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {RootSiblingParent} from 'react-native-root-siblings';
 
 import {Providers, SignedInProviderContext} from '@/app/SignedInProvider';
 import HomeScreen from '@/screens/HomeScreen';
@@ -54,7 +55,9 @@ function RootStack() {
 export default function RootNavigationContainer() {
   return (
     <NavigationContainer theme={MyTheme}>
-      <RootStack />
+      <RootSiblingParent>
+        <RootStack />
+      </RootSiblingParent>
     </NavigationContainer>
   );
 }
