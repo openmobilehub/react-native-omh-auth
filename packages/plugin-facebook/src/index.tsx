@@ -3,9 +3,14 @@
  * @module @omh/react-native-auth-facebook
  */
 
-import {AuthModule} from '@omh/react-native-auth-core';
+import {createAuthModule} from '@omh/react-native-auth-core';
 
 const FACEBOOK_MODULE_NAME = 'OmhFacebook';
-const facebookModule = new AuthModule(FACEBOOK_MODULE_NAME);
+const facebookModule = createAuthModule({
+  moduleName: FACEBOOK_MODULE_NAME,
+  getUser: () => {
+    throw new Error('Not implemented');
+  },
+});
 
 export default facebookModule;

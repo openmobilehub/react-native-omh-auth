@@ -66,6 +66,10 @@ jobs:
         with:
           bun-version: latest
 
+      - name: Add secrets to `.env`
+        run: |
+          echo GOOGLE_APP_GUID=${{ secrets.IOS_GOOGLE_APP_GUID }} >> apps/sample-app/.env
+
       - name: Install dependencies
         run: bun install
 

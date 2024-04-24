@@ -1,6 +1,7 @@
 module.exports = {
   extends: '../../babel.config.js',
   plugins: [
+    ['module:react-native-dotenv'],
     [
       'module-resolver',
       {

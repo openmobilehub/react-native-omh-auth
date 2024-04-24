@@ -67,3 +67,6 @@ apps/sample-app/ios/Pods/
 
 # VS Code
 .vscode/
+
+# Env
+apps/sample-app/.env

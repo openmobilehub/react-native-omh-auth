@@ -1,17 +1,10 @@
 import React from 'react';
-import {
-  Alert,
-  Button,
-  Image,
-  StyleSheet,
-  Text,
-  ToastAndroid,
-  View,
-} from 'react-native';
+import {Alert, Button, Image, StyleSheet, Text, View} from 'react-native';
 
 import {type OmhUserProfile} from '@omh/react-native-auth-core';
 import {useRoute} from '@react-navigation/native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import Toast from 'react-native-root-toast';
 
 import {RootStackParamList} from '@/app/navigation';
 import {getAuthProvider, SignedInProviderContext} from '@/app/SignedInProvider';
@@ -44,7 +37,7 @@ export default function SignedInScreen() {
 
       setAccessToken(currentAccessToken);
 
-      ToastAndroid.show('Get Access Token', ToastAndroid.SHORT);
+      Toast.show('Get Access Token');
     } catch (error: any) {
       Alert.alert('Error', error?.message);
     }
@@ -58,7 +51,7 @@ export default function SignedInScreen() {
 
       setUserProfile(currentUserProfile);
 
-      ToastAndroid.show('Get User', ToastAndroid.SHORT);
+      Toast.show('Get User');
     } catch (error: any) {
       Alert.alert('Error', error?.message);
     }
@@ -72,7 +65,7 @@ export default function SignedInScreen() {
 
       setAccessToken(currentAccessToken);
 
-      ToastAndroid.show('Refresh Access Token', ToastAndroid.SHORT);
+      Toast.show('Refresh Access Token');
     } catch (error: any) {
       Alert.alert('Error', error?.message);
     }
@@ -84,7 +77,7 @@ export default function SignedInScreen() {
 
       await authProvider.revokeAccessToken();
 
-      ToastAndroid.show('Revoke Access Token', ToastAndroid.SHORT);
+      Toast.show('Revoke Access Token');
     } catch (error: any) {
       Alert.alert('Error', error?.message);
     }
@@ -98,7 +91,7 @@ export default function SignedInScreen() {
 
       signInWithProvider(null);
 
-      ToastAndroid.show('Sign Out', ToastAndroid.SHORT);
+      Toast.show('Sign Out');
     } catch (error: any) {
       Alert.alert('Error', error?.message);
     }

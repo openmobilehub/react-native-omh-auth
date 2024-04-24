@@ -1,11 +1,19 @@
 import {NativeModules} from 'react-native';
 
-import {BaseAuthConfig, OmhUserProfile} from './types';
+import {
+  AuthModuleConfig,
+  BaseAuthConfig,
+  IAuthModule,
+  OmhUserProfile,
+} from './types';
 
-export default class AuthModule<C = BaseAuthConfig> {
+export default class AuthModuleAndroid<
+  C extends BaseAuthConfig = BaseAuthConfig,
+> implements IAuthModule<C>
+{
   authNativeModule: any;
 
-  constructor(moduleName: string) {
+  constructor({moduleName}: AuthModuleConfig) {
     const authNativeModule = NativeModules[moduleName];
 
     if (!authNativeModule) {
