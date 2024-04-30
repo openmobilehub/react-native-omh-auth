@@ -85,7 +85,6 @@ export default class AuthModuleIOS implements IAuthModule {
   }
 
   async signOut(): Promise<void> {
-    await this.revokeAccessToken();
     await removePersistedAuthData();
 
     this.authData = null;
