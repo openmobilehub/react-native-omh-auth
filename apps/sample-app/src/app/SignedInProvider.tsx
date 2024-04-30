@@ -39,8 +39,21 @@ export const getAuthProvider = async (provider: Providers) => {
       });
       return MicrosoftAuth;
     case PROVIDER_NAMES.DROPBOX:
-      // @ts-ignore add iOS config
-      await DropboxAuth.initialize({scopes: ['account_info.read']});
+      await DropboxAuth.initialize({
+        scopes: ['account_info.read', 'sharing.read'],
+        serviceConfiguration: {
+          authorizationEndpoint: 'https://www.dropbox.com/oauth2/authorize',
+          tokenEndpoint: 'https://api.dropboxapi.com/oauth2/token',
+          revocationEndpoint: 'https://api.dropboxapi.com/2/auth/token/revoke',
+        },
+        clientId: process.env.DROPBOX_APP_KEY!,
+        clientSecret: process.env.DROPBOX_APP_SECRET!,
+        redirectUrl: 'com.omh.auth.sample://oauth',
+        additionalParameters: {
+          token_access_type: 'offline',
+          response_type: 'code',
+        },
+      });
       return DropboxAuth;
   }
 };

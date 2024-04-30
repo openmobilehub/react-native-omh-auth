@@ -46,11 +46,15 @@ export default class AuthModuleIOS implements IAuthModule {
     return Promise.resolve(authData.accessToken);
   }
 
-  async getUser(): Promise<OmhUserProfile> {
+  async getUser(): Promise<OmhUserProfile | undefined> {
     return this.moduleConfig.getUser(this.getAuthData);
   }
 
   async refreshAccessToken(): Promise<string | undefined> {
+    if (this.moduleConfig.refreshAccessToken instanceof Function) {
+      return this.moduleConfig.refreshAccessToken(this.getAuthData);
+    }
+
     const config = this.getConfig();
     const authData = this.getAuthData();
 
@@ -70,6 +74,10 @@ export default class AuthModuleIOS implements IAuthModule {
   }
 
   async revokeAccessToken(): Promise<void> {
+    if (this.moduleConfig.revokeAccessToken instanceof Function) {
+      return this.moduleConfig.revokeAccessToken(this.getAuthData);
+    }
+
     const config = this.getConfig();
     const authData = this.getAuthData();
 
