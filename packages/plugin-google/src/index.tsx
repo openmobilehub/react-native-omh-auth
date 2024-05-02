@@ -5,13 +5,13 @@
 
 import {createAuthModule} from '@omh/react-native-auth-core';
 
-import getUser from './getUser';
+import IOSGetUser from './IOSGetUser';
 
 const GOOGLE_MODULE_NAME = 'OmhGoogle';
 
 const googleModuleConfig = {
   moduleName: GOOGLE_MODULE_NAME,
-  getUser: getUser,
+  IOSGetUser,
 };
 
 const googleModule = createAuthModule(googleModuleConfig);

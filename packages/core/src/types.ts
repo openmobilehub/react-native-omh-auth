@@ -2,21 +2,7 @@ import type {AuthConfiguration, AuthorizeResult} from 'react-native-app-auth';
 
 export type BaseAuthConfig = AuthConfiguration;
 
-export type AuthModuleConfig = {
-  moduleName: string;
-  getUser: (getAuthData: () => AuthData) => Promise<OmhUserProfile | undefined>;
-  refreshAccessToken?: (
-    getAuthData: () => AuthData,
-  ) => Promise<string | undefined>;
-  revokeAccessToken?: (getAuthData: () => AuthData) => Promise<void>;
-};
-
-export interface OmhUserProfile {
-  name?: string;
-  surname?: string;
-  email?: string;
-  profileImage?: string;
-}
+export type AuthData = AuthorizeResult;
 
 export interface IAuthModule<C extends BaseAuthConfig = BaseAuthConfig> {
   initialize(config: C): Promise<void>;
@@ -28,4 +14,20 @@ export interface IAuthModule<C extends BaseAuthConfig = BaseAuthConfig> {
   signOut(): Promise<void>;
 }
 
-export interface AuthData extends AuthorizeResult {}
+export type AuthModuleConfig = {
+  moduleName: string;
+  IOSGetUser: (
+    getAuthData: () => AuthData,
+  ) => Promise<OmhUserProfile | undefined>;
+  IOSRefreshAccessToken?: (
+    getAuthData: () => AuthData,
+  ) => Promise<string | undefined>;
+  IOSRevokeAccessToken?: (getAuthData: () => AuthData) => Promise<void>;
+};
+
+export interface OmhUserProfile {
+  name?: string;
+  surname?: string;
+  email?: string;
+  profileImage?: string;
+}

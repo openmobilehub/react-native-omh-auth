@@ -1,7 +1,9 @@
 import {AuthData} from '@omh/react-native-auth-core';
 import axios from 'redaxios';
 
-export default async function revokeAccessToken(getAuthData: () => AuthData) {
+export default async function IOSRevokeAccessToken(
+  getAuthData: () => AuthData,
+) {
   const authData = getAuthData();
 
   try {

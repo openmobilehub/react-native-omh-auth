@@ -40,19 +40,19 @@ export default class AuthModuleIOS implements IAuthModule {
     }
   }
 
-  getAccessToken(): Promise<string | undefined> {
+  async getAccessToken(): Promise<string | undefined> {
     const authData = this.getAuthData();
 
-    return Promise.resolve(authData.accessToken);
+    return authData.accessToken;
   }
 
   async getUser(): Promise<OmhUserProfile | undefined> {
-    return this.moduleConfig.getUser(this.getAuthData);
+    return this.moduleConfig.IOSGetUser(this.getAuthData);
   }
 
   async refreshAccessToken(): Promise<string | undefined> {
-    if (this.moduleConfig.refreshAccessToken instanceof Function) {
-      return this.moduleConfig.refreshAccessToken(this.getAuthData);
+    if (this.moduleConfig.IOSRefreshAccessToken instanceof Function) {
+      return this.moduleConfig.IOSRefreshAccessToken(this.getAuthData);
     }
 
     const config = this.getConfig();
@@ -70,12 +70,12 @@ export default class AuthModuleIOS implements IAuthModule {
 
     await persistAuthData(this.authData);
 
-    return Promise.resolve(accessToken);
+    return accessToken;
   }
 
   async revokeAccessToken(): Promise<void> {
-    if (this.moduleConfig.revokeAccessToken instanceof Function) {
-      return this.moduleConfig.revokeAccessToken(this.getAuthData);
+    if (this.moduleConfig.IOSRevokeAccessToken instanceof Function) {
+      return this.moduleConfig.IOSRevokeAccessToken(this.getAuthData);
     }
 
     const config = this.getConfig();

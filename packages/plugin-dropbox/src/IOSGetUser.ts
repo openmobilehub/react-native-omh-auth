@@ -1,7 +1,7 @@
 import {AuthData} from '@omh/react-native-auth-core';
 import axios from 'redaxios';
 
-export default async function getUser(getAuthData: () => AuthData) {
+export default async function IOSGetUser(getAuthData: () => AuthData) {
   const authData = getAuthData();
 
   try {

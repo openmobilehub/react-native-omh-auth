@@ -4,11 +4,11 @@ import {AuthData} from './types';
 
 const STORAGE_KEY = 'OMH_AUTH_DATA';
 
-export function removePersistedAuthData(): Promise<void> {
+export function removePersistedAuthData() {
   return AsyncStorage.removeItem(STORAGE_KEY);
 }
 
-export function persistAuthData(data: AuthData): Promise<void> {
+export function persistAuthData(data: AuthData) {
   return AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 }
 
