@@ -32,10 +32,17 @@ export const getAuthProvider = async (provider: Providers) => {
       await FacebookAuth.initialize({scopes: ['public_profile', 'email']});
       return FacebookAuth;
     case PROVIDER_NAMES.MICROSOFT:
-      // @ts-ignore add iOS config
       await MicrosoftAuth.initialize({
-        scopes: ['User.Read'],
         configFileName: 'ms_auth_config',
+        serviceConfiguration: {
+          authorizationEndpoint:
+            'https://login.microsoftonline.com/common/oauth2/v2.0/authorize',
+          tokenEndpoint:
+            'https://login.microsoftonline.com/common/oauth2/v2.0/token',
+        },
+        clientId: 'baf5c4dd-2cd0-44a9-aff0-ec4e110c0cd1',
+        redirectUrl: 'msauth.com.omh.auth.sample://auth/',
+        scopes: ['openid', 'profile', 'email', 'offline_access', 'User.Read'],
       });
       return MicrosoftAuth;
     case PROVIDER_NAMES.DROPBOX:
