@@ -5,12 +5,17 @@
 
 import {createAuthModule} from '@omh/react-native-auth-core';
 
+import IOSGetUser from './IOSGetUser';
+import IOSRefreshAccessToken from './IOSRefreshAccessToken';
+import IOSRevokeAccessToken from './IOSRevokeAccessToken';
+
 const DROPBOX_MODULE_NAME = 'OmhDropbox';
+
 const dropboxModule = createAuthModule({
   moduleName: DROPBOX_MODULE_NAME,
-  getUser: () => {
-    throw new Error('Not implemented');
-  },
+  IOSGetUser,
+  IOSRefreshAccessToken,
+  IOSRevokeAccessToken,
 });
 
 export default dropboxModule;
