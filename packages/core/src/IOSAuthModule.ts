@@ -42,8 +42,12 @@ export default class AuthModuleIOS implements IAuthModule {
     if (persistedAuthData) {
       this.authData = persistedAuthData;
     } else {
-      this.authData = await authorize(config);
-      await persistAuthData(this.authData);
+      try {
+        this.authData = await authorize(config);
+        await persistAuthData(this.authData);
+      } catch (error) {
+        throw error;
+      }
     }
   }
 
