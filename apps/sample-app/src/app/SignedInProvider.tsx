@@ -40,7 +40,7 @@ export const getAuthProvider = async (provider: Providers) => {
           tokenEndpoint:
             'https://login.microsoftonline.com/common/oauth2/v2.0/token',
         },
-        clientId: 'baf5c4dd-2cd0-44a9-aff0-ec4e110c0cd1',
+        clientId: process.env.MICROSOFT_CLIENT_ID!,
         redirectUrl: 'msauth.com.omh.auth.sample://auth/',
         scopes: ['openid', 'profile', 'email', 'offline_access', 'User.Read'],
       });
