@@ -1,4 +1,5 @@
 import {AuthData, OmhUserProfile} from '@omh/react-native-auth-core';
+import axios from 'redaxios';
 
 function blobToBase64(blob: Blob): Promise<string> {
   return new Promise(resolve => {
@@ -9,21 +10,21 @@ function blobToBase64(blob: Blob): Promise<string> {
 }
 
 async function getUserPicture(pictureUrl: string, accessToken: string) {
-  const pictureRequest = await fetch(pictureUrl, {
+  const {data} = await axios.get(pictureUrl, {
+    responseType: 'blob',
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
   });
 
-  const picture = await pictureRequest.blob();
-  return await blobToBase64(picture);
+  return await blobToBase64(data);
 }
 
-export default async function getUser(
+export default async function IOSGetUser(
   getAuthData: () => AuthData,
 ): Promise<OmhUserProfile> {
   const authData = getAuthData();
-  const userInfoRequest = await fetch(
+  const {data: user} = await axios.get(
     'https://graph.microsoft.com/oidc/userinfo',
     {
       headers: {
@@ -32,7 +33,6 @@ export default async function getUser(
     },
   );
 
-  const user = await userInfoRequest.json();
   let picture: string | undefined;
 
   try {

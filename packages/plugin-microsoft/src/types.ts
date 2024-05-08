@@ -1,5 +1,7 @@
-import {BaseAuthConfig} from '@omh/react-native-auth-core';
+import {AndroidAuthConfig, AuthConfig} from '@omh/react-native-auth-core';
 
-export type MicrosoftAuthConfig = BaseAuthConfig & {
+type AndroidMicrosoftAuthConfig = AndroidAuthConfig & {
   configFileName: string;
 };
+
+export type MicrosoftAuthConfig = AuthConfig<AndroidMicrosoftAuthConfig>;

@@ -12,6 +12,7 @@ const facebookModule = createAuthModule({
   IOSGetUser: () => {
     throw new Error('Not implemented');
   },
+  IOSAppAuthConfig: {},
 });
 
 export default facebookModule;

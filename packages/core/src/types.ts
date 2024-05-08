@@ -1,28 +1,42 @@
 import type {AuthConfiguration, AuthorizeResult} from 'react-native-app-auth';
 
-export type BaseAuthConfig = AuthConfiguration;
-
 export type AuthData = AuthorizeResult;
 
-export interface IAuthModule<C extends BaseAuthConfig = BaseAuthConfig> {
+export type AuthConfig<
+  A extends AndroidAuthConfig = AndroidAuthConfig,
+  I extends IOSAuthConfig = IOSAuthConfig,
+> = {
+  android?: Partial<A>;
+  ios?: Partial<I>;
+};
+export type AndroidAuthConfig = {
+  scopes: Array<string>;
+};
+export type IOSAuthConfig = {
+  scopes: Array<string>;
+  redirectUrl: string;
+  clientId: string;
+  clientSecret?: string;
+};
+
+export interface IAuthModule<C extends AuthConfig> {
   initialize(config: C): Promise<void>;
   signIn(): Promise<void>;
   getAccessToken(): Promise<string | undefined>;
-  getUser(): Promise<OmhUserProfile | undefined>;
+  getUser(): Promise<OmhUserProfile>;
   refreshAccessToken(): Promise<string | undefined>;
   revokeAccessToken(): Promise<void>;
   signOut(): Promise<void>;
 }
 
+type IOSAuthFunction<R> = (getAuthData: () => AuthData) => Promise<R>;
+
 export type AuthModuleConfig = {
   moduleName: string;
-  IOSGetUser: (
-    getAuthData: () => AuthData,
-  ) => Promise<OmhUserProfile | undefined>;
-  IOSRefreshAccessToken?: (
-    getAuthData: () => AuthData,
-  ) => Promise<string | undefined>;
-  IOSRevokeAccessToken?: (getAuthData: () => AuthData) => Promise<void>;
+  IOSGetUser: IOSAuthFunction<OmhUserProfile>;
+  IOSRefreshAccessToken?: IOSAuthFunction<string | undefined>;
+  IOSRevokeAccessToken?: IOSAuthFunction<void>;
+  IOSAppAuthConfig: Partial<AuthConfiguration>;
 };
 
 export interface OmhUserProfile {
