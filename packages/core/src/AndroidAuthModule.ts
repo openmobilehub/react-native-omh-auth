@@ -1,15 +1,14 @@
 import {NativeModules} from 'react-native';
 
 import {
+  AuthConfig,
   AuthModuleConfig,
-  BaseAuthConfig,
   IAuthModule,
   OmhUserProfile,
 } from './types';
 
-export default class AuthModuleAndroid<
-  C extends BaseAuthConfig = BaseAuthConfig,
-> implements IAuthModule<C>
+export default class AndroidAuthModule<C extends AuthConfig>
+  implements IAuthModule<C>
 {
   authNativeModule: any;
 
@@ -27,8 +26,8 @@ export default class AuthModuleAndroid<
    * Initializes the authentication provider with the given configuration.
    * @param config Configuration object required for initialization.
    */
-  initialize(config: C): Promise<void> {
-    return this.authNativeModule.initialize(config);
+  initialize(config: Partial<C>): Promise<void> {
+    return this.authNativeModule.initialize(config.android);
   }
 
   /**

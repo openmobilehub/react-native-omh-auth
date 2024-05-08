@@ -1,4 +1,9 @@
-import {authorize, refresh, revoke} from 'react-native-app-auth';
+import {
+  AuthConfiguration,
+  authorize,
+  refresh,
+  revoke,
+} from 'react-native-app-auth';
 
 import {
   getPersistedAuthData,
@@ -6,18 +11,21 @@ import {
   removePersistedAuthData,
 } from './authDataPersist';
 import {
+  AuthConfig,
   AuthData,
   AuthModuleConfig,
-  BaseAuthConfig,
   IAuthModule,
   OmhUserProfile,
 } from './types';
+import {fixRedirectURL} from './utils';
 
 const NOT_INITIALIZED = 'Not initialized';
 const NOT_SIGNED_IN = 'Not signed in';
 
-export default class AuthModuleIOS implements IAuthModule {
-  private config: BaseAuthConfig | null = null;
+export default class IOSAuthModule<C extends AuthConfig>
+  implements IAuthModule<C>
+{
+  private config: AuthConfiguration | null = null;
   private authData: AuthData | null = null;
 
   constructor(private moduleConfig: AuthModuleConfig) {}
@@ -26,8 +34,14 @@ export default class AuthModuleIOS implements IAuthModule {
    * Initializes the authentication provider with the given configuration.
    * @param config Configuration object required for initialization.
    */
-  async initialize(config: BaseAuthConfig): Promise<void> {
-    this.config = config;
+  async initialize(config: C): Promise<void> {
+    this.config = {
+      ...this.moduleConfig.IOSAppAuthConfig,
+      ...config.ios,
+    } as AuthConfiguration;
+
+    this.config.redirectUrl = fixRedirectURL(this.config.redirectUrl);
+
     this.authData = await getPersistedAuthData();
   }
 
@@ -65,7 +79,7 @@ export default class AuthModuleIOS implements IAuthModule {
    * Obtains user information for the current signed-in user.
    * @returns An object containing user profile information.
    */
-  async getUser(): Promise<OmhUserProfile | undefined> {
+  async getUser(): Promise<OmhUserProfile> {
     return this.moduleConfig.IOSGetUser(this.getAuthData);
   }
 
@@ -119,7 +133,7 @@ export default class AuthModuleIOS implements IAuthModule {
     this.authData = null;
   }
 
-  private getConfig(): BaseAuthConfig {
+  private getConfig(): AuthConfiguration {
     if (!this.config) {
       throw new Error(NOT_INITIALIZED);
     }

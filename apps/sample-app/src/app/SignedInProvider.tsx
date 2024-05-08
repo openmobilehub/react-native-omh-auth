@@ -21,44 +21,46 @@ export const getAuthProvider = async (provider: Providers) => {
   switch (provider) {
     case PROVIDER_NAMES.GOOGLE:
       await GoogleAuth.initialize({
-        scopes: ['openid', 'email', 'profile'],
-        issuer: 'https://accounts.google.com',
-        clientId: `${process.env.GOOGLE_APP_GUID}.apps.googleusercontent.com`,
-        redirectUrl: `com.googleusercontent.apps.${process.env.GOOGLE_APP_GUID}:/oauth2redirect/google`,
+        android: {
+          scopes: ['openid', 'email', 'profile'],
+        },
+        ios: {
+          scopes: ['openid', 'email', 'profile'],
+          clientId: `${process.env.GOOGLE_APP_GUID}.apps.googleusercontent.com`,
+          redirectUrl: `com.googleusercontent.apps.${process.env.GOOGLE_APP_GUID}:/oauth2redirect/google`,
+        },
       });
       return GoogleAuth;
     case PROVIDER_NAMES.FACEBOOK:
-      // @ts-ignore add iOS config
-      await FacebookAuth.initialize({scopes: ['public_profile', 'email']});
+      await FacebookAuth.initialize({
+        android: {
+          scopes: ['public_profile', 'email'],
+        },
+      });
       return FacebookAuth;
     case PROVIDER_NAMES.MICROSOFT:
       await MicrosoftAuth.initialize({
-        configFileName: 'ms_auth_config',
-        serviceConfiguration: {
-          authorizationEndpoint:
-            'https://login.microsoftonline.com/common/oauth2/v2.0/authorize',
-          tokenEndpoint:
-            'https://login.microsoftonline.com/common/oauth2/v2.0/token',
+        android: {
+          configFileName: 'ms_auth_config',
+          scopes: ['User.Read'],
         },
-        clientId: process.env.MICROSOFT_CLIENT_ID!,
-        redirectUrl: 'msauth.com.omh.auth.sample://auth/',
-        scopes: ['openid', 'profile', 'email', 'offline_access', 'User.Read'],
+        ios: {
+          clientId: process.env.MICROSOFT_CLIENT_ID!,
+          redirectUrl: 'msauth.com.omh.auth.sample://auth/',
+          scopes: ['openid', 'profile', 'email', 'offline_access', 'User.Read'],
+        },
       });
       return MicrosoftAuth;
     case PROVIDER_NAMES.DROPBOX:
       await DropboxAuth.initialize({
-        scopes: ['account_info.read', 'sharing.read'],
-        serviceConfiguration: {
-          authorizationEndpoint: 'https://www.dropbox.com/oauth2/authorize',
-          tokenEndpoint: 'https://api.dropboxapi.com/oauth2/token',
-          revocationEndpoint: 'https://api.dropboxapi.com/2/auth/token/revoke',
+        android: {
+          scopes: ['account_info.read', 'sharing.read'],
         },
-        clientId: process.env.DROPBOX_APP_KEY!,
-        clientSecret: process.env.DROPBOX_APP_SECRET!,
-        redirectUrl: 'com.omh.auth.sample://oauth',
-        additionalParameters: {
-          token_access_type: 'offline',
-          response_type: 'code',
+        ios: {
+          scopes: ['account_info.read', 'sharing.read'],
+          clientId: process.env.DROPBOX_APP_KEY!,
+          clientSecret: process.env.DROPBOX_APP_SECRET!,
+          redirectUrl: 'com.omh.auth.sample://oauth',
         },
       });
       return DropboxAuth;

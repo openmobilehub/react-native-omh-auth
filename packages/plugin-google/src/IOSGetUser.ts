@@ -21,6 +21,8 @@ export default async function IOSGetUser(getAuthData: () => AuthData) {
   } catch (error: any) {
     if (error.data.error?.message) {
       throw new Error(error.data.error.message);
+    } else {
+      throw error;
     }
   }
 }

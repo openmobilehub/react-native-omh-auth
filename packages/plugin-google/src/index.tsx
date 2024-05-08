@@ -11,6 +11,9 @@ const GOOGLE_MODULE_NAME = 'OmhGoogle';
 
 const googleModuleConfig = {
   moduleName: GOOGLE_MODULE_NAME,
+  IOSAppAuthConfig: {
+    issuer: 'https://accounts.google.com',
+  },
   IOSGetUser,
 };
 
