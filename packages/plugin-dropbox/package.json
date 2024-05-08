@@ -5,7 +5,11 @@
   "dependencies": {
     "@omh/react-native-auth-core": "workspace:*"
   },
+  "devDependencies": {
+    "redaxios": "^0.5.1"
+  },
   "peerDependencies": {
-    "react-native": "*"
+    "react-native": "*",
+    "redaxios": "^0.5.1"
   }
 }
