@@ -9,14 +9,12 @@ import IOSGetUser from './IOSGetUser';
 
 const GOOGLE_MODULE_NAME = 'OmhGoogle';
 
-const googleModuleConfig = {
+const googleModule = createAuthModule({
   moduleName: GOOGLE_MODULE_NAME,
   IOSAppAuthConfig: {
     issuer: 'https://accounts.google.com',
   },
   IOSGetUser,
-};
-
-const googleModule = createAuthModule(googleModuleConfig);
+});
 
 export default googleModule;
