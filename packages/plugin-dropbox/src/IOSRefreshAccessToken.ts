@@ -27,6 +27,8 @@ export default async function IOSRefreshAccessToken(
       throw new Error(error.data.error['.tag']);
     } else if (error.data.error_description) {
       throw new Error(error.data.error_description);
+    } else {
+      throw error;
     }
   }
 }

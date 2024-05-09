@@ -24,7 +24,7 @@ export default async function IOSRefreshAccessToken(
     if (error.data.error?.message) {
       throw new Error(error.data.error.message);
     } else {
-      throw new Error('An error occurred while revoking access token.');
+      throw error;
     }
   }
 }

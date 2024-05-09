@@ -22,7 +22,7 @@ export default async function IOSGetUser(getAuthData: () => AuthData) {
     if (error.data.error?.message) {
       throw new Error(error.data.error.message);
     } else {
-      throw new Error('An error occurred while fetching user data.');
+      throw error;
     }
   }
 }

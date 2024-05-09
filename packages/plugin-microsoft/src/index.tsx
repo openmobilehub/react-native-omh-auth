@@ -22,7 +22,7 @@ const microsoftModule = createAuthModule<MicrosoftAuthConfig>({
   },
   IOSGetUser,
   IOSRevokeAccessToken: () => {
-    throw new Error('Microsoft does not support revoking access tokens');
+    throw new Error('Method not supported.');
   },
 });
 
