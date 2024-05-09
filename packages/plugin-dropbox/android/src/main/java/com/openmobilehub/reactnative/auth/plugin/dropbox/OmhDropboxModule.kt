@@ -35,7 +35,7 @@ class OmhDropboxModule(private val reactContext: ReactApplicationContext) {
         return DropboxAuthClient(
             scopes = scopes,
             context = reactContext,
-            appId = BuildConfig.DROPBOX_APP_KEY,
+            appId = BuildConfig.DROPBOX_CLIENT_ID,
         )
     }
 

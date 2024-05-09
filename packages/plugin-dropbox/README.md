@@ -29,7 +29,7 @@ npm add @omh/react-native-auth-dropbox
 To access Dropbox APIs, generate a unique **App Key** for your app in the [Dropbox Console](https://www.dropbox.com/developers/apps). Once finished, add a new entry to your **android/local.properties** file:
 
 ```bash title="android/local.properties"
-DROPBOX_APP_KEY=<YOUR_DROPBOX_APP_KEY>
+DROPBOX_CLIENT_ID=<YOUR_DROPBOX_CLIENT_ID>
 ```
 
 ## Usage

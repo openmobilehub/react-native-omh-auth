@@ -29,8 +29,8 @@ npm add @omh/react-native-auth-facebook
 To access Facebook APIs, generate a unique **App ID** & **Client Token** for your app in the [Meta for Developers](https://developers.facebook.com/apps) and follow the additional [setup instructions](https://developers.facebook.com/docs/facebook-login/android). Once finished, add a new entry to your **android/local.properties** file:
 
 ```bash title="android/local.properties"
-FACEBOOK_APP_ID=<YOUR_FACEBOOK_APP_ID>
-FACEBOOK_CLIENT_TOKEN=<YOUR_FACEBOOK_CLIENT_TOKEN>
+FACEBOOK_CLIENT_ID=<YOUR_FACEBOOK_CLIENT_ID>
+FACEBOOK_CLIENT_SECRET=<YOUR_FACEBOOK_CLIENT_SECRET>
 ```
 
 ## Usage

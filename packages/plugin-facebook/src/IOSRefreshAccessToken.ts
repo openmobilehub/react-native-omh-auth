@@ -11,8 +11,8 @@ export default async function IOSRefreshAccessToken(
       'https://graph.facebook.com/oauth/access_token',
       {
         params: {
-          client_id: process.env.FACEBOOK_APP_ID!,
-          client_secret: process.env.FACEBOOK_APP_SECRET!,
+          client_id: process.env.FACEBOOK_CLIENT_ID!,
+          client_secret: process.env.FACEBOOK_CLIENT_SECRET!,
           grant_type: 'fb_exchange_token',
           fb_exchange_token: authData.accessToken,
         },
