@@ -17,7 +17,6 @@ import {
   IAuthModule,
   OmhUserProfile,
 } from './types';
-import {fixRedirectURL} from './utils';
 
 const NOT_INITIALIZED = 'Not initialized';
 const NOT_SIGNED_IN = 'Not signed in';
@@ -39,8 +38,6 @@ export default class IOSAuthModule<C extends AuthConfig>
       ...this.moduleConfig.IOSAppAuthConfig,
       ...config.ios,
     } as AuthConfiguration;
-
-    this.config.redirectUrl = fixRedirectURL(this.config.redirectUrl);
 
     this.authData = await getPersistedAuthData();
   }
