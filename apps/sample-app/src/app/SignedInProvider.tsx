@@ -9,8 +9,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export const PROVIDER_NAMES = {
   GOOGLE: 'google',
   FACEBOOK: 'facebook',
-  DROPBOX: 'dropbox',
   MICROSOFT: 'microsoft',
+  DROPBOX: 'dropbox',
 } as const;
 
 type ObjectValues<T> = T[keyof T];
@@ -47,13 +47,13 @@ export const getAuthProvider = async (provider: Providers) => {
     case PROVIDER_NAMES.MICROSOFT:
       await MicrosoftAuth.initialize({
         android: {
-          configFileName: 'ms_auth_config',
           scopes: ['User.Read'],
+          configFileName: 'ms_auth_config',
         },
         ios: {
+          scopes: ['openid', 'profile', 'email', 'offline_access', 'User.Read'],
           clientId: process.env.MICROSOFT_CLIENT_ID!,
           redirectUrl: 'msauth.com.omh.auth.sample://auth/',
-          scopes: ['openid', 'profile', 'email', 'offline_access', 'User.Read'],
         },
       });
       return MicrosoftAuth;
