@@ -15,6 +15,8 @@ export default async function IOSRevokeAccessToken(
       throw new Error(error.data.error['.tag']);
     } else if (error.data.error_description) {
       throw new Error(error.data.error_description);
+    } else {
+      throw error;
     }
   }
 }

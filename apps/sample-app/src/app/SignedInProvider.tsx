@@ -9,8 +9,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export const PROVIDER_NAMES = {
   GOOGLE: 'google',
   FACEBOOK: 'facebook',
-  DROPBOX: 'dropbox',
   MICROSOFT: 'microsoft',
+  DROPBOX: 'dropbox',
 } as const;
 
 type ObjectValues<T> = T[keyof T];
@@ -26,8 +26,10 @@ export const getAuthProvider = async (provider: Providers) => {
         },
         ios: {
           scopes: ['openid', 'email', 'profile'],
-          clientId: `${process.env.GOOGLE_APP_GUID}.apps.googleusercontent.com`,
-          redirectUrl: `com.googleusercontent.apps.${process.env.GOOGLE_APP_GUID}:/oauth2redirect/google`,
+          clientId: process.env.GOOGLE_CLIENT_ID!,
+          redirectUrl: `com.googleusercontent.apps.${
+            process.env.GOOGLE_CLIENT_ID!.split('.')[0]
+          }:/oauth2redirect/google/`,
         },
       });
       return GoogleAuth;
@@ -36,18 +38,24 @@ export const getAuthProvider = async (provider: Providers) => {
         android: {
           scopes: ['public_profile', 'email'],
         },
+        ios: {
+          scopes: ['public_profile', 'email'],
+          clientId: process.env.FACEBOOK_CLIENT_ID!,
+          clientSecret: process.env.FACEBOOK_CLIENT_SECRET!,
+          redirectUrl: `fb${process.env.FACEBOOK_CLIENT_ID!}://authorize/`,
+        },
       });
       return FacebookAuth;
     case PROVIDER_NAMES.MICROSOFT:
       await MicrosoftAuth.initialize({
         android: {
-          configFileName: 'ms_auth_config',
           scopes: ['User.Read'],
+          configFileName: 'ms_auth_config',
         },
         ios: {
+          scopes: ['openid', 'profile', 'email', 'offline_access', 'User.Read'],
           clientId: process.env.MICROSOFT_CLIENT_ID!,
           redirectUrl: 'msauth.com.omh.auth.sample://auth/',
-          scopes: ['openid', 'profile', 'email', 'offline_access', 'User.Read'],
         },
       });
       return MicrosoftAuth;
@@ -58,9 +66,9 @@ export const getAuthProvider = async (provider: Providers) => {
         },
         ios: {
           scopes: ['account_info.read', 'sharing.read'],
-          clientId: process.env.DROPBOX_APP_KEY!,
-          clientSecret: process.env.DROPBOX_APP_SECRET!,
-          redirectUrl: 'com.omh.auth.sample://oauth',
+          clientId: process.env.DROPBOX_CLIENT_ID!,
+          clientSecret: process.env.DROPBOX_CLIENT_SECRET!,
+          redirectUrl: 'com.omh.auth.sample://oauth/',
         },
       });
       return DropboxAuth;

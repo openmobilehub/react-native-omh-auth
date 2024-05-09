@@ -26,7 +26,7 @@
             android:exported="true"
             android:launchMode="singleTask">
             <intent-filter>
-                <data android:scheme="db-${DROPBOX_APP_KEY}" />
+                <data android:scheme="db-${DROPBOX_CLIENT_ID}" />
 
                 <action android:name="android.intent.action.VIEW" />
 

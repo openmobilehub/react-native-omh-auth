@@ -5,14 +5,24 @@
 
 import {createAuthModule} from '@omh/react-native-auth-core';
 
+import IOSGetUser from './IOSGetUser';
+import IOSRefreshAccessToken from './IOSRefreshAccessToken';
+import IOSRevokeAccessToken from './IOSRevokeAccessToken';
+
 const FACEBOOK_MODULE_NAME = 'OmhFacebook';
 
 const facebookModule = createAuthModule({
   moduleName: FACEBOOK_MODULE_NAME,
-  IOSGetUser: () => {
-    throw new Error('Not implemented');
+  IOSAppAuthConfig: {
+    serviceConfiguration: {
+      authorizationEndpoint: 'https://www.facebook.com/dialog/oauth',
+      tokenEndpoint: 'https://graph.facebook.com/oauth/access_token',
+    },
+    usePKCE: false,
   },
-  IOSAppAuthConfig: {},
+  IOSGetUser,
+  IOSRefreshAccessToken,
+  IOSRevokeAccessToken,
 });
 
 export default facebookModule;

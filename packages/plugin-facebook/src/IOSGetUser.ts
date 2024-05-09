@@ -5,18 +5,18 @@ export default async function IOSGetUser(getAuthData: () => AuthData) {
   const authData = getAuthData();
 
   try {
-    const request = await axios.get(
-      'https://www.googleapis.com/oauth2/v1/userinfo',
-      {
-        auth: `Bearer ${authData.accessToken}`,
+    const request = await axios.get('https://graph.facebook.com/me', {
+      params: {
+        fields: 'first_name,last_name,email,picture',
+        access_token: authData.accessToken,
       },
-    );
+    });
 
     return {
-      name: request.data.name,
-      surname: request.data.family_name,
+      name: request.data.first_name,
+      surname: request.data.last_name,
       email: request.data.email,
-      profileImage: request.data.picture,
+      profileImage: request.data.picture.data.url,
     };
   } catch (error: any) {
     if (error.data.error?.message) {

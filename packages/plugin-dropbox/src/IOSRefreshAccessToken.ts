@@ -10,8 +10,8 @@ export default async function IOSRefreshAccessToken(
 
   formData.append('grant_type', 'refresh_token');
   formData.append('refresh_token', authData.refreshToken);
-  formData.append('client_id', process.env.DROPBOX_APP_KEY!);
-  formData.append('client_secret', process.env.DROPBOX_APP_SECRET!);
+  formData.append('client_id', process.env.DROPBOX_CLIENT_ID!);
+  formData.append('client_secret', process.env.DROPBOX_CLIENT_SECRET!);
 
   try {
     const refreshAccessTokenRequest = await axios.post(
@@ -27,6 +27,8 @@ export default async function IOSRefreshAccessToken(
       throw new Error(error.data.error['.tag']);
     } else if (error.data.error_description) {
       throw new Error(error.data.error_description);
+    } else {
+      throw error;
     }
   }
 }
