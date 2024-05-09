@@ -29,7 +29,7 @@ export const getAuthProvider = async (provider: Providers) => {
           clientId: process.env.GOOGLE_CLIENT_ID!,
           redirectUrl: `com.googleusercontent.apps.${
             process.env.GOOGLE_CLIENT_ID!.split('.')[0]
-          }:/oauth2redirect/google/`,
+          }:/oauth2redirect/google`,
         },
       });
       return GoogleAuth;
@@ -68,7 +68,7 @@ export const getAuthProvider = async (provider: Providers) => {
           scopes: ['account_info.read', 'sharing.read'],
           clientId: process.env.DROPBOX_CLIENT_ID!,
           clientSecret: process.env.DROPBOX_CLIENT_SECRET!,
-          redirectUrl: 'com.omh.auth.sample://oauth/',
+          redirectUrl: 'com.omh.auth.sample://oauth',
         },
       });
       return DropboxAuth;
