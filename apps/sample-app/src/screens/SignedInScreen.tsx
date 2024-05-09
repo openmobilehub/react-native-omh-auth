@@ -121,7 +121,9 @@ export default function SignedInScreen() {
         </View>
       </View>
 
-      <Text testID="token">{accessToken}</Text>
+      <Text testID="token" numberOfLines={10}>
+        {accessToken}
+      </Text>
 
       <View style={styles.actionButtons}>
         <Button
