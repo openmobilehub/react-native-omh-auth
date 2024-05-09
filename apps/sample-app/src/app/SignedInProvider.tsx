@@ -36,6 +36,12 @@ export const getAuthProvider = async (provider: Providers) => {
         android: {
           scopes: ['public_profile', 'email'],
         },
+        ios: {
+          scopes: ['public_profile', 'email'],
+          clientId: process.env.FACEBOOK_CLIENT_ID!,
+          clientSecret: process.env.FACEBOOK_CLIENT_SECRET!,
+          redirectUrl: `fb${process.env.FACEBOOK_CLIENT_ID!}://authorize/`,
+        },
       });
       return FacebookAuth;
     case PROVIDER_NAMES.MICROSOFT:

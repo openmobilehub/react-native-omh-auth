@@ -13,10 +13,16 @@ const FACEBOOK_MODULE_NAME = 'OmhFacebook';
 
 const facebookModule = createAuthModule({
   moduleName: FACEBOOK_MODULE_NAME,
+  IOSAppAuthConfig: {
+    serviceConfiguration: {
+      authorizationEndpoint: 'https://www.facebook.com/dialog/oauth',
+      tokenEndpoint: 'https://graph.facebook.com/oauth/access_token',
+    },
+    usePKCE: false,
+  },
   IOSGetUser,
   IOSRefreshAccessToken,
   IOSRevokeAccessToken,
-  IOSAppAuthConfig: {},
 });
 
 export default facebookModule;
