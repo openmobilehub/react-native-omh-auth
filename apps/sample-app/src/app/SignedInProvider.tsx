@@ -66,7 +66,7 @@ export const getAuthProvider = async (provider: Providers) => {
           scopes: ['account_info.read', 'sharing.read'],
           clientId: process.env.DROPBOX_APP_KEY!,
           clientSecret: process.env.DROPBOX_APP_SECRET!,
-          redirectUrl: 'com.omh.auth.sample://oauth',
+          redirectUrl: 'com.omh.auth.sample://oauth/',
         },
       });
       return DropboxAuth;
