@@ -12,11 +12,30 @@ To get started with the project, run the following command in the root directory
 bun install
 ```
 
+# Example app
+
 The [example app](https://github.com/openmobilehub/react-native-omh-auth/tree/main/apps/sample-app/) demonstrates usage of the library. You need to run it to test any changes you make.
 
 It is configured to use the local version of the library, so any changes you make to the library's source code will be reflected in the example app. Changes to the library's JavaScript code will be reflected in the example app without a rebuild, but native code changes will require a rebuild of the example app.
 
 To edit the Java or Kotlin files, open `apps/sample-app/android` in Android studio and find the source files at `omh_react-native-auth-*` under `Android`.
+
+## Provider setup
+
+Create files from templates that contain secrets for specific providers. If you don't want to setup certain providers, you can
+leave values empty.
+
+```bash
+# In apps/sample-app/android
+cp local.properties.sample local.properties
+```
+
+```bash
+# In apps/sample-app
+cp .env.sample .env
+```
+
+## Starting example app
 
 You can use various commands from the root directory to work with the project.
 
@@ -37,6 +56,8 @@ To run the example app on iOS:
 ```bash
 cd apps/sample-app && bun ios
 ```
+
+## Linting and typechecking
 
 Make sure your code passes TypeScript and ESLint. Run the following to verify:
 
