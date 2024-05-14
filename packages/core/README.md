@@ -6,9 +6,9 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@omh/react-native-auth-core"><img src="https://img.shields.io/npm/dm/@omh/react-native-auth-core.svg?style=flat" alt="NPM downloads"/></a>
-  <a href="https://www.npmjs.com/package/@omh/react-native-auth-core"><img src="https://img.shields.io/npm/v/@omh/react-native-auth-core.svg?style=flat" alt="NPM version"/></a>
-  <a href="/LICENSE"><img src="https://img.shields.io/npm/l/@omh/react-native-auth-core.svg?style=flat" alt="License"/></a>
+  <a href="https://www.npmjs.com/package/@openmobilehub/auth-core"><img src="https://img.shields.io/npm/dm/@openmobilehub/auth-core.svg?style=flat" alt="NPM downloads"/></a>
+  <a href="https://www.npmjs.com/package/@openmobilehub/auth-core"><img src="https://img.shields.io/npm/v/@openmobilehub/auth-core.svg?style=flat" alt="NPM version"/></a>
+  <a href="/LICENSE"><img src="https://img.shields.io/npm/l/@openmobilehub/auth-core.svg?style=flat" alt="License"/></a>
 </p>
 
 <p align="center">
@@ -21,7 +21,7 @@
 ## Installation
 
 ```bash
-npm add @omh/react-native-auth-core
+npm add @openmobilehub/auth-core
 ```
 
 ## Usage
@@ -29,7 +29,7 @@ npm add @omh/react-native-auth-core
 The core modules exposes the [`OmhUserProfile`](https://special-barnacle-93vn82m.pages.github.io/docs/api/modules/core_src#omhuserprofile) type which you might find useful when working in a TypeScript React Native app.
 
 ```typescript
-import {type OmhUserProfile} from '@omh/react-native-auth-core';
+import {type OmhUserProfile} from '@openmobilehub/auth-core';
 
 // ... Auth Client initialization and sign in
 

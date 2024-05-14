@@ -6,9 +6,9 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@omh/react-native-auth-core"><img src="https://img.shields.io/npm/dm/@omh/react-native-auth-core.svg?style=flat" alt="NPM downloads"/></a>
-  <a href="https://www.npmjs.com/package/@omh/react-native-auth-core"><img src="https://img.shields.io/npm/v/@omh/react-native-auth-core.svg?style=flat" alt="NPM version"/></a>
-  <a href="/LICENSE"><img src="https://img.shields.io/npm/l/@omh/react-native-auth-core.svg?style=flat" alt="License"/></a>
+  <a href="https://www.npmjs.com/package/@openmobilehub/auth-core"><img src="https://img.shields.io/npm/dm/@openmobilehub/auth-core.svg?style=flat" alt="NPM downloads"/></a>
+  <a href="https://www.npmjs.com/package/@openmobilehub/auth-core"><img src="https://img.shields.io/npm/v/@openmobilehub/auth-core.svg?style=flat" alt="NPM version"/></a>
+  <a href="/LICENSE"><img src="https://img.shields.io/npm/l/@openmobilehub/auth-core.svg?style=flat" alt="License"/></a>
 </p>
 
 <p align="center">

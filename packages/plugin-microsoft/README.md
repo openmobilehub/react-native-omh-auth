@@ -6,9 +6,9 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@omh/react-native-auth-microsoft"><img src="https://img.shields.io/npm/dm/@omh/react-native-auth-microsoft.svg?style=flat" alt="NPM downloads"/></a>
-  <a href="https://www.npmjs.com/package/@omh/react-native-auth-microsoft"><img src="https://img.shields.io/npm/v/@omh/react-native-auth-microsoft.svg?style=flat" alt="NPM version"/></a>
-  <a href="/LICENSE"><img src="https://img.shields.io/npm/l/@omh/react-native-auth-microsoft.svg?style=flat" alt="License"/></a>
+  <a href="https://www.npmjs.com/package/@openmobilehub/auth-microsoft"><img src="https://img.shields.io/npm/dm/@openmobilehub/auth-microsoft.svg?style=flat" alt="NPM downloads"/></a>
+  <a href="https://www.npmjs.com/package/@openmobilehub/auth-microsoft"><img src="https://img.shields.io/npm/v/@openmobilehub/auth-microsoft.svg?style=flat" alt="NPM version"/></a>
+  <a href="/LICENSE"><img src="https://img.shields.io/npm/l/@openmobilehub/auth-microsoft.svg?style=flat" alt="License"/></a>
 </p>
 
 <p align="center">
@@ -21,7 +21,7 @@
 ## Installation
 
 ```bash
-npm add @omh/react-native-auth-microsoft
+npm add @openmobilehub/auth-microsoft
 ```
 
 ## Configuration
@@ -42,7 +42,7 @@ Additionally, you will have to download the **ms_auth_config.json** file from th
 Before interacting with Microsoft, initialization of the Microsoft Auth Client is necessary, requiring specific `scopes` and the `configFileName` to be configured.
 
 ```typescript
-import MicrosoftAuthClient from '@omh/react-native-auth-microsoft';
+import MicrosoftAuthClient from '@openmobilehub/auth-microsoft';
 
 await MicrosoftAuthClient.initialize({
   scopes: ['User.Read'],

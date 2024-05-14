@@ -70,3 +70,6 @@ apps/sample-app/ios/Pods/
 
 # Env
 apps/sample-app/.env
+
+.nx/
+.npmrc

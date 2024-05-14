@@ -24,17 +24,17 @@ Additionally, the current versions of Android OMH libraries have a minimum Andro
 
 To integrate a React Native OMH Auth provider into your React Native project, you need to install one of the available libraries:
 
-| Provider  | Package                            |
-| --------- | ---------------------------------- |
-| Google    | `@omh/react-native-auth-google`    |
-| Facebook  | `@omh/react-native-auth-facebook`  |
-| Microsoft | `@omh/react-native-auth-microsoft` |
-| Dropbox   | `@omh/react-native-auth-dropbox`   |
+| Provider  | Package                         |
+| --------- | ------------------------------- |
+| Google    | `@openmobilehub/auth-google`    |
+| Facebook  | `@openmobilehub/auth-facebook`  |
+| Microsoft | `@openmobilehub/auth-microsoft` |
+| Dropbox   | `@openmobilehub/auth-dropbox`   |
 
 By running the following command:
 
 ```bash
-npm add @omh/react-native-auth-<provider-name>
+npm add @openmobilehub/auth-<provider-name>
 ```
 
 ## Configuration
@@ -48,12 +48,12 @@ Each provider requires you to specify different secrets. Please follow the indiv
 
 ## Manual linking of the core package
 
-Each plugin requires that the `@omh/react-native-auth-core` module to be manually linked inside your Android application. Add the following line to your [**android/settings.gradle**](https://github.com/openmobilehub/react-native-omh-auth/blob/main/apps/sample-app/android/settings.gradle#L3) file:
+Each plugin requires that the `@openmobilehub/auth-core` module to be manually linked inside your Android application. Add the following line to your [**android/settings.gradle**](https://github.com/openmobilehub/react-native-omh-auth/blob/main/apps/sample-app/android/settings.gradle#L3) file:
 
 ```gradle title="android/settings.gradle" {3}
 rootProject.name = 'Example'
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
-apply from: file("../node_modules/@omh/react-native-auth-core/android/native_modules.gradle")
+apply from: file("../node_modules/@openmobilehub/auth-core/android/native_modules.gradle")
 include ':app'
 includeBuild('../node_modules/@react-native/gradle-plugin')
 ```
@@ -62,7 +62,7 @@ includeBuild('../node_modules/@react-native/gradle-plugin')
 
 :::info
 
-In this guide, we'll use the Google provider as an example. However, feel free to choose any other provider as the exposed methods are identical. They all inherit the [`AuthModule`](https://special-barnacle-93vn82m.pages.github.io/docs/api/classes/core_src.AuthModule#methods) from the [`@omh/react-native-auth-core`](https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/core), ensuring consistency across different providers. This means you won't need to learn any additional methods regardless of the provider you choose!
+In this guide, we'll use the Google provider as an example. However, feel free to choose any other provider as the exposed methods are identical. They all inherit the [`AuthModule`](https://special-barnacle-93vn82m.pages.github.io/docs/api/classes/core_src.AuthModule#methods) from the [`@openmobilehub/auth-core`](https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/core), ensuring consistency across different providers. This means you won't need to learn any additional methods regardless of the provider you choose!
 
 :::
 
@@ -71,7 +71,7 @@ In this guide, we'll use the Google provider as an example. However, feel free t
 Before interacting with a provider, initialization is necessary. Each provider requires a specific configuration to be passed as an argument.
 
 ```typescript
-import GoogleAuthClient from '@omh/react-native-auth-google';
+import GoogleAuthClient from '@openmobilehub/auth-google';
 
 await GoogleAuthClient.initialize({scopes: ['openid', 'email', 'profile']});
 ```

@@ -1,9 +1,9 @@
 /**
  * React Native OMH Auth Dropbox Plugin
- * @module @omh/react-native-dropbox-google
+ * @module @openmobilehub/dropbox-google
  */
 
-import {createAuthModule} from '@omh/react-native-auth-core';
+import {createAuthModule} from '@openmobilehub/auth-core';
 
 import IOSGetUser from './IOSGetUser';
 import IOSRefreshAccessToken from './IOSRefreshAccessToken';

@@ -1,9 +1,9 @@
 import React from 'react';
 
-import DropboxAuth from '@omh/react-native-auth-dropbox';
-import FacebookAuth from '@omh/react-native-auth-facebook';
-import GoogleAuth from '@omh/react-native-auth-google';
-import MicrosoftAuth from '@omh/react-native-auth-microsoft';
+import DropboxAuth from '@openmobilehub/auth-dropbox';
+import FacebookAuth from '@openmobilehub/auth-facebook';
+import GoogleAuth from '@openmobilehub/auth-google';
+import MicrosoftAuth from '@openmobilehub/auth-microsoft';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const PROVIDER_NAMES = {

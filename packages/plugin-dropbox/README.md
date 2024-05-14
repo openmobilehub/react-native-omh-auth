@@ -6,9 +6,9 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@omh/react-native-auth-dropbox"><img src="https://img.shields.io/npm/dm/@omh/react-native-auth-dropbox.svg?style=flat" alt="NPM downloads"/></a>
-  <a href="https://www.npmjs.com/package/@omh/react-native-auth-dropbox"><img src="https://img.shields.io/npm/v/@omh/react-native-auth-dropbox.svg?style=flat" alt="NPM version"/></a>
-  <a href="/LICENSE"><img src="https://img.shields.io/npm/l/@omh/react-native-auth-dropbox.svg?style=flat" alt="License"/></a>
+  <a href="https://www.npmjs.com/package/@openmobilehub/auth-dropbox"><img src="https://img.shields.io/npm/dm/@openmobilehub/auth-dropbox.svg?style=flat" alt="NPM downloads"/></a>
+  <a href="https://www.npmjs.com/package/@openmobilehub/auth-dropbox"><img src="https://img.shields.io/npm/v/@openmobilehub/auth-dropbox.svg?style=flat" alt="NPM version"/></a>
+  <a href="/LICENSE"><img src="https://img.shields.io/npm/l/@openmobilehub/auth-dropbox.svg?style=flat" alt="License"/></a>
 </p>
 
 <p align="center">
@@ -21,7 +21,7 @@
 ## Installation
 
 ```bash
-npm add @omh/react-native-auth-dropbox
+npm add @openmobilehub/auth-dropbox
 ```
 
 ## Configuration
@@ -39,7 +39,7 @@ DROPBOX_CLIENT_ID=<YOUR_DROPBOX_CLIENT_ID>
 Before interacting with Dropbox, initialization of the Dropbox Auth Client is necessary, requiring specific `scopes` to be configured.
 
 ```typescript
-import DropboxAuthClient from '@omh/react-native-auth-dropbox';
+import DropboxAuthClient from '@openmobilehub/auth-dropbox';
 
 await DropboxAuthClient.initialize({scopes: ['account_info.read']});
 ```

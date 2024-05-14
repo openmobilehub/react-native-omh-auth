@@ -1,9 +1,9 @@
 /**
  * React Native OMH Auth Facebook Plugin
- * @module @omh/react-native-auth-facebook
+ * @module @openmobilehub/auth-facebook
  */
 
-import {createAuthModule} from '@omh/react-native-auth-core';
+import {createAuthModule} from '@openmobilehub/auth-core';
 
 import IOSGetUser from './IOSGetUser';
 import IOSRefreshAccessToken from './IOSRefreshAccessToken';

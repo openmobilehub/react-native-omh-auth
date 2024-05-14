@@ -6,9 +6,9 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@omh/react-native-auth-google"><img src="https://img.shields.io/npm/dm/@omh/react-native-auth-google.svg?style=flat" alt="NPM downloads"/></a>
-  <a href="https://www.npmjs.com/package/@omh/react-native-auth-google"><img src="https://img.shields.io/npm/v/@omh/react-native-auth-google.svg?style=flat" alt="NPM version"/></a>
-  <a href="/LICENSE"><img src="https://img.shields.io/npm/l/@omh/react-native-auth-google.svg?style=flat" alt="License"/></a>
+  <a href="https://www.npmjs.com/package/@openmobilehub/auth-google"><img src="https://img.shields.io/npm/dm/@openmobilehub/auth-google.svg?style=flat" alt="NPM downloads"/></a>
+  <a href="https://www.npmjs.com/package/@openmobilehub/auth-google"><img src="https://img.shields.io/npm/v/@openmobilehub/auth-google.svg?style=flat" alt="NPM version"/></a>
+  <a href="/LICENSE"><img src="https://img.shields.io/npm/l/@openmobilehub/auth-google.svg?style=flat" alt="License"/></a>
 </p>
 
 <p align="center">
@@ -21,7 +21,7 @@
 ## Installation
 
 ```bash
-npm add @omh/react-native-auth-google
+npm add @openmobilehub/auth-google
 ```
 
 ## Configuration
@@ -39,7 +39,7 @@ GOOGLE_CLIENT_ID=<YOUR_GOOGLE_CLIENT_ID>
 Before interacting with Google, initialization of the Google Auth Client is necessary, requiring specific `scopes` to be configured.
 
 ```typescript
-import GoogleAuthClient from '@omh/react-native-auth-google';
+import GoogleAuthClient from '@openmobilehub/auth-google';
 
 await GoogleAuthClient.initialize({scopes: ['openid', 'email', 'profile']});
 ```
