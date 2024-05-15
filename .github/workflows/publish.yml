@@ -35,6 +35,7 @@ jobs:
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "openmobilehubtest@gmail.com"
+          git config user.signingkey "${{ secrets.SIGNING_KEY }}"
 
       - name: 'Release'
         run: |
