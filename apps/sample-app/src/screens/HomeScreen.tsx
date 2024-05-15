@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, StyleSheet, View} from 'react-native';
+import {Alert, Button, StyleSheet, View} from 'react-native';
 
 import {
   getAuthProvider,
@@ -13,25 +13,37 @@ export default function HomeScreen() {
   async function onGoogleSignIn() {
     const googleAuthProvider = await getAuthProvider(PROVIDER_NAMES.GOOGLE);
 
-    await googleAuthProvider.signIn();
+    try {
+      await googleAuthProvider.signIn();
 
-    signInWithProvider(PROVIDER_NAMES.GOOGLE);
+      signInWithProvider(PROVIDER_NAMES.GOOGLE);
+    } catch (error: any) {
+      Alert.alert('Error', error?.message);
+    }
   }
 
   async function onFacebookSignIn() {
     const facebookAuthProvider = await getAuthProvider(PROVIDER_NAMES.FACEBOOK);
 
-    await facebookAuthProvider.signIn();
+    try {
+      await facebookAuthProvider.signIn();
 
-    signInWithProvider(PROVIDER_NAMES.FACEBOOK);
+      signInWithProvider(PROVIDER_NAMES.FACEBOOK);
+    } catch (error: any) {
+      Alert.alert('Error', error?.message);
+    }
   }
 
   async function onDropboxSignIn() {
     const dropboxAuthProvider = await getAuthProvider(PROVIDER_NAMES.DROPBOX);
 
-    await dropboxAuthProvider.signIn();
+    try {
+      await dropboxAuthProvider.signIn();
 
-    signInWithProvider(PROVIDER_NAMES.DROPBOX);
+      signInWithProvider(PROVIDER_NAMES.DROPBOX);
+    } catch (error: any) {
+      Alert.alert('Error', error?.message);
+    }
   }
 
   async function onMicrosoftSignIn() {
@@ -39,9 +51,13 @@ export default function HomeScreen() {
       PROVIDER_NAMES.MICROSOFT,
     );
 
-    await microsoftAuthProvider.signIn();
+    try {
+      await microsoftAuthProvider.signIn();
 
-    signInWithProvider(PROVIDER_NAMES.MICROSOFT);
+      signInWithProvider(PROVIDER_NAMES.MICROSOFT);
+    } catch (error: any) {
+      Alert.alert('Error', error?.message);
+    }
   }
 
   return (
