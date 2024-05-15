@@ -1,15 +1,18 @@
 {
-  "name": "@omh/react-native-auth-microsoft",
-  "version": "1.0.0-beta",
+  "name": "@openmobilehub/auth-microsoft",
+  "version": "1.0.0-alpha.0",
   "main": "src/index",
+  "files": [
+    "src/",
+    "android/",
+    "!android/.gradle",
+    "!android/build"
+  ],
   "dependencies": {
-    "@omh/react-native-auth-core": "workspace:*"
-  },
-  "devDependencies": {
+    "@openmobilehub/auth-core": "workspace:*",
     "redaxios": "^0.5.1"
   },
   "peerDependencies": {
-    "react-native": "*",
-    "redaxios": "^0.5.1"
+    "react-native": "*"
   }
 }

@@ -1,9 +1,9 @@
 /**
  * React Native OMH Auth Google Plugin
- * @module @omh/react-native-auth-google
+ * @module @openmobilehub/auth-google
  */
 
-import {createAuthModule} from '@omh/react-native-auth-core';
+import {createAuthModule} from '@openmobilehub/auth-core';
 
 import IOSGetUser from './IOSGetUser';
 

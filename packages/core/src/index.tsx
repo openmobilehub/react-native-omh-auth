@@ -1,6 +1,6 @@
 /**
  * React Native OMH Auth Core
- * @module @omh/react-native-auth-core
+ * @module @openmobilehub/auth-core
  */
 
 export * from './types';

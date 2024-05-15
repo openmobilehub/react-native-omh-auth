@@ -1,7 +1,7 @@
 import React from 'react';
 import {Alert, Button, Image, StyleSheet, Text, View} from 'react-native';
 
-import {type OmhUserProfile} from '@omh/react-native-auth-core';
+import {type OmhUserProfile} from '@openmobilehub/auth-core';
 import {useRoute} from '@react-navigation/native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import Toast from 'react-native-root-toast';

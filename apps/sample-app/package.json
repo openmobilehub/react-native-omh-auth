@@ -1,6 +1,6 @@
 {
   "name": "react-native-auth-sample",
-  "version": "1.0.0-beta",
+  "version": "1.0.0-alpha.0",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -10,11 +10,11 @@
     "test": "jest"
   },
   "dependencies": {
-    "@omh/react-native-auth-core": "workspace:*",
-    "@omh/react-native-auth-dropbox": "workspace:*",
-    "@omh/react-native-auth-facebook": "workspace:*",
-    "@omh/react-native-auth-google": "workspace:*",
-    "@omh/react-native-auth-microsoft": "workspace:*",
+    "@openmobilehub/auth-core": "workspace:*",
+    "@openmobilehub/auth-dropbox": "workspace:*",
+    "@openmobilehub/auth-facebook": "workspace:*",
+    "@openmobilehub/auth-google": "workspace:*",
+    "@openmobilehub/auth-microsoft": "workspace:*",
     "@react-native-async-storage/async-storage": "^1.23.1",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",

@@ -1,9 +1,9 @@
 /**
  * React Native OMH Auth Microsoft Plugin
- * @module @omh/react-native-auth-microsoft
+ * @module @openmobilehub/auth-microsoft
  */
 
-import {createAuthModule} from '@omh/react-native-auth-core';
+import {createAuthModule} from '@openmobilehub/auth-core';
 
 import IOSGetUser from './IOSGetUser';
 import {MicrosoftAuthConfig} from './types';

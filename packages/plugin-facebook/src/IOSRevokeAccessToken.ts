@@ -1,4 +1,4 @@
-import {AuthData} from '@omh/react-native-auth-core';
+import {AuthData} from '@openmobilehub/auth-core';
 import axios from 'redaxios';
 
 export default async function IOSRevokeAccessToken(

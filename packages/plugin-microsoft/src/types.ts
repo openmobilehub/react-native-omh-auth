@@ -1,4 +1,4 @@
-import {AndroidAuthConfig, AuthConfig} from '@omh/react-native-auth-core';
+import {AndroidAuthConfig, AuthConfig} from '@openmobilehub/auth-core';
 
 type AndroidMicrosoftAuthConfig = AndroidAuthConfig & {
   configFileName: string;

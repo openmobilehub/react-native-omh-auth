@@ -9,5 +9,5 @@ jest.mock('@react-native-async-storage/async-storage', () =>
 );
 
 // OMH
-jest.mock('@omh/react-native-auth-google', () => ({}));
-jest.mock('@omh/react-native-auth-facebook', () => ({}));
+jest.mock('@openmobilehub/auth-google', () => ({}));
+jest.mock('@openmobilehub/auth-facebook', () => ({}));

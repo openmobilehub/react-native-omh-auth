@@ -6,9 +6,9 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@omh/react-native-auth-facebook"><img src="https://img.shields.io/npm/dm/@omh/react-native-auth-facebook.svg?style=flat" alt="NPM downloads"/></a>
-  <a href="https://www.npmjs.com/package/@omh/react-native-auth-facebook"><img src="https://img.shields.io/npm/v/@omh/react-native-auth-facebook.svg?style=flat" alt="NPM version"/></a>
-  <a href="/LICENSE"><img src="https://img.shields.io/npm/l/@omh/react-native-auth-facebook.svg?style=flat" alt="License"/></a>
+  <a href="https://www.npmjs.com/package/@openmobilehub/auth-facebook"><img src="https://img.shields.io/npm/dm/@openmobilehub/auth-facebook.svg?style=flat" alt="NPM downloads"/></a>
+  <a href="https://www.npmjs.com/package/@openmobilehub/auth-facebook"><img src="https://img.shields.io/npm/v/@openmobilehub/auth-facebook.svg?style=flat" alt="NPM version"/></a>
+  <a href="/LICENSE"><img src="https://img.shields.io/npm/l/@openmobilehub/auth-facebook.svg?style=flat" alt="License"/></a>
 </p>
 
 <p align="center">
@@ -21,7 +21,7 @@
 ## Installation
 
 ```bash
-npm add @omh/react-native-auth-facebook
+npm add @openmobilehub/auth-facebook
 ```
 
 ## Configuration
@@ -40,7 +40,7 @@ FACEBOOK_CLIENT_SECRET=<YOUR_FACEBOOK_CLIENT_SECRET>
 Before interacting with Facebook, initialization of the Facebook Auth Client is necessary, requiring specific `scopes` to be configured.
 
 ```typescript
-import FacebookAuthClient from '@omh/react-native-auth-facebook';
+import FacebookAuthClient from '@openmobilehub/auth-facebook';
 
 await FacebookAuthClient.initialize({scopes: ['public_profile', 'email']});
 ```
