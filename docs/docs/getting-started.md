@@ -62,7 +62,7 @@ includeBuild('../node_modules/@react-native/gradle-plugin')
 
 :::info
 
-In this guide, we'll use the Google provider as an example. However, feel free to choose any other provider as the exposed methods are identical. They all inherit the [`AuthModule`](https://special-barnacle-93vn82m.pages.github.io/docs/api/classes/core_src.AuthModule#methods) from the [`@openmobilehub/auth-core`](https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/core), ensuring consistency across different providers. This means you won't need to learn any additional methods regardless of the provider you choose!
+In this guide, we'll use the Google provider as an example. However, feel free to choose any other provider as the exposed methods are identical. They all inherit the [`IAuthModule`](https://special-barnacle-93vn82m.pages.github.io/docs/api/interfaces/omh_react_native_auth_core.IAuthModule#methods) from the [`@openmobilehub/auth-core`](https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/core), ensuring consistency across different providers. This means you won't need to learn any additional methods regardless of the provider you choose!
 
 :::
 
@@ -94,7 +94,7 @@ const accessToken = await GoogleAuthClient.getAccessToken();
 
 ### Get user
 
-Obtains user information for the current signed-in user. Returns an object of type [`OmhUserProfile`](https://github.com/openmobilehub/react-native-omh-auth/blob/main/packages/core/src/types.ts#L5-L10).
+Obtains user information for the current signed-in user. Returns an object of type [`OmhUserProfile`](https://special-barnacle-93vn82m.pages.github.io/docs/api/interfaces/omh_react_native_auth_core.OmhUserProfile#properties).
 
 ```typescript
 type OmhUserProfile = {
@@ -131,7 +131,7 @@ Initiates the sign-out process with the provider.
 await GoogleAuthClient.signOut();
 ```
 
-For a more in depth view on the available methods, access the [Reference API](https://special-barnacle-93vn82m.pages.github.io/docs/api/classes/core_src.AuthModule#methods).
+For a more in depth view on the available methods, access the [Reference API](https://special-barnacle-93vn82m.pages.github.io/docs/api/interfaces/omh_react_native_auth_core.IAuthModule#methods).
 
 ## Sample app
 
