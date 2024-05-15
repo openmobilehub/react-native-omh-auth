@@ -29,16 +29,14 @@ jobs:
           node-version: '18'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
 
       - name: 'Setup git user'
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "openmobilehubtest@gmail.com"
-          git remote set-url origin https://x-access-token:${{ github.token }}@github.com/$GITHUB_REPOSITORY
 
       - name: 'Release'
-        env:
-          GH_TOKEN: ${{ github.token }}
         run: |
           npx lerna version ${{ github.events.inputs.version }} --conventional-commits --yes
           npx lerna publish from-git --no-verify-access --no-changelog --yes
