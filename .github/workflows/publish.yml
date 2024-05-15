@@ -23,7 +23,7 @@ jobs:
           ref: 'main'
           persist-credentials: false
 
-      - name: 'Setup Node v16'
+      - name: 'Setup Node v18'
         uses: actions/setup-node@v4
         with:
           node-version: '18'
@@ -34,6 +34,7 @@ jobs:
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "openmobilehubtest@gmail.com"
+          git remote set-url origin https://x-access-token:${{ github.token }}@github.com/$GITHUB_REPOSITORY
 
       - name: 'Release'
         env:
