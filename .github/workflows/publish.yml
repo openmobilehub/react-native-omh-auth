@@ -1,10 +1,11 @@
-name: Release
+name: Release NPM packages
 
 on:
   workflow_dispatch:
     inputs:
       version:
         type: choice
+        required: true
         options:
           - 'prerelease'
           - 'patch'
@@ -13,8 +14,8 @@ on:
 
 jobs:
   release:
+    name: Release NPM packages
     runs-on: ubuntu-latest
-
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
