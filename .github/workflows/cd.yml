@@ -68,7 +68,7 @@ jobs:
 
       - name: Add secrets to `.env`
         run: |
-          echo GOOGLE_CLIENT_ID=${{ secrets.IOS_GOOGLE_CLIENT_ID }} >> apps/sample-app/.env &&
+          echo GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }} >> apps/sample-app/.env &&
           echo FACEBOOK_CLIENT_ID=${{ secrets.FACEBOOK_CLIENT_ID }} >> apps/sample-app/.env &&
           echo FACEBOOK_CLIENT_SECRET=${{ secrets.FACEBOOK_CLIENT_SECRET }} >> apps/sample-app/.env &&
           echo MICROSOFT_CLIENT_ID=${{ secrets.MICROSOFT_CLIENT_ID }} >> apps/sample-app/.env &&
