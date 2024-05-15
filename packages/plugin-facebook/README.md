@@ -26,23 +26,52 @@ npm add @openmobilehub/auth-facebook
 
 ## Configuration
 
-To access Facebook APIs, generate a unique **App ID** & **Client Token** for your app in the [Meta for Developers](https://developers.facebook.com/apps) and follow the additional [setup instructions](https://developers.facebook.com/docs/facebook-login/android). Once finished, add a new entry to your **android/local.properties** file:
+To access Facebook APIs, please follow these steps in order to obtain the **App ID** and the **App Secret**:
+
+### Console App
+
+1. [Create a new app](https://developers.facebook.com/docs/facebook-login/android) in [Meta for Developers](https://developers.facebook.com/apps).
+2. Add the Android platform and specify your [Key Hash](https://developers.facebook.com/docs/facebook-login/android#6--provide-the-development-and-release-key-hashes-for-your-app) for your app.
+3. Enable the `email` permission for your app.
+
+### Android
+
+Add a new entry to your **android/local.properties** file:
 
 ```bash title="android/local.properties"
-FACEBOOK_CLIENT_ID=<YOUR_FACEBOOK_CLIENT_ID>
-FACEBOOK_CLIENT_SECRET=<YOUR_FACEBOOK_CLIENT_SECRET>
+FACEBOOK_CLIENT_ID=<YOUR_FACEBOOK_APP_ID>
+FACEBOOK_CLIENT_SECRET=<YOUR_FACEBOOK_APP_SECRET>
+```
+
+### iOS
+
+Add a new entry to your **.env** file:
+
+```bash title=".env"
+FACEBOOK_CLIENT_ID=<YOUR_FACEBOOK_APP_ID>
+FACEBOOK_CLIENT_SECRET=<YOUR_FACEBOOK_APP_SECRET>
 ```
 
 ## Usage
 
 ### Initializing
 
-Before interacting with Facebook, initialization of the Facebook Auth Client is necessary, requiring specific `scopes` to be configured.
+Before interacting with Facebook, initialization of the Facebook Auth Client is necessary, requiring platform specific configuration to be set.
 
 ```typescript
 import FacebookAuthClient from '@openmobilehub/auth-facebook';
 
-await FacebookAuthClient.initialize({scopes: ['public_profile', 'email']});
+await FacebookAuth.initialize({
+  android: {
+    scopes: ['public_profile', 'email'],
+  },
+  ios: {
+    scopes: ['public_profile', 'email'],
+    clientId: process.env.FACEBOOK_CLIENT_ID,
+    clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+    redirectUrl: `fb${process.env.FACEBOOK_CLIENT_ID}://authorize/`,
+  },
+});
 ```
 
 ### Other methods

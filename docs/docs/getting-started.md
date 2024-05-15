@@ -73,7 +73,18 @@ Before interacting with a provider, initialization is necessary. Each provider r
 ```typescript
 import GoogleAuthClient from '@openmobilehub/auth-google';
 
-await GoogleAuthClient.initialize({scopes: ['openid', 'email', 'profile']});
+await GoogleAuth.initialize({
+  android: {
+    scopes: ['openid', 'profile', 'email'],
+  },
+  ios: {
+    scopes: ['openid', 'profile', 'email'],
+    clientId: process.env.GOOGLE_CLIENT_ID,
+    redirectUrl: `com.googleusercontent.apps.${
+      process.env.GOOGLE_CLIENT_ID.split('.')[0]
+    }:/oauth2redirect/google`,
+  },
+});
 ```
 
 ### Sign in

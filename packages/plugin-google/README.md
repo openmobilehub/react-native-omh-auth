@@ -26,9 +26,26 @@ npm add @openmobilehub/auth-google
 
 ## Configuration
 
-To access Google APIs, generate a unique **Client ID** for your app in the [Google Console](https://console.cloud.google.com/projectselector2) and follow the additional [setup instructions](https://developers.google.com/identity/protocols/oauth2/native-app#android). Once finished, add a new entry to your **android/local.properties** file:
+To access Google APIs, please follow these steps in order to obtain the **Client ID**:
+
+### Console App
+
+1. [Create a new app](https://developers.google.com/identity/protocols/oauth2/native-app#android) in [Google Cloud](https://console.cloud.google.com/projectcreate).
+2. Create an OAuth 2.0 Client ID Android application and specify your **Package Name** and [**SHA1 Fingerprint**](https://support.google.com/cloud/answer/6158849?authuser=1#installedapplications&zippy=%2Cnative-applications%2Candroid) for your app.
+
+### Android
+
+Add a new entry to your **android/local.properties** file:
 
 ```bash title="android/local.properties"
+GOOGLE_CLIENT_ID=<YOUR_GOOGLE_CLIENT_ID>
+```
+
+### iOS
+
+Add a new entry to your **.env** file:
+
+```bash title=".env"
 GOOGLE_CLIENT_ID=<YOUR_GOOGLE_CLIENT_ID>
 ```
 
@@ -36,12 +53,23 @@ GOOGLE_CLIENT_ID=<YOUR_GOOGLE_CLIENT_ID>
 
 ### Initializing
 
-Before interacting with Google, initialization of the Google Auth Client is necessary, requiring specific `scopes` to be configured.
+Before interacting with Google, initialization of the Google Auth Client is necessary, requiring platform specific configuration to be set.
 
 ```typescript
 import GoogleAuthClient from '@openmobilehub/auth-google';
 
-await GoogleAuthClient.initialize({scopes: ['openid', 'email', 'profile']});
+await GoogleAuth.initialize({
+  android: {
+    scopes: ['openid', 'profile', 'email'],
+  },
+  ios: {
+    scopes: ['openid', 'profile', 'email'],
+    clientId: process.env.GOOGLE_CLIENT_ID,
+    redirectUrl: `com.googleusercontent.apps.${
+      process.env.GOOGLE_CLIENT_ID.split('.')[0]
+    }:/oauth2redirect/google`,
+  },
+});
 ```
 
 ### Other methods
