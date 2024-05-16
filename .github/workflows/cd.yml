@@ -15,13 +15,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          bun-version: latest
+          node-version: 'lts/iron'
+
+      - name: Enable corepack
+        run: corepack enable
 
       - name: Install dependencies
-        run: bun install
+        run: yarn install
 
       - name: Setup JDK
         uses: actions/setup-java@v4
@@ -61,10 +64,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          bun-version: latest
+          node-version: 'lts/iron'
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install
 
       - name: Add secrets to `.env`
         run: |
@@ -74,9 +83,6 @@ jobs:
           echo MICROSOFT_CLIENT_ID=${{ secrets.MICROSOFT_CLIENT_ID }} >> apps/sample-app/.env &&
           echo DROPBOX_CLIENT_ID=${{ secrets.DROPBOX_CLIENT_ID }} >> apps/sample-app/.env &&
           echo DROPBOX_CLIENT_SECRET=${{ secrets.DROPBOX_CLIENT_SECRET }} >> apps/sample-app/.env
-
-      - name: Install dependencies
-        run: bun install
 
       - name: Install the Apple certificate and provisioning profile
         env:
@@ -190,18 +196,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          bun-version: latest
+          node-version: 'lts/iron'
+
+      - name: Enable corepack
+        run: corepack enable
 
       - name: Install dependencies
-        run: bun install
+        run: yarn install
 
       - name: Build docs
-        run: |
-          cd docs
-          bun run build
+        run: yarn workspace docs build
 
       - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3

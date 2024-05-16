@@ -3,12 +3,20 @@ pre-commit:
   commands:
     lint:
       glob: '*.{js,ts,jsx,tsx}'
-      run: bunx eslint {staged_files}
+      run: npx eslint {staged_files}
+
     typecheck:
       glob: '*.{ts,tsx}'
-      run: bunx tsc-files --noEmit {staged_files}
+      run: npx tsc-files --noEmit {staged_files}
+
 commit-msg:
   parallel: true
   commands:
     commitlint:
-      run: bunx commitlint --edit
+      run: npx commitlint --edit
+
+pre-push:
+  parallel: true
+  commands:
+    unit-test:
+      run: yarn test

@@ -65,11 +65,16 @@ yarn-error.log
 # testing
 /coverage
 
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
 # VS Code
 .vscode/
 
 # Env
 apps/sample-app/.env
-
-.nx/
-.npmrc

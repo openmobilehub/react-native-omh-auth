@@ -4,7 +4,7 @@
   "scripts": {
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "cd apps/sample-app && bun run test && cd -"
+    "test": "yarn workspace react-native-omh-auth-sample test"
   },
   "workspaces": [
     "apps/*",
@@ -19,4 +19,6 @@
     "lefthook": "^1.6.7",
     "tsc-files": "^1.1.4",
     "typescript": "^5.4.5"
+  },
+  "packageManager": "yarn@4.2.2"
 }

@@ -1,6 +1,6 @@
 # Development workflow
 
-This project is a monorepo managed using [Bun workspaces](https://bun.sh/docs/install/workspaces). It contains the following packages:
+This project is a monorepo managed using [Yarn workspaces](https://yarnpkg.com/features/workspaces). It contains the following packages:
 
 - An example app in the `apps/sample-app/` directory.
 - The core library in the `packages/core/` directory.
@@ -9,7 +9,7 @@ This project is a monorepo managed using [Bun workspaces](https://bun.sh/docs/in
 To get started with the project, run the following command in the root directory to install the required dependencies for each package:
 
 ```bash
-bun install
+yarn install
 ```
 
 # Example app
@@ -42,19 +42,19 @@ You can use various commands from the root directory to work with the project.
 To start the packager:
 
 ```bash
-cd apps/sample-app && bun start
+yarn workspace react-native-omh-auth-sample start
 ```
 
 To run the example app on Android:
 
 ```bash
-cd apps/sample-app && bun android
+yarn workspace react-native-omh-auth-sample android
 ```
 
 To run the example app on iOS:
 
 ```bash
-cd apps/sample-app && bun ios
+yarn workspace react-native-omh-auth-sample ios
 ```
 
 ## Linting and typechecking
@@ -62,20 +62,20 @@ cd apps/sample-app && bun ios
 Make sure your code passes TypeScript and ESLint. Run the following to verify:
 
 ```bash
-bun lint
-bun typecheck
+yarn lint
+yarn typecheck
 ```
 
 To fix formatting errors, run the following:
 
 ```bash
-bun lint --fix
+yarn lint --fix
 ```
 
 Remember to add tests for your change if possible. Run the unit tests by:
 
 ```bash
-bun test
+yarn test
 ```
 
 ## Commit message convention
@@ -104,7 +104,7 @@ We use [release-it](https://github.com/release-it/release-it) to make it easier 
 To publish new versions, run the following:
 
 ```bash
-bun release
+yarn release
 ```
 
 ## Writing documentation
@@ -116,7 +116,7 @@ Remember to document your code according to [JSDoc reference](https://www.typesc
 You can view information about the documentation and its scripts in the [README](https://github.com/openmobilehub/react-native-omh-auth/tree/main/docs/README.md). To simply run documentation locally, you can run:
 
 ```bash
-cd docs && bun start
+yarn workspace docs start
 ```
 
 ## Sending a pull request
