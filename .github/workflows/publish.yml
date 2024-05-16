@@ -34,7 +34,7 @@ jobs:
       - name: 'Setup git user'
         run: |
           git config user.name "${{ github.actor }}"
-          git config user.email "openmobilehubtest@gmail.com"
+          git config user.email "openmobilehub@users.noreply.github.com"
 
       - name: Import GPG key
         uses: crazy-max/ghaction-import-gpg@v6
