@@ -11,14 +11,12 @@
     "docs",
     "packages/*"
   ],
-  "dependencies": {
-    "react-loadable": "npm:@docusaurus/react-loadable@5.5.2"
-  },
   "devDependencies": {
     "@commitlint/config-conventional": "^19.1.0",
     "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
     "commitlint": "^19.2.1",
+    "eslint": "^8.19.0",
     "lefthook": "^1.6.7",
-    "tsc-files": "^1.1.4"
-  }
+    "tsc-files": "^1.1.4",
+    "typescript": "^5.4.5"
 }
