@@ -72,4 +72,3 @@ apps/sample-app/ios/Pods/
 apps/sample-app/.env
 
 .nx/
-.npmrc

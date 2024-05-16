@@ -1,7 +1,13 @@
 {
   "name": "@openmobilehub/auth-microsoft",
+  "description": "React Native OMH Auth - Microsoft streamlines Microsoft authentication integration into React Native applications.",
   "version": "1.0.0-beta.0",
   "main": "src/index",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/plugin-microsoft"
+  },
+  "license": "Apache-2.0",
   "files": [
     "src/",
     "android/",
@@ -14,5 +20,8 @@
   },
   "peerDependencies": {
     "react-native": "*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
