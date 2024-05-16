@@ -3,8 +3,8 @@
 This project is a monorepo managed using [Bun workspaces](https://bun.sh/docs/install/workspaces). It contains the following packages:
 
 - An example app in the `apps/sample-app/` directory.
-- The core library in the `packages/react-native-auth-core/` directory.
-- Provider packages in the `packages/react-native-auth-*/` directories.
+- The core library in the `packages/core/` directory.
+- Provider packages in the `packages/plugin-*/` directories.
 
 To get started with the project, run the following command in the root directory to install the required dependencies for each package:
 
