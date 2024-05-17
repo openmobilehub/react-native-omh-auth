@@ -1,7 +1,7 @@
 {
   "name": "@openmobilehub/auth-microsoft",
   "description": "React Native OMH Auth - Microsoft streamlines Microsoft authentication integration into React Native applications.",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "main": "lib/commonjs/index.js",
   "react-native": "src/index.tsx",
   "source": "src/index.tsx",
