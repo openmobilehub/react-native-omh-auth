@@ -53,12 +53,8 @@ export default class IOSAuthModule<C extends AuthConfig>
     if (persistedAuthData) {
       this.authData = persistedAuthData;
     } else {
-      try {
-        this.authData = await authorize(config);
-        await persistAuthData(this.authData);
-      } catch (error) {
-        throw error;
-      }
+      this.authData = await authorize(config);
+      await persistAuthData(this.authData);
     }
   }
 
