@@ -26,9 +26,15 @@ npm add @openmobilehub/auth-microsoft
 
 ## Configuration
 
-To access Microsoft APIs, please follow these steps in order to obtain the **Client ID** and the **ms_auth_config.json** file:
+:::info[Prerequisites]
+
+Each plugin requires you to follow the [iOS](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#ios-configuration) and [Android](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#android-configuration) configuration prior to interacting with it.
+
+:::
 
 ### Console App
+
+To access Google APIs, please follow these steps in order to obtain the **Client ID**:
 
 1. [Create a new app](https://learn.microsoft.com/en-us/entra/identity-platform/tutorial-v2-android#register-your-application-with-microsoft-entra-id) in [Microsoft Azure](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/CreateApplicationBlade).
 2. Add the Android platform and specify your **Package Name** and **Signature Hash** for your app.

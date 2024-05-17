@@ -14,14 +14,18 @@ export default async function IOSRefreshAccessToken(
   formData.append('client_secret', process.env.DROPBOX_CLIENT_SECRET!);
 
   try {
-    const refreshAccessTokenRequest = await axios.post(
+    const request = await axios.post(
       'https://api.dropboxapi.com/oauth2/token',
       formData,
     );
 
-    const newAccessToken = refreshAccessTokenRequest.data.access_token;
+    const accessToken = request.data.access_token;
 
-    return newAccessToken;
+    const accessTokenExpirationDate = new Date(
+      Date.now() + request.data.expires_in * 1000,
+    ).toISOString();
+
+    return {accessToken, accessTokenExpirationDate};
   } catch (error: any) {
     if (error.data.error?.['.tag']) {
       throw new Error(error.data.error['.tag']);

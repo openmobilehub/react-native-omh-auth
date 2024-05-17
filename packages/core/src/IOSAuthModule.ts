@@ -53,12 +53,8 @@ export default class IOSAuthModule<C extends AuthConfig>
     if (persistedAuthData) {
       this.authData = persistedAuthData;
     } else {
-      try {
-        this.authData = await authorize(config);
-        await persistAuthData(this.authData);
-      } catch (error) {
-        throw error;
-      }
+      this.authData = await authorize(config);
+      await persistAuthData(this.authData);
     }
   }
 
@@ -85,40 +81,54 @@ export default class IOSAuthModule<C extends AuthConfig>
    * @returns The new access token if refreshed, otherwise undefined.
    */
   async refreshAccessToken(): Promise<string | undefined> {
-    if (this.moduleConfig.IOSRefreshAccessToken instanceof Function) {
-      return this.moduleConfig.IOSRefreshAccessToken(this.getAuthData);
-    }
-
     const config = this.getConfig();
     const authData = this.getAuthData();
 
-    const {accessToken, refreshToken, accessTokenExpirationDate} =
-      await refresh(config, {refreshToken: authData.refreshToken});
+    if (this.moduleConfig.IOSRefreshAccessToken instanceof Function) {
+      const {accessToken, accessTokenExpirationDate} =
+        await this.moduleConfig.IOSRefreshAccessToken(this.getAuthData);
 
-    this.authData = {
-      ...authData,
-      accessToken,
-      accessTokenExpirationDate,
-      refreshToken: refreshToken || authData.refreshToken,
-    };
+      this.authData = {
+        ...authData,
+        accessToken,
+        accessTokenExpirationDate,
+      };
+    } else {
+      const {accessToken, refreshToken, accessTokenExpirationDate} =
+        await refresh(config, {refreshToken: authData.refreshToken});
+
+      this.authData = {
+        ...authData,
+        accessToken,
+        accessTokenExpirationDate,
+        refreshToken: refreshToken || authData.refreshToken,
+      };
+    }
 
     await persistAuthData(this.authData);
 
-    return accessToken;
+    return this.authData.accessToken;
   }
 
   /**
    * Revokes the current access token.
    */
   async revokeAccessToken(): Promise<void> {
-    if (this.moduleConfig.IOSRevokeAccessToken instanceof Function) {
-      return this.moduleConfig.IOSRevokeAccessToken(this.getAuthData);
-    }
-
     const config = this.getConfig();
     const authData = this.getAuthData();
 
-    await revoke(config, {tokenToRevoke: authData.accessToken});
+    if (this.moduleConfig.IOSRevokeAccessToken instanceof Function) {
+      await this.moduleConfig.IOSRevokeAccessToken(this.getAuthData);
+    } else {
+      await revoke(config, {tokenToRevoke: authData.accessToken});
+    }
+
+    this.authData = {
+      ...authData,
+      accessToken: '',
+    };
+
+    await persistAuthData(this.authData);
   }
 
   /**
