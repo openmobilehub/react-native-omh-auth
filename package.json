@@ -4,7 +4,8 @@
   "scripts": {
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "yarn workspace react-native-omh-auth-sample test"
+    "test": "yarn workspace react-native-omh-auth-sample test",
+    "version:bump": "./.github/scripts/bump-version.sh"
   },
   "workspaces": [
     "apps/*",

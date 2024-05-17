@@ -99,13 +99,11 @@ Our pre-commit hooks verify that the linter and tests pass when committing.
 
 ## Publishing to npm
 
-We use [release-it](https://github.com/release-it/release-it) to make it easier to publish new versions. It handles common tasks like bumping version based on semver, creating tags and releases etc.
+To publish new version to the NPM we use `lerna`. Packages are published automatically after merging a commit that contains a version bump.
 
-To publish new versions, run the following:
-
-```bash
-yarn release
-```
+1. Run `yarn version:bump`
+2. Create PR with a new version
+3. After merging the PR with a version bump, package will be released automatically and a corresponding git tag will be created by the Github Actions Workflow
 
 ## Writing documentation
 
