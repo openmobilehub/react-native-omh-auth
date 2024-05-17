@@ -1,8 +1,8 @@
 import {
-  AuthConfiguration,
   authorize,
   refresh,
   revoke,
+  type AuthConfiguration,
 } from 'react-native-app-auth';
 
 import {
@@ -10,7 +10,7 @@ import {
   persistAuthData,
   removePersistedAuthData,
 } from './authDataPersist';
-import {
+import type {
   AuthConfig,
   AuthData,
   AuthModuleConfig,

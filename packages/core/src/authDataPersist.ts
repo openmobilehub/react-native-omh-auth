@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import {AuthData} from './types';
+import type {AuthData} from './types';
 
 const STORAGE_KEY = 'OMH_AUTH_DATA';
 

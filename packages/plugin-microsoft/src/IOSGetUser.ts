@@ -1,4 +1,4 @@
-import {AuthData, OmhUserProfile} from '@openmobilehub/auth-core';
+import type {AuthData, OmhUserProfile} from '@openmobilehub/auth-core';
 import axios from 'redaxios';
 
 function blobToBase64(blob: Blob): Promise<string> {

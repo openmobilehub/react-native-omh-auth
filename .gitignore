@@ -80,3 +80,5 @@ yarn-error.log
 apps/sample-app/.env
 
 .nx/
+lib/
+.turbo

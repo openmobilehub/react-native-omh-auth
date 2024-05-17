@@ -1,4 +1,4 @@
-import {AuthData} from '@openmobilehub/auth-core';
+import type {AuthData} from '@openmobilehub/auth-core';
 import axios from 'redaxios';
 
 export default async function IOSRefreshAccessToken(
