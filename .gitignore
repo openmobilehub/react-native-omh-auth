@@ -78,3 +78,5 @@ yarn-error.log
 
 # Env
 apps/sample-app/.env
+
+.nx/

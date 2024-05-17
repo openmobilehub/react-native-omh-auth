@@ -1,7 +1,13 @@
 {
   "name": "@openmobilehub/auth-core",
+  "description": "React Native OMH Auth - Core provides a comprehensive authentication solution for React Native applications. It offers a simple API to integrate authentication workflows seamlessly into both new and existing projects.",
   "version": "1.0.0-beta.0",
   "main": "src/index",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/core"
+  },
+  "license": "Apache-2.0",
   "files": [
     "src/",
     "android/",
@@ -17,5 +23,8 @@
     "@react-native-async-storage/async-storage": "^1.23.1",
     "react-native": "0.73.6",
     "react-native-app-auth": "^7.1.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

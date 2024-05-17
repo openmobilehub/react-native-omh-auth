@@ -1,43 +1,54 @@
-name: Release NPM packages
+name: Publish NPM packages
 
 on:
-  workflow_dispatch:
-    inputs:
-      version:
-        type: choice
-        required: true
-        options:
-          - 'prerelease'
-          - 'patch'
-          - 'minor'
-          - 'major'
+  push:
+    branches:
+      - main
 
 jobs:
   release:
-    name: Release NPM packages
+    name: Publish NPM packages
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
         with:
           ref: 'main'
-          persist-credentials: false
+          token: ${{ github.token }}
 
-      - name: 'Setup Node v16'
+      - name: 'Setup Node v18'
         uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '18'
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
 
       - name: 'Setup git user'
         run: |
           git config user.name "${{ github.actor }}"
-          git config user.email "openmobilehubtest@gmail.com"
+          git config user.email "openmobilehub@users.noreply.github.com"
 
-      - name: 'Release'
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: 'Check if version changed'
         run: |
-          npx lerna version ${{ github.events.inputs.version }} --conventional-commits --yes
-          npx lerna publish from-git --no-verify-access --no-changelog --yes
+          echo "PACKAGE_VERSION=$(jq -r .version < package.json)" >> $GITHUB_ENV
+          git fetch --tags
+          if git tag | grep -x "v${{ env.PACKAGE_VERSION }}" > /dev/null; then
+            echo "Version ${{ env.PACKAGE_VERSION }} already exists, no new tag created."
+            echo "version_changed=false" >> $GITHUB_ENV
+          else
+            echo "New version detected: ${{ env.PACKAGE_VERSION }}"
+            echo "version_changed=true" >> $GITHUB_ENV
+          fi
+
+      - name: 'Create new tag'
+        if: env.version_changed == 'true'
+        run: |
+          git tag v${{ env.PACKAGE_VERSION }}
+          git push origin v${{ env.PACKAGE_VERSION }}
+
+      - name: 'Publish packages'
+        if: env.version_changed == 'true'
+        run: |
+          npx lerna publish from-package --no-changelog --yes
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
