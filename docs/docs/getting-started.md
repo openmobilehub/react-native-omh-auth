@@ -46,6 +46,18 @@ Each provider requires you to specify different secrets. Please follow the indiv
 - [Microsoft](https://special-barnacle-93vn82m.pages.github.io/docs/microsoft#configuration)
 - [Dropbox](https://special-barnacle-93vn82m.pages.github.io/docs/dropbox#configuration)
 
+## Android configuration
+
+Each plugin requires that the `@openmobilehub/auth-core` module to be manually linked inside your Android application. Add the following line to your [**android/settings.gradle**](https://github.com/openmobilehub/react-native-omh-auth/blob/main/apps/sample-app/android/settings.gradle#L3) file:
+
+```gradle title="android/settings.gradle" {3}
+rootProject.name = 'Example'
+apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
+apply from: file("../node_modules/@openmobilehub/auth-core/android/native_modules.gradle")
+include ':app'
+includeBuild('../node_modules/@react-native/gradle-plugin')
+```
+
 ## iOS configuration
 
 Each plugin requires that the [react-native-app-auth](https://www.npmjs.com/package/react-native-app-auth) dependency to be installed and configured inside your React Native application. Proceed to install it by running the following command:
@@ -56,7 +68,7 @@ npm add react-native-app-auth
 
 Next, follow the [iOS Setup](https://www.npmjs.com/package/react-native-app-auth#ios-setup) guide in order finish the configuration.
 
-In order to avoid any issues on the Android side, you have to [disable automatic linking](https://github.com/react-native-community/cli/blob/main/docs/autolinking.md#how-can-i-disable-autolinking-for-unsupported-library) for `react-native-app-auth` by adding the following lines to your [**react-native.config.js**](https://github.com/openmobilehub/react-native-omh-auth/blob/main/apps/sample-app/react-native.config.js) file:
+In order to avoid any issues on the Android side, you have to [disable automatic linking](https://github.com/react-native-community/cli/blob/main/docs/autolinking.md#how-can-i-disable-autolinking-for-unsupported-library) for `react-native-app-auth` by adding the following lines to your [**react-native.config.js**](https://github.com/openmobilehub/react-native-omh-auth/blob/main/apps/sample-app/react-native.config.js#L2-L8) file:
 
 ```javascript title="react-native.config.js" {2-8}
 module.exports = {
@@ -68,18 +80,6 @@ module.exports = {
     },
   },
 };
-```
-
-## Android configuration
-
-Each plugin requires that the `@openmobilehub/auth-core` module to be manually linked inside your Android application. Add the following line to your [**android/settings.gradle**](https://github.com/openmobilehub/react-native-omh-auth/blob/main/apps/sample-app/android/settings.gradle#L3) file:
-
-```gradle title="android/settings.gradle" {3}
-rootProject.name = 'Example'
-apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
-apply from: file("../node_modules/@openmobilehub/auth-core/android/native_modules.gradle")
-include ':app'
-includeBuild('../node_modules/@react-native/gradle-plugin')
 ```
 
 ## Usage
