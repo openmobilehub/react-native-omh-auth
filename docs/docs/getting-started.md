@@ -82,6 +82,12 @@ module.exports = {
 };
 ```
 
+Additionally, in order for the `@openmobilehub/auth-core` module to work correctly, please install the [@react-native-async-storage/async-storage](https://www.npmjs.com/package/@react-native-async-storage/async-storage) dependency by running the following command:
+
+```
+npm add @react-native-async-storage/async-storage
+```
+
 ## Usage
 
 :::info
