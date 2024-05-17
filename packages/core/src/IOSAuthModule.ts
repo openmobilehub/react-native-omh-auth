@@ -85,26 +85,33 @@ export default class IOSAuthModule<C extends AuthConfig>
    * @returns The new access token if refreshed, otherwise undefined.
    */
   async refreshAccessToken(): Promise<string | undefined> {
-    if (this.moduleConfig.IOSRefreshAccessToken instanceof Function) {
-      return this.moduleConfig.IOSRefreshAccessToken(this.getAuthData);
-    }
-
     const config = this.getConfig();
     const authData = this.getAuthData();
 
-    const {accessToken, refreshToken, accessTokenExpirationDate} =
-      await refresh(config, {refreshToken: authData.refreshToken});
+    if (this.moduleConfig.IOSRefreshAccessToken instanceof Function) {
+      const {accessToken, accessTokenExpirationDate} =
+        await this.moduleConfig.IOSRefreshAccessToken(this.getAuthData);
 
-    this.authData = {
-      ...authData,
-      accessToken,
-      accessTokenExpirationDate,
-      refreshToken: refreshToken || authData.refreshToken,
-    };
+      this.authData = {
+        ...authData,
+        accessToken,
+        accessTokenExpirationDate,
+      };
+    } else {
+      const {accessToken, refreshToken, accessTokenExpirationDate} =
+        await refresh(config, {refreshToken: authData.refreshToken});
+
+      this.authData = {
+        ...authData,
+        accessToken,
+        accessTokenExpirationDate,
+        refreshToken: refreshToken || authData.refreshToken,
+      };
+    }
 
     await persistAuthData(this.authData);
 
-    return accessToken;
+    return this.authData.accessToken;
   }
 
   /**

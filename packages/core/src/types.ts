@@ -34,7 +34,10 @@ type IOSAuthFunction<R> = (getAuthData: () => AuthData) => Promise<R>;
 export type AuthModuleConfig = {
   moduleName: string;
   IOSGetUser: IOSAuthFunction<OmhUserProfile>;
-  IOSRefreshAccessToken?: IOSAuthFunction<string | undefined>;
+  IOSRefreshAccessToken?: IOSAuthFunction<{
+    accessToken: string;
+    accessTokenExpirationDate: string;
+  }>;
   IOSRevokeAccessToken?: IOSAuthFunction<void>;
   IOSAppAuthConfig: Partial<AuthConfiguration>;
 };

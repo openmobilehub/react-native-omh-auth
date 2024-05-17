@@ -19,7 +19,13 @@ export default async function IOSRefreshAccessToken(
       },
     );
 
-    return request.data.access_token;
+    const accessToken = request.data.access_token;
+
+    const accessTokenExpirationDate = new Date(
+      Date.now() + request.data.expires_in * 1000,
+    ).toISOString();
+
+    return {accessToken, accessTokenExpirationDate};
   } catch (error: any) {
     if (error.data.error?.message) {
       throw new Error(error.data.error.message);
