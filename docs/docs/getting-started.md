@@ -37,7 +37,7 @@ By running the following command:
 npm add @openmobilehub/auth-<provider-name>
 ```
 
-## Configuration
+## Provider configuration
 
 Each provider requires you to specify different secrets. Please follow the individual provider configuration:
 
@@ -46,7 +46,31 @@ Each provider requires you to specify different secrets. Please follow the indiv
 - [Microsoft](https://special-barnacle-93vn82m.pages.github.io/docs/microsoft#configuration)
 - [Dropbox](https://special-barnacle-93vn82m.pages.github.io/docs/dropbox#configuration)
 
-## Manual linking of the core package
+## iOS configuration
+
+Each plugin requires that the [react-native-app-auth](https://www.npmjs.com/package/react-native-app-auth) dependency to be installed and configured inside your React Native application. Proceed to install it by running the following command:
+
+```bash
+npm add react-native-app-auth
+```
+
+Next, follow the [iOS Setup](https://www.npmjs.com/package/react-native-app-auth#ios-setup) guide in order finish the configuration.
+
+In order to avoid any issues on the Android side, you have to [disable automatic linking](https://github.com/react-native-community/cli/blob/main/docs/autolinking.md#how-can-i-disable-autolinking-for-unsupported-library) for `react-native-app-auth` by adding the following lines to your [**react-native.config.js**](https://github.com/openmobilehub/react-native-omh-auth/blob/main/apps/sample-app/react-native.config.js) file:
+
+```javascript title="react-native.config.js" {2-8}
+module.exports = {
+  dependencies: {
+    'react-native-app-auth': {
+      platforms: {
+        android: null,
+      },
+    },
+  },
+};
+```
+
+## Android configuration
 
 Each plugin requires that the `@openmobilehub/auth-core` module to be manually linked inside your Android application. Add the following line to your [**android/settings.gradle**](https://github.com/openmobilehub/react-native-omh-auth/blob/main/apps/sample-app/android/settings.gradle#L3) file:
 
@@ -62,7 +86,7 @@ includeBuild('../node_modules/@react-native/gradle-plugin')
 
 :::info
 
-In this guide, we'll use the Google provider as an example. However, feel free to choose any other provider as the exposed methods are identical. They all inherit the [`AuthModule`](https://special-barnacle-93vn82m.pages.github.io/docs/api/classes/core_src.AuthModule#methods) from the [`@openmobilehub/auth-core`](https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/core), ensuring consistency across different providers. This means you won't need to learn any additional methods regardless of the provider you choose!
+In this guide, we'll use the Google provider as an example. However, feel free to choose any other provider as the exposed methods are identical. They all inherit the [`IAuthModule`](https://special-barnacle-93vn82m.pages.github.io/docs/api/interfaces/omh_react_native_auth_core.IAuthModule#methods) from the [`@openmobilehub/auth-core`](https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/core), ensuring consistency across different providers. This means you won't need to learn any additional methods regardless of the provider you choose!
 
 :::
 
@@ -73,7 +97,18 @@ Before interacting with a provider, initialization is necessary. Each provider r
 ```typescript
 import GoogleAuthClient from '@openmobilehub/auth-google';
 
-await GoogleAuthClient.initialize({scopes: ['openid', 'email', 'profile']});
+await GoogleAuth.initialize({
+  android: {
+    scopes: ['openid', 'profile', 'email'],
+  },
+  ios: {
+    scopes: ['openid', 'profile', 'email'],
+    clientId: process.env.GOOGLE_CLIENT_ID,
+    redirectUrl: `com.googleusercontent.apps.${
+      process.env.GOOGLE_CLIENT_ID.split('.')[0]
+    }:/oauth2redirect/google`,
+  },
+});
 ```
 
 ### Sign in
@@ -94,7 +129,7 @@ const accessToken = await GoogleAuthClient.getAccessToken();
 
 ### Get user
 
-Obtains user information for the current signed-in user. Returns an object of type [`OmhUserProfile`](https://github.com/openmobilehub/react-native-omh-auth/blob/main/packages/core/src/types.ts#L5-L10).
+Obtains user information for the current signed-in user. Returns an object of type [`OmhUserProfile`](https://special-barnacle-93vn82m.pages.github.io/docs/api/interfaces/omh_react_native_auth_core.OmhUserProfile#properties).
 
 ```typescript
 type OmhUserProfile = {
@@ -131,7 +166,7 @@ Initiates the sign-out process with the provider.
 await GoogleAuthClient.signOut();
 ```
 
-For a more in depth view on the available methods, access the [Reference API](https://special-barnacle-93vn82m.pages.github.io/docs/api/classes/core_src.AuthModule#methods).
+For a more in depth view on the available methods, access the [Reference API](https://special-barnacle-93vn82m.pages.github.io/docs/api/interfaces/omh_react_native_auth_core.IAuthModule#methods).
 
 ## Sample app
 

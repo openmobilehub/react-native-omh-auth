@@ -26,27 +26,56 @@ npm add @openmobilehub/auth-dropbox
 
 ## Configuration
 
-To access Dropbox APIs, generate a unique **App Key** for your app in the [Dropbox Console](https://www.dropbox.com/developers/apps). Once finished, add a new entry to your **android/local.properties** file:
+To access Dropbox APIs, please follow these steps in order to obtain the **App Key** and the **App Secret**:
+
+### Console App
+
+1. [Create a new app](https://developers.dropbox.com/oauth-guide) in [Dropbox Console](https://www.dropbox.com/developers/apps/create).
+2. Specify `<YOUR_IOS_BUNDLE_ID>://oauth` as your redirect URL for your app.
+3. Enable the `sharing.read` permission for your app.
+
+### Android
+
+Add a new entry to your **android/local.properties** file:
 
 ```bash title="android/local.properties"
-DROPBOX_CLIENT_ID=<YOUR_DROPBOX_CLIENT_ID>
+DROPBOX_CLIENT_ID=<YOUR_DROPBOX_APP_KEY>
+```
+
+### iOS
+
+Add a new entry to your **.env** file:
+
+```bash title=".env"
+DROPBOX_CLIENT_ID=<YOUR_DROPBOX_APP_KEY>
+DROPBOX_CLIENT_SECRET=<YOUR_DROPBOX_APP_SECRET>
 ```
 
 ## Usage
 
 ### Initializing
 
-Before interacting with Dropbox, initialization of the Dropbox Auth Client is necessary, requiring specific `scopes` to be configured.
+Before interacting with Dropbox, initialization of the Dropbox Auth Client is necessary, requiring platform specific configuration to be set.
 
 ```typescript
 import DropboxAuthClient from '@openmobilehub/auth-dropbox';
 
-await DropboxAuthClient.initialize({scopes: ['account_info.read']});
+await DropboxAuth.initialize({
+  android: {
+    scopes: ['account_info.read', 'sharing.read'],
+  },
+  ios: {
+    scopes: ['account_info.read', 'sharing.read'],
+    clientId: process.env.DROPBOX_CLIENT_ID,
+    clientSecret: process.env.DROPBOX_CLIENT_SECRET,
+    redirectUrl: '<YOUR_REDIRECT_URL>',
+  },
+});
 ```
 
 ### Other methods
 
-Interacting with the Dropbox provider follows the same pattern as other providers since they all implement the `AuthModule` interface. For a comprehensive list of available methods, refer to the [Quick Start](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#sign-in) guide.
+Interacting with the Dropbox provider follows the same pattern as other providers since they all implement the `IAuthModule` interface. For a comprehensive list of available methods, refer to the [Quick Start](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#sign-in) guide.
 
 ## License
 
