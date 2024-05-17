@@ -20,54 +20,74 @@ export type Providers = ObjectValues<typeof PROVIDER_NAMES>;
 export const getAuthProvider = async (provider: Providers) => {
   switch (provider) {
     case PROVIDER_NAMES.GOOGLE:
+      if (!process.env.GOOGLE_CLIENT_ID) {
+        throw new Error('`GOOGLE_CLIENT_ID` not set in .env');
+      }
+
       await GoogleAuth.initialize({
         android: {
-          scopes: ['openid', 'email', 'profile'],
+          scopes: ['openid', 'profile', 'email'],
         },
         ios: {
-          scopes: ['openid', 'email', 'profile'],
-          clientId: process.env.GOOGLE_CLIENT_ID!,
+          scopes: ['openid', 'profile', 'email'],
+          clientId: process.env.GOOGLE_CLIENT_ID,
           redirectUrl: `com.googleusercontent.apps.${
-            process.env.GOOGLE_CLIENT_ID!.split('.')[0]
+            process.env.GOOGLE_CLIENT_ID.split('.')[0]
           }:/oauth2redirect/google`,
         },
       });
       return GoogleAuth;
     case PROVIDER_NAMES.FACEBOOK:
+      if (!process.env.FACEBOOK_CLIENT_ID) {
+        throw new Error('`FACEBOOK_CLIENT_ID` not set in .env');
+      } else if (!process.env.FACEBOOK_CLIENT_SECRET) {
+        throw new Error('`FACEBOOK_CLIENT_SECRET` not set in .env');
+      }
+
       await FacebookAuth.initialize({
         android: {
           scopes: ['public_profile', 'email'],
         },
         ios: {
           scopes: ['public_profile', 'email'],
-          clientId: process.env.FACEBOOK_CLIENT_ID!,
-          clientSecret: process.env.FACEBOOK_CLIENT_SECRET!,
-          redirectUrl: `fb${process.env.FACEBOOK_CLIENT_ID!}://authorize/`,
+          clientId: process.env.FACEBOOK_CLIENT_ID,
+          clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+          redirectUrl: `fb${process.env.FACEBOOK_CLIENT_ID}://authorize/`,
         },
       });
       return FacebookAuth;
     case PROVIDER_NAMES.MICROSOFT:
+      if (!process.env.MICROSOFT_CLIENT_ID) {
+        throw new Error('`MICROSOFT_CLIENT_ID` not set in .env');
+      }
+
       await MicrosoftAuth.initialize({
         android: {
           scopes: ['User.Read'],
           configFileName: 'ms_auth_config',
         },
         ios: {
-          scopes: ['openid', 'profile', 'email', 'offline_access', 'User.Read'],
-          clientId: process.env.MICROSOFT_CLIENT_ID!,
+          scopes: ['User.Read', 'openid', 'profile', 'email', 'offline_access'],
+          clientId: process.env.MICROSOFT_CLIENT_ID,
           redirectUrl: 'msauth.com.omh.auth.sample://auth/',
         },
       });
       return MicrosoftAuth;
     case PROVIDER_NAMES.DROPBOX:
+      if (!process.env.DROPBOX_CLIENT_ID) {
+        throw new Error('`DROPBOX_CLIENT_ID` not set in .env');
+      } else if (!process.env.DROPBOX_CLIENT_SECRET) {
+        throw new Error('`DROPBOX_CLIENT_SECRET` not set in .env');
+      }
+
       await DropboxAuth.initialize({
         android: {
           scopes: ['account_info.read', 'sharing.read'],
         },
         ios: {
           scopes: ['account_info.read', 'sharing.read'],
-          clientId: process.env.DROPBOX_CLIENT_ID!,
-          clientSecret: process.env.DROPBOX_CLIENT_SECRET!,
+          clientId: process.env.DROPBOX_CLIENT_ID,
+          clientSecret: process.env.DROPBOX_CLIENT_SECRET,
           redirectUrl: 'com.omh.auth.sample://oauth',
         },
       });

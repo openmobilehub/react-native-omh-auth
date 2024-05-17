@@ -26,27 +26,51 @@ npm add @openmobilehub/auth-microsoft
 
 ## Configuration
 
-To access Microsoft APIs, generate a unique **Client ID** & **Signature Hash** for your app in the [Microsoft Azure](https://portal.azure.com) and follow the additional [setup instructions](https://learn.microsoft.com/en-us/azure/active-directory-b2c/configure-authentication-sample-android-app?tabs=kotlin). Once finished, add a new entry to your **android/local.properties** file:
+To access Microsoft APIs, please follow these steps in order to obtain the **Client ID** and the **ms_auth_config.json** file:
+
+### Console App
+
+1. [Create a new app](https://learn.microsoft.com/en-us/entra/identity-platform/tutorial-v2-android#register-your-application-with-microsoft-entra-id) in [Microsoft Azure](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/CreateApplicationBlade).
+2. Add the Android platform and specify your **Package Name** and **Signature Hash** for your app.
+3. Add the iOS platform and specify your **Bundle ID** for your app.
+4. Download the **ms_auth_config.json** file and add it in the **android/app/src/main/res/raw** directory.
+
+### Android
+
+Add a new entry to your **android/local.properties** file:
 
 ```bash title="android/local.properties"
 MICROSOFT_SIGNATURE_HASH=<YOUR_MICROSOFT_SIGNATURE_HASH>
 MICROSOFT_HOST_PATH=<YOUR_ANDROID_PACKAGE_NAME>.MainApplication
 ```
 
-Additionally, you will have to download the **ms_auth_config.json** file from the [Microsoft Azure](https://portal.azure.com) and add it in the **android/app/src/main/res/raw** directory.
+### iOS
+
+Add a new entry to your **.env** file:
+
+```bash title=".env"
+MICROSOFT_CLIENT_ID=<YOUR_MICROSOFT_CLIENT_ID>
+```
 
 ## Usage
 
 ### Initializing
 
-Before interacting with Microsoft, initialization of the Microsoft Auth Client is necessary, requiring specific `scopes` and the `configFileName` to be configured.
+Before interacting with Microsoft, initialization of the Microsoft Auth Client is necessary, requiring platform specific configuration to be set.
 
 ```typescript
 import MicrosoftAuthClient from '@openmobilehub/auth-microsoft';
 
-await MicrosoftAuthClient.initialize({
-  scopes: ['User.Read'],
-  configFileName: 'ms_auth_config',
+await MicrosoftAuth.initialize({
+  android: {
+    scopes: ['User.Read'],
+    configFileName: 'ms_auth_config',
+  },
+  ios: {
+    scopes: ['User.Read', 'openid', 'profile', 'email', 'offline_access'],
+    clientId: process.env.MICROSOFT_CLIENT_ID,
+    redirectUrl: 'msauth.com.omh.auth.sample://auth/',
+  },
 });
 ```
 
@@ -58,7 +82,7 @@ Due to current [limitations](https://github.com/AzureAD/microsoft-authentication
 
 :::
 
-Interacting with the Microsoft provider follows the same pattern as other providers since they all implement the `AuthModule` interface. For a comprehensive list of available methods, refer to the [Quick Start](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#sign-in) guide.
+Interacting with the Microsoft provider follows the same pattern as other providers since they all implement the `IAuthModule` interface. For a comprehensive list of available methods, refer to the [Quick Start](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#sign-in) guide.
 
 ## License
 

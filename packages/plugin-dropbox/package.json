@@ -21,6 +21,9 @@
   "peerDependencies": {
     "react-native": "*"
   },
+  "devDependencies": {
+    "react-native": "0.73.6"
+  },
   "publishConfig": {
     "access": "public"
   }
