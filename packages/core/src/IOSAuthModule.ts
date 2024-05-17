@@ -114,14 +114,21 @@ export default class IOSAuthModule<C extends AuthConfig>
    * Revokes the current access token.
    */
   async revokeAccessToken(): Promise<void> {
-    if (this.moduleConfig.IOSRevokeAccessToken instanceof Function) {
-      return this.moduleConfig.IOSRevokeAccessToken(this.getAuthData);
-    }
-
     const config = this.getConfig();
     const authData = this.getAuthData();
 
-    await revoke(config, {tokenToRevoke: authData.accessToken});
+    if (this.moduleConfig.IOSRevokeAccessToken instanceof Function) {
+      await this.moduleConfig.IOSRevokeAccessToken(this.getAuthData);
+    } else {
+      await revoke(config, {tokenToRevoke: authData.accessToken});
+    }
+
+    this.authData = {
+      ...authData,
+      accessToken: '',
+    };
+
+    await persistAuthData(this.authData);
   }
 
   /**
