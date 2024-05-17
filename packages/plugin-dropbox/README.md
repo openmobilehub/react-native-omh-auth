@@ -26,9 +26,15 @@ npm add @openmobilehub/auth-dropbox
 
 ## Configuration
 
-To access Dropbox APIs, please follow these steps in order to obtain the **App Key** and the **App Secret**:
+:::info[Prerequisites]
+
+Each plugin requires you to follow the [iOS](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#ios-configuration) and [Android](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#android-configuration) configuration prior to interacting with it.
+
+:::
 
 ### Console App
+
+To access Google APIs, please follow these steps in order to obtain the **Client ID**:
 
 1. [Create a new app](https://developers.dropbox.com/oauth-guide) in [Dropbox Console](https://www.dropbox.com/developers/apps/create).
 2. Specify `<YOUR_IOS_BUNDLE_ID>://oauth` as your redirect URL for your app.

@@ -26,9 +26,15 @@ npm add @openmobilehub/auth-facebook
 
 ## Configuration
 
-To access Facebook APIs, please follow these steps in order to obtain the **App ID** and the **App Secret**:
+:::info[Prerequisites]
+
+Each plugin requires you to follow the [iOS](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#ios-configuration) and [Android](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#android-configuration) configuration prior to interacting with it.
+
+:::
 
 ### Console App
+
+To access Google APIs, please follow these steps in order to obtain the **Client ID**:
 
 1. [Create a new app](https://developers.facebook.com/docs/facebook-login/android) in [Meta for Developers](https://developers.facebook.com/apps).
 2. Add the Android platform and specify your [Key Hash](https://developers.facebook.com/docs/facebook-login/android#6--provide-the-development-and-release-key-hashes-for-your-app) for your app.
