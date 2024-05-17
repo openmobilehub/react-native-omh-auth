@@ -2,14 +2,22 @@
   "name": "@openmobilehub/auth-google",
   "description": "React Native OMH Auth - Google (GMS/non-GMS) streamlines Google authentication integration into React Native applications, accommodating both GMS and non-GMS devices.",
   "version": "1.0.0-beta.3",
-  "main": "src/index",
+  "main": "lib/commonjs/index.js",
+  "react-native": "src/index.tsx",
+  "source": "src/index.tsx",
+  "module": "lib/module/index.js",
+  "types": "lib/typescript/src/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/plugin-google"
   },
   "license": "Apache-2.0",
   "files": [
-    "src/",
+    "src",
+    "lib",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__",
     "android/",
     "!android/.gradle",
     "!android/build"
@@ -22,9 +30,28 @@
     "react-native": "*"
   },
   "devDependencies": {
-    "react-native": "0.73.6"
+    "react-native": "0.73.6",
+    "react-native-builder-bob": "^0.23.2",
+    "typescript": "^5.4.5"
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "scripts": {
+    "build": "bob build",
+    "typecheck": "tsc --noEmit"
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module",
+      "typescript"
+    ]
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/"
+  ]
 }

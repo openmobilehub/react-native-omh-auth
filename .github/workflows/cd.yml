@@ -26,6 +26,9 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Build repo
+        run: yarn build
+
       - name: Setup JDK
         uses: actions/setup-java@v4
         with:
@@ -74,6 +77,9 @@ jobs:
 
       - name: Install dependencies
         run: yarn install
+
+      - name: Build repo
+        run: yarn build
 
       - name: Add secrets to `.env`
         run: |
@@ -206,6 +212,9 @@ jobs:
 
       - name: Install dependencies
         run: yarn install
+
+      - name: Build repo
+        run: yarn build
 
       - name: Build docs
         run: yarn workspace docs build

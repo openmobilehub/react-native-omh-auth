@@ -1,6 +1,6 @@
 import {NativeModules} from 'react-native';
 
-import {
+import type {
   AuthConfig,
   AuthModuleConfig,
   IAuthModule,

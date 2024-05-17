@@ -6,7 +6,7 @@
 import {createAuthModule} from '@openmobilehub/auth-core';
 
 import IOSGetUser from './IOSGetUser';
-import {MicrosoftAuthConfig} from './types';
+import type {MicrosoftAuthConfig} from './types';
 
 const MICROSOFT_MODULE_NAME = 'OmhMicrosoft';
 

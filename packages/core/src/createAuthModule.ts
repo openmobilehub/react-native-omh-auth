@@ -2,7 +2,7 @@ import {Platform} from 'react-native';
 
 import AndroidAuthModule from './AndroidAuthModule';
 import IOSAuthModule from './IOSAuthModule';
-import {AuthConfig, AuthModuleConfig, IAuthModule} from './types';
+import type {AuthConfig, AuthModuleConfig, IAuthModule} from './types';
 
 function createAndroidAuthModule<C extends AuthConfig>(
   authModuleConfig: AuthModuleConfig,
