@@ -11,9 +11,9 @@ export default function HomeScreen() {
   const {signInWithProvider} = React.useContext(SignedInProviderContext);
 
   async function onGoogleSignIn() {
-    const googleAuthProvider = await getAuthProvider(PROVIDER_NAMES.GOOGLE);
-
     try {
+      const googleAuthProvider = await getAuthProvider(PROVIDER_NAMES.GOOGLE);
+
       await googleAuthProvider.signIn();
 
       signInWithProvider(PROVIDER_NAMES.GOOGLE);
@@ -23,9 +23,11 @@ export default function HomeScreen() {
   }
 
   async function onFacebookSignIn() {
-    const facebookAuthProvider = await getAuthProvider(PROVIDER_NAMES.FACEBOOK);
-
     try {
+      const facebookAuthProvider = await getAuthProvider(
+        PROVIDER_NAMES.FACEBOOK,
+      );
+
       await facebookAuthProvider.signIn();
 
       signInWithProvider(PROVIDER_NAMES.FACEBOOK);
@@ -34,27 +36,27 @@ export default function HomeScreen() {
     }
   }
 
-  async function onDropboxSignIn() {
-    const dropboxAuthProvider = await getAuthProvider(PROVIDER_NAMES.DROPBOX);
-
+  async function onMicrosoftSignIn() {
     try {
-      await dropboxAuthProvider.signIn();
+      const microsoftAuthProvider = await getAuthProvider(
+        PROVIDER_NAMES.MICROSOFT,
+      );
 
-      signInWithProvider(PROVIDER_NAMES.DROPBOX);
+      await microsoftAuthProvider.signIn();
+
+      signInWithProvider(PROVIDER_NAMES.MICROSOFT);
     } catch (error: any) {
       Alert.alert('Error', error?.message);
     }
   }
 
-  async function onMicrosoftSignIn() {
-    const microsoftAuthProvider = await getAuthProvider(
-      PROVIDER_NAMES.MICROSOFT,
-    );
-
+  async function onDropboxSignIn() {
     try {
-      await microsoftAuthProvider.signIn();
+      const dropboxAuthProvider = await getAuthProvider(PROVIDER_NAMES.DROPBOX);
 
-      signInWithProvider(PROVIDER_NAMES.MICROSOFT);
+      await dropboxAuthProvider.signIn();
+
+      signInWithProvider(PROVIDER_NAMES.DROPBOX);
     } catch (error: any) {
       Alert.alert('Error', error?.message);
     }
