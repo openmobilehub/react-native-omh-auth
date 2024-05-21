@@ -46,8 +46,8 @@ To access Google APIs, please follow these steps in order to obtain the **Client
 Add a new entry to your **android/local.properties** file:
 
 ```bash title="android/local.properties"
-MICROSOFT_SIGNATURE_HASH=<YOUR_MICROSOFT_SIGNATURE_HASH>
 MICROSOFT_HOST_PATH=<YOUR_ANDROID_PACKAGE_NAME>.MainApplication
+MICROSOFT_SIGNATURE_HASH=<YOUR_MICROSOFT_SIGNATURE_HASH>
 ```
 
 ### iOS
