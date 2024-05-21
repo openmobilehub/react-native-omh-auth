@@ -1,4 +1,5 @@
 import React from 'react';
+import {Platform} from 'react-native';
 
 import DropboxAuth from '@openmobilehub/auth-dropbox';
 import FacebookAuth from '@openmobilehub/auth-facebook';
@@ -17,10 +18,10 @@ type ObjectValues<T> = T[keyof T];
 
 export type Providers = ObjectValues<typeof PROVIDER_NAMES>;
 
-export const getAuthProvider = async (provider: Providers) => {
+export async function getAuthProvider(provider: Providers) {
   switch (provider) {
     case PROVIDER_NAMES.GOOGLE:
-      if (!process.env.GOOGLE_CLIENT_ID) {
+      if (Platform.OS === 'ios' && !process.env.GOOGLE_CLIENT_ID) {
         throw new Error('`GOOGLE_CLIENT_ID` not set in .env');
       }
 
@@ -32,15 +33,15 @@ export const getAuthProvider = async (provider: Providers) => {
           scopes: ['openid', 'profile', 'email'],
           clientId: process.env.GOOGLE_CLIENT_ID,
           redirectUrl: `com.googleusercontent.apps.${
-            process.env.GOOGLE_CLIENT_ID.split('.')[0]
+            process.env.GOOGLE_CLIENT_ID?.split('.')[0]
           }:/oauth2redirect/google`,
         },
       });
       return GoogleAuth;
     case PROVIDER_NAMES.FACEBOOK:
-      if (!process.env.FACEBOOK_CLIENT_ID) {
+      if (Platform.OS === 'ios' && !process.env.FACEBOOK_CLIENT_ID) {
         throw new Error('`FACEBOOK_CLIENT_ID` not set in .env');
-      } else if (!process.env.FACEBOOK_CLIENT_SECRET) {
+      } else if (Platform.OS === 'ios' && !process.env.FACEBOOK_CLIENT_SECRET) {
         throw new Error('`FACEBOOK_CLIENT_SECRET` not set in .env');
       }
 
@@ -57,7 +58,7 @@ export const getAuthProvider = async (provider: Providers) => {
       });
       return FacebookAuth;
     case PROVIDER_NAMES.MICROSOFT:
-      if (!process.env.MICROSOFT_CLIENT_ID) {
+      if (Platform.OS === 'ios' && !process.env.MICROSOFT_CLIENT_ID) {
         throw new Error('`MICROSOFT_CLIENT_ID` not set in .env');
       }
 
@@ -74,9 +75,9 @@ export const getAuthProvider = async (provider: Providers) => {
       });
       return MicrosoftAuth;
     case PROVIDER_NAMES.DROPBOX:
-      if (!process.env.DROPBOX_CLIENT_ID) {
+      if (Platform.OS === 'ios' && !process.env.DROPBOX_CLIENT_ID) {
         throw new Error('`DROPBOX_CLIENT_ID` not set in .env');
-      } else if (!process.env.DROPBOX_CLIENT_SECRET) {
+      } else if (Platform.OS === 'ios' && !process.env.DROPBOX_CLIENT_SECRET) {
         throw new Error('`DROPBOX_CLIENT_SECRET` not set in .env');
       }
 
@@ -93,7 +94,7 @@ export const getAuthProvider = async (provider: Providers) => {
       });
       return DropboxAuth;
   }
-};
+}
 
 type SignedInProviderContextValue = {
   signedInProvider: Providers | null;
