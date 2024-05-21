@@ -26,7 +26,7 @@ npm add @openmobilehub/auth-core
 
 ## Usage
 
-The core modules exposes the [`OmhUserProfile`](https://special-barnacle-93vn82m.pages.github.io/docs/api/interfaces/omh_react_native_auth_core.OmhUserProfile#properties) type which you might find useful when working in a TypeScript React Native app.
+The core modules exposes the [`OmhUserProfile`](https://special-barnacle-93vn82m.pages.github.io/docs/api/interfaces/openmobilehub_auth_core.OmhUserProfile#properties) type which you might find useful when working in a TypeScript React Native app.
 
 ```typescript
 import {type OmhUserProfile} from '@openmobilehub/auth-core';
