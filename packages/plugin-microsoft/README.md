@@ -28,7 +28,7 @@ npm add @openmobilehub/auth-microsoft
 
 :::info[Prerequisites]
 
-Each plugin requires you to follow the [iOS](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#ios-configuration) and [Android](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#android-configuration) configuration prior to interacting with it.
+Each plugin requires you to follow the [iOS](https://www.openmobilehub.com/react-native-omh-auth/docs/getting-started#ios-configuration) and [Android](https://www.openmobilehub.com/react-native-omh-auth/docs/getting-started#android-configuration) configuration prior to interacting with it.
 
 :::
 
@@ -88,7 +88,7 @@ Due to current [limitations](https://github.com/AzureAD/microsoft-authentication
 
 :::
 
-Interacting with the Microsoft provider follows the same pattern as other providers since they all implement the `IAuthModule` interface. For a comprehensive list of available methods, refer to the [Quick Start](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#sign-in) guide.
+Interacting with the Microsoft provider follows the same pattern as other providers since they all implement the `IAuthModule` interface. For a comprehensive list of available methods, refer to the [Quick Start](https://www.openmobilehub.com/react-native-omh-auth/docs/getting-started#sign-in) guide.
 
 ## License
 

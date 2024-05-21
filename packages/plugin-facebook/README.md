@@ -28,7 +28,7 @@ npm add @openmobilehub/auth-facebook
 
 :::info[Prerequisites]
 
-Each plugin requires you to follow the [iOS](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#ios-configuration) and [Android](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#android-configuration) configuration prior to interacting with it.
+Each plugin requires you to follow the [iOS](https://www.openmobilehub.com/react-native-omh-auth/docs/getting-started#ios-configuration) and [Android](https://www.openmobilehub.com/react-native-omh-auth/docs/getting-started#android-configuration) configuration prior to interacting with it.
 
 :::
 
@@ -82,7 +82,7 @@ await FacebookAuth.initialize({
 
 ### Other methods
 
-Interacting with the Facebook provider follows the same pattern as other providers since they all implement the `IAuthModule` interface. For a comprehensive list of available methods, refer to the [Quick Start](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#sign-in) guide.
+Interacting with the Facebook provider follows the same pattern as other providers since they all implement the `IAuthModule` interface. For a comprehensive list of available methods, refer to the [Quick Start](https://www.openmobilehub.com/react-native-omh-auth/docs/getting-started#sign-in) guide.
 
 ## License
 

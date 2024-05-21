@@ -33,20 +33,20 @@
 
 This is the main directory of the mono-repo for React Native OMH Auth. If you're searching for a particular package, please click on the corresponding package link below.
 
-- [Core](https://special-barnacle-93vn82m.pages.github.io/docs/core)
-- [Google](https://special-barnacle-93vn82m.pages.github.io/docs/google)
-- [Facebook](https://special-barnacle-93vn82m.pages.github.io/docs/facebook)
-- [Microsoft](https://special-barnacle-93vn82m.pages.github.io/docs/microsoft)
-- [Dropbox](https://special-barnacle-93vn82m.pages.github.io/docs/dropbox)
+- [Core](https://www.openmobilehub.com/react-native-omh-auth/docs/core)
+- [Google](https://www.openmobilehub.com/react-native-omh-auth/docs/google)
+- [Facebook](https://www.openmobilehub.com/react-native-omh-auth/docs/facebook)
+- [Microsoft](https://www.openmobilehub.com/react-native-omh-auth/docs/microsoft)
+- [Dropbox](https://www.openmobilehub.com/react-native-omh-auth/docs/dropbox)
 
 ## Documentation
 
-- [Quick Start](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started)
-- [Reference API](https://special-barnacle-93vn82m.pages.github.io/docs/api)
+- [Quick Start](https://www.openmobilehub.com/react-native-omh-auth/docs/getting-started)
+- [Reference API](https://www.openmobilehub.com/react-native-omh-auth/docs/api)
 
 ## Contributing
 
-- [Overview](https://special-barnacle-93vn82m.pages.github.io/docs/contributing)
+- [Overview](https://www.openmobilehub.com/react-native-omh-auth/docs/contributing)
 - [Issues](https://github.com/openmobilehub/react-native-omh-auth/issues)
 - [PRs](https://github.com/openmobilehub/react-native-omh-auth/pulls)
 
