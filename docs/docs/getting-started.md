@@ -176,7 +176,7 @@ For a more in depth view on the available methods, access the [Reference API](ht
 
 ## Sample app
 
-Explore the [sample app](https://github.com/openmobilehub/react-native-omh-auth/tree/main/apps/sample-app) included in the repository to see the implementation of authentication with Google and other providers.
+Explore the [sample app](https://special-barnacle-93vn82m.pages.github.io/docs/contributing#sample-app) included in the repository to see the implementation of authentication with Google and other providers.
 
 ## Troubleshooting
 
