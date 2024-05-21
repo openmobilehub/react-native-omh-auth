@@ -1,9 +1,4 @@
-import {
-  authorize,
-  refresh,
-  revoke,
-  type AuthConfiguration,
-} from 'react-native-app-auth';
+import {authorize, refresh, revoke} from 'react-native-app-auth';
 
 import {
   getPersistedAuthData,
@@ -16,15 +11,16 @@ import type {
   AuthModuleConfig,
   IAuthModule,
   OmhUserProfile,
+  PlatformAuthConfig,
 } from './types';
 
 const NOT_INITIALIZED = 'Not initialized';
 const NOT_SIGNED_IN = 'Not signed in';
 
-export default class IOSAuthModule<C extends AuthConfig>
+export default class IOSAuthModule<C extends PlatformAuthConfig>
   implements IAuthModule<C>
 {
-  private config: AuthConfiguration | null = null;
+  private config: AuthConfig | null = null;
   private authData: AuthData | null = null;
 
   constructor(private moduleConfig: AuthModuleConfig) {}
@@ -37,7 +33,7 @@ export default class IOSAuthModule<C extends AuthConfig>
     this.config = {
       ...this.moduleConfig.IOSAppAuthConfig,
       ...config.ios,
-    } as AuthConfiguration;
+    } as AuthConfig;
 
     this.authData = await getPersistedAuthData();
   }
@@ -73,7 +69,7 @@ export default class IOSAuthModule<C extends AuthConfig>
    * @returns An object containing user profile information.
    */
   async getUser(): Promise<OmhUserProfile> {
-    return this.moduleConfig.IOSGetUser(this.getAuthData);
+    return this.moduleConfig.IOSGetUser(this.getConfig, this.getAuthData);
   }
 
   /**
@@ -86,7 +82,10 @@ export default class IOSAuthModule<C extends AuthConfig>
 
     if (this.moduleConfig.IOSRefreshAccessToken instanceof Function) {
       const {accessToken, accessTokenExpirationDate} =
-        await this.moduleConfig.IOSRefreshAccessToken(this.getAuthData);
+        await this.moduleConfig.IOSRefreshAccessToken(
+          this.getConfig,
+          this.getAuthData,
+        );
 
       this.authData = {
         ...authData,
@@ -118,7 +117,10 @@ export default class IOSAuthModule<C extends AuthConfig>
     const authData = this.getAuthData();
 
     if (this.moduleConfig.IOSRevokeAccessToken instanceof Function) {
-      await this.moduleConfig.IOSRevokeAccessToken(this.getAuthData);
+      await this.moduleConfig.IOSRevokeAccessToken(
+        this.getConfig,
+        this.getAuthData,
+      );
     } else {
       await revoke(config, {tokenToRevoke: authData.accessToken});
     }
@@ -140,13 +142,13 @@ export default class IOSAuthModule<C extends AuthConfig>
     this.authData = null;
   }
 
-  private getConfig(): AuthConfiguration {
+  private getConfig = (): AuthConfig => {
     if (!this.config) {
       throw new Error(NOT_INITIALIZED);
     }
 
     return this.config;
-  }
+  };
 
   private getAuthData = (): AuthData => {
     if (!this.authData) {

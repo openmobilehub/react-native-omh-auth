@@ -1,9 +1,11 @@
-import type {AuthData} from '@openmobilehub/auth-core';
+import type {AuthConfig, AuthData} from '@openmobilehub/auth-core';
 import axios from 'redaxios';
 
 export default async function IOSRefreshAccessToken(
+  getConfig: () => AuthConfig,
   getAuthData: () => AuthData,
 ) {
+  const config = getConfig();
   const authData = getAuthData();
 
   try {
@@ -11,8 +13,8 @@ export default async function IOSRefreshAccessToken(
       'https://graph.facebook.com/oauth/access_token',
       {
         params: {
-          client_id: process.env.FACEBOOK_CLIENT_ID!,
-          client_secret: process.env.FACEBOOK_CLIENT_SECRET!,
+          client_id: config.clientId,
+          client_secret: config.clientSecret,
           grant_type: 'fb_exchange_token',
           fb_exchange_token: authData.accessToken,
         },

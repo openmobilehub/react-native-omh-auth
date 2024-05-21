@@ -1,25 +1,28 @@
 import type {AuthConfiguration, AuthorizeResult} from 'react-native-app-auth';
 
+export type AuthConfig = AuthConfiguration;
 export type AuthData = AuthorizeResult;
 
-export type AuthConfig<
+export type AndroidAuthConfig = {
+  scopes: Array<string>;
+};
+
+export type IOSAuthConfig = {
+  scopes: Array<string>;
+  clientId: string;
+  clientSecret?: string;
+  redirectUrl: string;
+};
+
+export type PlatformAuthConfig<
   A extends AndroidAuthConfig = AndroidAuthConfig,
   I extends IOSAuthConfig = IOSAuthConfig,
 > = {
   android?: Partial<A>;
   ios?: Partial<I>;
 };
-export type AndroidAuthConfig = {
-  scopes: Array<string>;
-};
-export type IOSAuthConfig = {
-  scopes: Array<string>;
-  redirectUrl: string;
-  clientId: string;
-  clientSecret?: string;
-};
 
-export interface IAuthModule<C extends AuthConfig> {
+export interface IAuthModule<C extends PlatformAuthConfig> {
   initialize(config: C): Promise<void>;
   signIn(): Promise<void>;
   getAccessToken(): Promise<string | undefined>;
@@ -29,7 +32,10 @@ export interface IAuthModule<C extends AuthConfig> {
   signOut(): Promise<void>;
 }
 
-type IOSAuthFunction<R> = (getAuthData: () => AuthData) => Promise<R>;
+type IOSAuthFunction<R> = (
+  getConfig: () => AuthConfig,
+  getAuthData: () => AuthData,
+) => Promise<R>;
 
 export type AuthModuleConfig = {
   moduleName: string;
@@ -39,7 +45,7 @@ export type AuthModuleConfig = {
     accessTokenExpirationDate: string;
   }>;
   IOSRevokeAccessToken?: IOSAuthFunction<void>;
-  IOSAppAuthConfig: Partial<AuthConfiguration>;
+  IOSAppAuthConfig: Partial<AuthConfig>;
 };
 
 export interface OmhUserProfile {
