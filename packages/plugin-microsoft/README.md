@@ -80,7 +80,7 @@ Due to current [limitations](https://github.com/AzureAD/microsoft-authentication
 
 :::
 
-Interacting with the Microsoft provider follows the same pattern as other providers since they all implement the `IAuthModule` interface. For a comprehensive list of available methods, refer to the [Quick Start](https://www.openmobilehub.com/react-native-omh-auth/docs/getting-started#sign-in) guide.
+Interacting with the Microsoft provider follows the same pattern as other providers since they all implement the [`IAuthModule`](https://www.openmobilehub.com/react-native-omh-auth/docs/api/interfaces/openmobilehub_auth_core.IAuthModule#methods) interface. For a comprehensive list of available methods, refer to the [Quick Start](https://www.openmobilehub.com/react-native-omh-auth/docs/getting-started#sign-in) guide.
 
 ## License
 
