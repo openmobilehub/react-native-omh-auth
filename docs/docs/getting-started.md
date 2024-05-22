@@ -109,9 +109,9 @@ await GoogleAuth.initialize({
   },
   ios: {
     scopes: ['openid', 'profile', 'email'],
-    clientId: process.env.GOOGLE_CLIENT_ID,
+    clientId: '<YOUR_GOOGLE_CLIENT_ID>',
     redirectUrl: `com.googleusercontent.apps.${
-      process.env.GOOGLE_CLIENT_ID.split('.')[0]
+      '<YOUR_GOOGLE_CLIENT_ID>'.split('.')[0]
     }:/oauth2redirect/google`,
   },
 });

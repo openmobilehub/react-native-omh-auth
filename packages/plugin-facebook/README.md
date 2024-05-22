@@ -49,15 +49,6 @@ FACEBOOK_CLIENT_ID=<YOUR_FACEBOOK_APP_ID>
 FACEBOOK_CLIENT_SECRET=<YOUR_FACEBOOK_APP_SECRET>
 ```
 
-### iOS
-
-Add a new entry to your **.env** file:
-
-```bash title=".env"
-FACEBOOK_CLIENT_ID=<YOUR_FACEBOOK_APP_ID>
-FACEBOOK_CLIENT_SECRET=<YOUR_FACEBOOK_APP_SECRET>
-```
-
 ## Usage
 
 ### Initializing
@@ -73,9 +64,9 @@ await FacebookAuth.initialize({
   },
   ios: {
     scopes: ['public_profile', 'email'],
-    clientId: process.env.FACEBOOK_CLIENT_ID,
-    clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    redirectUrl: `fb${process.env.FACEBOOK_CLIENT_ID}://authorize/`,
+    clientId: '<YOUR_FACEBOOK_APP_ID>',
+    clientSecret: '<YOUR_FACEBOOK_APP_SECRET>',
+    redirectUrl: `fb${'<YOUR_FACEBOOK_APP_ID>'}://authorize/`,
   },
 });
 ```

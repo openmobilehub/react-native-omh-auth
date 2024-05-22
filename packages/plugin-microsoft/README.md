@@ -50,14 +50,6 @@ MICROSOFT_HOST_PATH=<YOUR_ANDROID_PACKAGE_NAME>.MainApplication
 MICROSOFT_SIGNATURE_HASH=<YOUR_MICROSOFT_SIGNATURE_HASH>
 ```
 
-### iOS
-
-Add a new entry to your **.env** file:
-
-```bash title=".env"
-MICROSOFT_CLIENT_ID=<YOUR_MICROSOFT_CLIENT_ID>
-```
-
 ## Usage
 
 ### Initializing
@@ -74,7 +66,7 @@ await MicrosoftAuth.initialize({
   },
   ios: {
     scopes: ['User.Read', 'openid', 'profile', 'email', 'offline_access'],
-    clientId: process.env.MICROSOFT_CLIENT_ID,
+    clientId: '<YOUR_MICROSOFT_CLIENT_ID>',
     redirectUrl: 'msauth.com.omh.auth.sample://auth/',
   },
 });

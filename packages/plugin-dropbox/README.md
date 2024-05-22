@@ -48,15 +48,6 @@ Add a new entry to your **android/local.properties** file:
 DROPBOX_CLIENT_ID=<YOUR_DROPBOX_APP_KEY>
 ```
 
-### iOS
-
-Add a new entry to your **.env** file:
-
-```bash title=".env"
-DROPBOX_CLIENT_ID=<YOUR_DROPBOX_APP_KEY>
-DROPBOX_CLIENT_SECRET=<YOUR_DROPBOX_APP_SECRET>
-```
-
 ## Usage
 
 ### Initializing
@@ -72,8 +63,8 @@ await DropboxAuth.initialize({
   },
   ios: {
     scopes: ['account_info.read', 'sharing.read'],
-    clientId: process.env.DROPBOX_CLIENT_ID,
-    clientSecret: process.env.DROPBOX_CLIENT_SECRET,
+    clientId: '<YOUR_DROPBOX_APP_KEY>',
+    clientSecret: '<YOUR_DROPBOX_APP_SECRET>',
     redirectUrl: '<YOUR_REDIRECT_URL>',
   },
 });
