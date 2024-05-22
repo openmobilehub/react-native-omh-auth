@@ -5,58 +5,19 @@ import {
   getAuthProvider,
   PROVIDER_NAMES,
   SignedInProviderContext,
+  type Providers,
 } from '@/app/SignedInProvider';
 
 export default function HomeScreen() {
   const {signInWithProvider} = React.useContext(SignedInProviderContext);
 
-  async function onGoogleSignIn() {
+  async function onSignIn(PROVIDER_NAME: Providers) {
     try {
-      const googleAuthProvider = await getAuthProvider(PROVIDER_NAMES.GOOGLE);
+      const googleAuthProvider = await getAuthProvider(PROVIDER_NAME);
 
       await googleAuthProvider.signIn();
 
-      signInWithProvider(PROVIDER_NAMES.GOOGLE);
-    } catch (error: any) {
-      Alert.alert('Error', error?.message);
-    }
-  }
-
-  async function onFacebookSignIn() {
-    try {
-      const facebookAuthProvider = await getAuthProvider(
-        PROVIDER_NAMES.FACEBOOK,
-      );
-
-      await facebookAuthProvider.signIn();
-
-      signInWithProvider(PROVIDER_NAMES.FACEBOOK);
-    } catch (error: any) {
-      Alert.alert('Error', error?.message);
-    }
-  }
-
-  async function onMicrosoftSignIn() {
-    try {
-      const microsoftAuthProvider = await getAuthProvider(
-        PROVIDER_NAMES.MICROSOFT,
-      );
-
-      await microsoftAuthProvider.signIn();
-
-      signInWithProvider(PROVIDER_NAMES.MICROSOFT);
-    } catch (error: any) {
-      Alert.alert('Error', error?.message);
-    }
-  }
-
-  async function onDropboxSignIn() {
-    try {
-      const dropboxAuthProvider = await getAuthProvider(PROVIDER_NAMES.DROPBOX);
-
-      await dropboxAuthProvider.signIn();
-
-      signInWithProvider(PROVIDER_NAMES.DROPBOX);
+      signInWithProvider(PROVIDER_NAME);
     } catch (error: any) {
       Alert.alert('Error', error?.message);
     }
@@ -65,22 +26,22 @@ export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <Button
-        onPress={onGoogleSignIn}
+        onPress={() => onSignIn(PROVIDER_NAMES.GOOGLE)}
         title="Sign in with Google"
         testID="sign-in-google"
       />
       <Button
-        onPress={onFacebookSignIn}
+        onPress={() => onSignIn(PROVIDER_NAMES.FACEBOOK)}
         title="Sign in with Facebook"
         testID="sign-in-facebook"
       />
       <Button
-        onPress={onMicrosoftSignIn}
+        onPress={() => onSignIn(PROVIDER_NAMES.MICROSOFT)}
         title="Sign in with Microsoft"
         testID="sign-in-microsoft"
       />
       <Button
-        onPress={onDropboxSignIn}
+        onPress={() => onSignIn(PROVIDER_NAMES.DROPBOX)}
         title="Sign in with Dropbox"
         testID="sign-in-dropbox"
       />

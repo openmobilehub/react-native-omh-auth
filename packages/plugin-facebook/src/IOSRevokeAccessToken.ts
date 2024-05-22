@@ -1,7 +1,8 @@
-import type {AuthData} from '@openmobilehub/auth-core';
+import type {AuthConfig, AuthData} from '@openmobilehub/auth-core';
 import axios from 'redaxios';
 
 export default async function IOSRevokeAccessToken(
+  _: () => AuthConfig,
   getAuthData: () => AuthData,
 ) {
   const authData = getAuthData();

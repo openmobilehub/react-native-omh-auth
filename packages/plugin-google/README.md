@@ -28,7 +28,7 @@ npm add @openmobilehub/auth-google
 
 :::info[Prerequisites]
 
-Each plugin requires you to follow the [iOS](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#ios-configuration) and [Android](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#android-configuration) configuration prior to interacting with it.
+Each plugin requires you to follow the [iOS](https://www.openmobilehub.com/react-native-omh-auth/docs/getting-started#ios-configuration) and [Android](https://www.openmobilehub.com/react-native-omh-auth/docs/getting-started#android-configuration) configuration prior to interacting with it.
 
 :::
 
@@ -47,14 +47,6 @@ Add a new entry to your **android/local.properties** file:
 GOOGLE_CLIENT_ID=<YOUR_GOOGLE_CLIENT_ID>
 ```
 
-### iOS
-
-Add a new entry to your **.env** file:
-
-```bash title=".env"
-GOOGLE_CLIENT_ID=<YOUR_GOOGLE_CLIENT_ID>
-```
-
 ## Usage
 
 ### Initializing
@@ -70,9 +62,9 @@ await GoogleAuth.initialize({
   },
   ios: {
     scopes: ['openid', 'profile', 'email'],
-    clientId: process.env.GOOGLE_CLIENT_ID,
+    clientId: '<YOUR_GOOGLE_CLIENT_ID>',
     redirectUrl: `com.googleusercontent.apps.${
-      process.env.GOOGLE_CLIENT_ID.split('.')[0]
+      '<YOUR_GOOGLE_CLIENT_ID>'.split('.')[0]
     }:/oauth2redirect/google`,
   },
 });
@@ -86,7 +78,7 @@ On a [**GMS**](https://www.android.com/gms) enabled device, Google SDK automatic
 
 :::
 
-Interacting with the Google provider follows the same pattern as other providers since they all implement the `IAuthModule` interface. For a comprehensive list of available methods, refer to the [Quick Start](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#sign-in) guide.
+Interacting with the Google provider follows the same pattern as other providers since they all implement the `IAuthModule` interface. For a comprehensive list of available methods, refer to the [Quick Start](https://www.openmobilehub.com/react-native-omh-auth/docs/getting-started#sign-in) guide.
 
 ## License
 

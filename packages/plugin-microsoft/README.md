@@ -28,7 +28,7 @@ npm add @openmobilehub/auth-microsoft
 
 :::info[Prerequisites]
 
-Each plugin requires you to follow the [iOS](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#ios-configuration) and [Android](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#android-configuration) configuration prior to interacting with it.
+Each plugin requires you to follow the [iOS](https://www.openmobilehub.com/react-native-omh-auth/docs/getting-started#ios-configuration) and [Android](https://www.openmobilehub.com/react-native-omh-auth/docs/getting-started#android-configuration) configuration prior to interacting with it.
 
 :::
 
@@ -46,16 +46,8 @@ To access Google APIs, please follow these steps in order to obtain the **Client
 Add a new entry to your **android/local.properties** file:
 
 ```bash title="android/local.properties"
-MICROSOFT_SIGNATURE_HASH=<YOUR_MICROSOFT_SIGNATURE_HASH>
 MICROSOFT_HOST_PATH=<YOUR_ANDROID_PACKAGE_NAME>.MainApplication
-```
-
-### iOS
-
-Add a new entry to your **.env** file:
-
-```bash title=".env"
-MICROSOFT_CLIENT_ID=<YOUR_MICROSOFT_CLIENT_ID>
+MICROSOFT_SIGNATURE_HASH=<YOUR_MICROSOFT_SIGNATURE_HASH>
 ```
 
 ## Usage
@@ -74,7 +66,7 @@ await MicrosoftAuth.initialize({
   },
   ios: {
     scopes: ['User.Read', 'openid', 'profile', 'email', 'offline_access'],
-    clientId: process.env.MICROSOFT_CLIENT_ID,
+    clientId: '<YOUR_MICROSOFT_CLIENT_ID>',
     redirectUrl: 'msauth.com.omh.auth.sample://auth/',
   },
 });
@@ -88,7 +80,7 @@ Due to current [limitations](https://github.com/AzureAD/microsoft-authentication
 
 :::
 
-Interacting with the Microsoft provider follows the same pattern as other providers since they all implement the `IAuthModule` interface. For a comprehensive list of available methods, refer to the [Quick Start](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#sign-in) guide.
+Interacting with the Microsoft provider follows the same pattern as other providers since they all implement the `IAuthModule` interface. For a comprehensive list of available methods, refer to the [Quick Start](https://www.openmobilehub.com/react-native-omh-auth/docs/getting-started#sign-in) guide.
 
 ## License
 

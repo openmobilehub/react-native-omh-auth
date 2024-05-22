@@ -28,7 +28,7 @@ npm add @openmobilehub/auth-facebook
 
 :::info[Prerequisites]
 
-Each plugin requires you to follow the [iOS](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#ios-configuration) and [Android](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#android-configuration) configuration prior to interacting with it.
+Each plugin requires you to follow the [iOS](https://www.openmobilehub.com/react-native-omh-auth/docs/getting-started#ios-configuration) and [Android](https://www.openmobilehub.com/react-native-omh-auth/docs/getting-started#android-configuration) configuration prior to interacting with it.
 
 :::
 
@@ -49,15 +49,6 @@ FACEBOOK_CLIENT_ID=<YOUR_FACEBOOK_APP_ID>
 FACEBOOK_CLIENT_SECRET=<YOUR_FACEBOOK_APP_SECRET>
 ```
 
-### iOS
-
-Add a new entry to your **.env** file:
-
-```bash title=".env"
-FACEBOOK_CLIENT_ID=<YOUR_FACEBOOK_APP_ID>
-FACEBOOK_CLIENT_SECRET=<YOUR_FACEBOOK_APP_SECRET>
-```
-
 ## Usage
 
 ### Initializing
@@ -73,16 +64,16 @@ await FacebookAuth.initialize({
   },
   ios: {
     scopes: ['public_profile', 'email'],
-    clientId: process.env.FACEBOOK_CLIENT_ID,
-    clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    redirectUrl: `fb${process.env.FACEBOOK_CLIENT_ID}://authorize/`,
+    clientId: '<YOUR_FACEBOOK_APP_ID>',
+    clientSecret: '<YOUR_FACEBOOK_APP_SECRET>',
+    redirectUrl: `fb${'<YOUR_FACEBOOK_APP_ID>'}://authorize/`,
   },
 });
 ```
 
 ### Other methods
 
-Interacting with the Facebook provider follows the same pattern as other providers since they all implement the `IAuthModule` interface. For a comprehensive list of available methods, refer to the [Quick Start](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#sign-in) guide.
+Interacting with the Facebook provider follows the same pattern as other providers since they all implement the `IAuthModule` interface. For a comprehensive list of available methods, refer to the [Quick Start](https://www.openmobilehub.com/react-native-omh-auth/docs/getting-started#sign-in) guide.
 
 ## License
 

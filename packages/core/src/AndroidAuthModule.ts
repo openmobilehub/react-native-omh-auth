@@ -1,13 +1,13 @@
 import {NativeModules} from 'react-native';
 
 import type {
-  AuthConfig,
   AuthModuleConfig,
   IAuthModule,
   OmhUserProfile,
+  PlatformAuthConfig,
 } from './types';
 
-export default class AndroidAuthModule<C extends AuthConfig>
+export default class AndroidAuthModule<C extends PlatformAuthConfig>
   implements IAuthModule<C>
 {
   authNativeModule: any;

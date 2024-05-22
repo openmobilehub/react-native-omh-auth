@@ -1,17 +1,19 @@
-import type {AuthData} from '@openmobilehub/auth-core';
+import type {AuthConfig, AuthData} from '@openmobilehub/auth-core';
 import axios from 'redaxios';
 
 export default async function IOSRefreshAccessToken(
+  getConfig: () => AuthConfig,
   getAuthData: () => AuthData,
 ) {
+  const config = getConfig();
   const authData = getAuthData();
 
   const formData = new FormData();
 
   formData.append('grant_type', 'refresh_token');
   formData.append('refresh_token', authData.refreshToken);
-  formData.append('client_id', process.env.DROPBOX_CLIENT_ID!);
-  formData.append('client_secret', process.env.DROPBOX_CLIENT_SECRET!);
+  formData.append('client_id', config.clientId);
+  formData.append('client_secret', config.clientSecret!);
 
   try {
     const request = await axios.post(

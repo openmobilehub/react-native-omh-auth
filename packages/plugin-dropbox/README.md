@@ -28,7 +28,7 @@ npm add @openmobilehub/auth-dropbox
 
 :::info[Prerequisites]
 
-Each plugin requires you to follow the [iOS](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#ios-configuration) and [Android](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#android-configuration) configuration prior to interacting with it.
+Each plugin requires you to follow the [iOS](https://www.openmobilehub.com/react-native-omh-auth/docs/getting-started#ios-configuration) and [Android](https://www.openmobilehub.com/react-native-omh-auth/docs/getting-started#android-configuration) configuration prior to interacting with it.
 
 :::
 
@@ -48,15 +48,6 @@ Add a new entry to your **android/local.properties** file:
 DROPBOX_CLIENT_ID=<YOUR_DROPBOX_APP_KEY>
 ```
 
-### iOS
-
-Add a new entry to your **.env** file:
-
-```bash title=".env"
-DROPBOX_CLIENT_ID=<YOUR_DROPBOX_APP_KEY>
-DROPBOX_CLIENT_SECRET=<YOUR_DROPBOX_APP_SECRET>
-```
-
 ## Usage
 
 ### Initializing
@@ -72,8 +63,8 @@ await DropboxAuth.initialize({
   },
   ios: {
     scopes: ['account_info.read', 'sharing.read'],
-    clientId: process.env.DROPBOX_CLIENT_ID,
-    clientSecret: process.env.DROPBOX_CLIENT_SECRET,
+    clientId: '<YOUR_DROPBOX_APP_KEY>',
+    clientSecret: '<YOUR_DROPBOX_APP_SECRET>',
     redirectUrl: '<YOUR_REDIRECT_URL>',
   },
 });
@@ -81,7 +72,7 @@ await DropboxAuth.initialize({
 
 ### Other methods
 
-Interacting with the Dropbox provider follows the same pattern as other providers since they all implement the `IAuthModule` interface. For a comprehensive list of available methods, refer to the [Quick Start](https://special-barnacle-93vn82m.pages.github.io/docs/getting-started#sign-in) guide.
+Interacting with the Dropbox provider follows the same pattern as other providers since they all implement the `IAuthModule` interface. For a comprehensive list of available methods, refer to the [Quick Start](https://www.openmobilehub.com/react-native-omh-auth/docs/getting-started#sign-in) guide.
 
 ## License
 

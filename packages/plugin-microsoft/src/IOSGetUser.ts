@@ -1,4 +1,8 @@
-import type {AuthData, OmhUserProfile} from '@openmobilehub/auth-core';
+import type {
+  AuthConfig,
+  AuthData,
+  OmhUserProfile,
+} from '@openmobilehub/auth-core';
 import axios from 'redaxios';
 
 function blobToBase64(blob: Blob): Promise<string> {
@@ -23,6 +27,7 @@ async function getUserPicture(pictureUrl: string, accessToken: string) {
 }
 
 export default async function IOSGetUser(
+  _: () => AuthConfig,
   getAuthData: () => AuthData,
 ): Promise<OmhUserProfile> {
   const authData = getAuthData();

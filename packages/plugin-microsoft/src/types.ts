@@ -1,7 +1,11 @@
-import type {AndroidAuthConfig, AuthConfig} from '@openmobilehub/auth-core';
+import type {
+  AndroidAuthConfig,
+  PlatformAuthConfig,
+} from '@openmobilehub/auth-core';
 
 type AndroidMicrosoftAuthConfig = AndroidAuthConfig & {
   configFileName: string;
 };
 
-export type MicrosoftAuthConfig = AuthConfig<AndroidMicrosoftAuthConfig>;
+export type MicrosoftAuthConfig =
+  PlatformAuthConfig<AndroidMicrosoftAuthConfig>;
