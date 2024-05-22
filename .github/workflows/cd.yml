@@ -4,11 +4,11 @@ on:
   push:
     branches: [main, ci]
 
+env:
+  SAMPLE_APP_PATH: 'apps/sample-app'
+
 jobs:
   build-android-sample-app:
-    env:
-      SAMPLE_APP_PATH: 'apps/sample-app/android'
-
     runs-on: ubuntu-latest
 
     steps:
@@ -37,30 +37,36 @@ jobs:
 
       - name: Add secrets to `local.properties`
         run: |
-          echo GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }} >> ${{ env.SAMPLE_APP_PATH }}/local.properties &&
-          echo FACEBOOK_CLIENT_ID=${{ secrets.FACEBOOK_CLIENT_ID }} >> ${{ env.SAMPLE_APP_PATH }}/local.properties &&
-          echo FACEBOOK_CLIENT_SECRET=${{ secrets.FACEBOOK_CLIENT_SECRET }} >> ${{ env.SAMPLE_APP_PATH }}/local.properties &&
-          echo MICROSOFT_CLIENT_ID=${{ secrets.MICROSOFT_CLIENT_ID }} >> ${{ env.SAMPLE_APP_PATH }}/local.properties &&
-          echo MICROSOFT_HOST_PATH=com.openmobilehub.reactnative.auth.sample.MainApplication >> ${{ env.SAMPLE_APP_PATH }}/local.properties &&
-          echo MICROSOFT_SIGNATURE_HASH=${{ secrets.MICROSOFT_SIGNATURE_HASH }} >> ${{ env.SAMPLE_APP_PATH }}/local.properties &&
-          echo DROPBOX_CLIENT_ID=${{ secrets.DROPBOX_CLIENT_ID }} >> ${{ env.SAMPLE_APP_PATH }}/local.properties
+          echo GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }} >> ${{ env.SAMPLE_APP_PATH }}/android/local.properties &&
+          echo FACEBOOK_CLIENT_ID=${{ secrets.FACEBOOK_CLIENT_ID }} >> ${{ env.SAMPLE_APP_PATH }}/android/local.properties &&
+          echo FACEBOOK_CLIENT_SECRET=${{ secrets.FACEBOOK_CLIENT_SECRET }} >> ${{ env.SAMPLE_APP_PATH }}/android/local.properties &&
+          echo MICROSOFT_CLIENT_ID=${{ secrets.MICROSOFT_CLIENT_ID }} >> ${{ env.SAMPLE_APP_PATH }}/android/local.properties &&
+          echo MICROSOFT_HOST_PATH=com.openmobilehub.reactnative.auth.sample.MainApplication >> ${{ env.SAMPLE_APP_PATH }}/android/local.properties &&
+          echo MICROSOFT_SIGNATURE_HASH=${{ secrets.MICROSOFT_SIGNATURE_HASH }} >> ${{ env.SAMPLE_APP_PATH }}/android/local.properties &&
+          echo DROPBOX_CLIENT_ID=${{ secrets.DROPBOX_CLIENT_ID }} >> ${{ env.SAMPLE_APP_PATH }}/android/local.properties
+
+      - name: Add secrets to `.env`
+        run: |
+          echo GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }} >> apps/sample-app/.env &&
+          echo FACEBOOK_CLIENT_ID=${{ secrets.FACEBOOK_CLIENT_ID }} >> apps/sample-app/.env &&
+          echo FACEBOOK_CLIENT_SECRET=${{ secrets.FACEBOOK_CLIENT_SECRET }} >> apps/sample-app/.env &&
+          echo MICROSOFT_CLIENT_ID=${{ secrets.MICROSOFT_CLIENT_ID }} >> apps/sample-app/.env &&
+          echo DROPBOX_CLIENT_ID=${{ secrets.DROPBOX_CLIENT_ID }} >> apps/sample-app/.env &&
+          echo DROPBOX_CLIENT_SECRET=${{ secrets.DROPBOX_CLIENT_SECRET }} >> apps/sample-app/.env
 
       - name: Build release
         run: |
-          cd ${{ env.SAMPLE_APP_PATH }}
+          cd ${{ env.SAMPLE_APP_PATH }}/android
           ./gradlew assembleRelease
 
       - name: Upload .apk
         uses: actions/upload-artifact@v4
         with:
           name: apk
-          path: ${{ env.SAMPLE_APP_PATH }}/app/build/outputs/apk/release/app-release.apk
+          path: ${{ env.SAMPLE_APP_PATH }}/android/app/build/outputs/apk/release/app-release.apk
           retention-days: 1
 
   build-ios-sample-app:
-    env:
-      SAMPLE_APP_PATH: 'apps/sample-app/ios'
-
     runs-on: macos-14
 
     steps:
@@ -123,13 +129,13 @@ jobs:
 
       - name: install Cocoapod dependencies
         run: |
-          cd ${{ env.SAMPLE_APP_PATH }}
+          cd ${{ env.SAMPLE_APP_PATH }}/ios
           pod repo update
           pod install
 
       - name: build archive
         run: |
-          cd ${{ env.SAMPLE_APP_PATH }}
+          cd ${{ env.SAMPLE_APP_PATH }}/ios
           xcodebuild -workspace RNAuthSample.xcworkspace \
           -scheme "RNAuthSample" \
           -sdk iphoneos \
