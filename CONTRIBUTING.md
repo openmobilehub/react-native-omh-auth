@@ -74,6 +74,17 @@ To run the example app on iOS:
 yarn workspace react-native-omh-auth-sample ios
 ```
 
+## Creating a new plugin
+
+You can create a new plugin by following the existing plugins structure:
+
+- [Google](https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/plugin-google)
+- [Facebook](https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/plugin-facebook)
+- [Microsoft](https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/plugin-microsoft)
+- [Dropbox](https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/plugin-dropbox)
+
+All providers should inherit the [`IAuthModule`](https://www.openmobilehub.com/react-native-omh-auth/docs/api/interfaces/openmobilehub_auth_core.IAuthModule#methods) from the [`@openmobilehub/auth-core`](https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/core), to ensure consistency across different providers.
+
 ## Linting
 
 We use [TypeScript](https://www.typescriptlang.org) for type checking, [ESLint](https://eslint.org) with [Prettier](https://prettier.io) for linting and formatting the code.
