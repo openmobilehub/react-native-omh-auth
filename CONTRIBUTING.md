@@ -24,6 +24,20 @@ It is configured to use the local version of the library, so any changes you mak
 
 To edit the Java or Kotlin files, open `apps/sample-app/android` in Android studio and find the source files at `omh_react-native-auth-*` under `Android`.
 
+### Environment setup
+
+Before getting started, the documentation assumes you are able to create a project with React Native. If you do not meet these prerequisites, follow the links below:
+
+[React Native - Setting up the development environment](https://reactnative.dev/docs/environment-setup)
+
+### Install CocoaPods
+
+Navigate to the ios directory and run the following command to install the required CocoaPods dependencies:
+
+```bash
+cd apps/sample-app/ios && pod install
+```
+
 ### Providers setup
 
 Create files from templates that contain secrets for specific providers. If you don't want to setup certain providers, you can leave their values empty.
@@ -59,6 +73,17 @@ To run the example app on iOS:
 ```bash
 yarn workspace react-native-omh-auth-sample ios
 ```
+
+## Creating a new plugin
+
+You can create a new plugin by following the existing plugins structure:
+
+- [Google](https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/plugin-google)
+- [Facebook](https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/plugin-facebook)
+- [Microsoft](https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/plugin-microsoft)
+- [Dropbox](https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/plugin-dropbox)
+
+All providers should inherit the [`IAuthModule`](https://www.openmobilehub.com/react-native-omh-auth/docs/api/interfaces/openmobilehub_auth_core.IAuthModule#methods) from the [`@openmobilehub/auth-core`](https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/core), to ensure consistency across different providers.
 
 ## Linting
 
