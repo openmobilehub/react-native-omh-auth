@@ -37,8 +37,8 @@ Each plugin requires you to follow the [iOS](https://www.openmobilehub.com/react
 To access Google APIs, please follow these steps in order to obtain the **Client ID**:
 
 1. [Create a new app](https://learn.microsoft.com/en-us/entra/identity-platform/tutorial-v2-android#register-your-application-with-microsoft-entra-id) in [Microsoft Azure](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/CreateApplicationBlade).
-2. Add the Android platform and specify your **Package Name** and **Signature Hash** for your app.
-3. Add the iOS platform and specify your **Bundle ID** for your app.
+2. Add the **Android** platform and specify your [**Package Name**](https://developer.android.com/build/configure-app-module#set-application-id) and [**Signature Hash**](https://learn.microsoft.com/en-us/entra/identity-platform/tutorial-v2-android#register-your-application-with-microsoft-entra-id:~:text=In%20the%20Signature%20hash%20section%20of%20the%20Configure%20your%20Android%20app%20pane%2C%20select%20Generating%20a%20development%20Signature%20Hash.%20and%20copy%20the%20KeyTool%20command%20to%20your%20command%20line.) for your app.
+3. Add the **iOS / macOS** platform and specify your [**Bundle ID**](https://developer.apple.com/documentation/xcode/preparing-your-app-for-distribution/#Set-the-bundle-ID) for your app.
 4. Download the **ms_auth_config.json** file and add it in the **android/app/src/main/res/raw** directory.
 
 ### Android

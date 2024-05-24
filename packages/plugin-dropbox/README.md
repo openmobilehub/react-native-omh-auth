@@ -37,7 +37,7 @@ Each plugin requires you to follow the [iOS](https://www.openmobilehub.com/react
 To access Google APIs, please follow these steps in order to obtain the **Client ID**:
 
 1. [Create a new app](https://developers.dropbox.com/oauth-guide) in [Dropbox Console](https://www.dropbox.com/developers/apps/create).
-2. Specify `<YOUR_IOS_BUNDLE_ID>://oauth` as your redirect URL for your app.
+2. Specify <code>\<[YOUR_APPLICATION_ID](https://developer.android.com/build/configure-app-module#set-application-id)\>://oauth</code> as your redirect URL for your app.
 3. Enable the `sharing.read` permission for your app.
 
 ### Android

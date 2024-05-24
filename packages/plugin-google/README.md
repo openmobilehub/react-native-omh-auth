@@ -37,7 +37,7 @@ Each plugin requires you to follow the [iOS](https://www.openmobilehub.com/react
 To access Google APIs, please follow these steps in order to obtain the **Client ID**:
 
 1. [Create a new app](https://developers.google.com/identity/protocols/oauth2/native-app#android) in [Google Cloud](https://console.cloud.google.com/projectcreate).
-2. Create an OAuth 2.0 Client ID Android application and specify your **Package Name** and [**SHA1 Fingerprint**](https://support.google.com/cloud/answer/6158849?authuser=1#installedapplications&zippy=%2Cnative-applications%2Candroid) for your app.
+2. Create an OAuth 2.0 Client ID Android application and specify your [**Package Name**](https://developer.android.com/build/configure-app-module#set-application-id) and [**SHA1 Fingerprint**](https://support.google.com/cloud/answer/6158849?authuser=1#installedapplications&zippy=%2Cnative-applications%2Candroid) for your app.
 
 ### Android
 

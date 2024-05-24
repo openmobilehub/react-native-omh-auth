@@ -37,7 +37,6 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/openmobilehub/react-native-omh-auth/tree/main/docs/',
@@ -51,12 +50,12 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/social-card.png',
     navbar: {
       title: 'React Native OMH Auth',
       logo: {
         alt: 'Logo',
-        src: 'img/logo.svg',
+        src: 'img/logo.png',
       },
       items: [
         {
