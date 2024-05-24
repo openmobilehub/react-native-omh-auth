@@ -44,10 +44,14 @@ Before proceeding with the setup, please ensure you have created an app for each
 
 Create files from templates that contain secrets for specific providers. If you don't want to setup certain providers, you can leave their values empty.
 
+#### Android
+
 ```bash
 # In apps/sample-app/android
 cp local.properties.sample local.properties
 ```
+
+#### iOS
 
 ```bash
 # In apps/sample-app
