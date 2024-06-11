@@ -1,4 +1,4 @@
-name: Build & Publish Docs
+name: Build & Publish Docs - Manual
 
 on:
   push:
@@ -9,6 +9,34 @@ env:
   SAMPLE_APP_PATH: 'apps/sample-app'
 
 jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/iron'
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build repo
+        run: yarn build
+
+      - name: Build docs
+        run: yarn workspace docs build
+
+      - name: Upload Build Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/build
   deploy-docs:
     needs: build-docs
 
