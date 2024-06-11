@@ -3,6 +3,7 @@ name: Distribute Sample App to App Center & Build Docs
 on:
   push:
     branches: [main, ci]
+  workflow_dispatch:
 
 env:
   SAMPLE_APP_PATH: 'apps/sample-app'
