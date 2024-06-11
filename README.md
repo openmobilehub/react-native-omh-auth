@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://www.openmobilehub.com/">
-    <img width="160px" src="https://www.openmobilehub.com/images/logo/omh_logo.png"/><br/>
+  <a href="https://openmobilehub.org/">
+    <img width="160px" src="https://openmobilehub.org/wp-content/uploads/sites/13/2024/06/OpenMobileHub-horizontal-color.svg"/><br/>
   </a>
   <h2 align="center">React Native OMH Auth</h2>
 </p>
@@ -33,20 +33,20 @@
 
 This is the main directory of the mono-repo for React Native OMH Auth. If you're searching for a particular package, please click on the corresponding package link below.
 
-- [Core](https://www.openmobilehub.com/react-native-omh-auth/docs/core)
-- [Google](https://www.openmobilehub.com/react-native-omh-auth/docs/google)
-- [Facebook](https://www.openmobilehub.com/react-native-omh-auth/docs/facebook)
-- [Microsoft](https://www.openmobilehub.com/react-native-omh-auth/docs/microsoft)
-- [Dropbox](https://www.openmobilehub.com/react-native-omh-auth/docs/dropbox)
+- [Core](https://openmobilehub.github.io/react-native-omh-auth/docs/core)
+- [Google](https://openmobilehub.github.io/react-native-omh-auth/docs/google)
+- [Facebook](https://openmobilehub.github.io/react-native-omh-auth/docs/facebook)
+- [Microsoft](https://openmobilehub.github.io/react-native-omh-auth/docs/microsoft)
+- [Dropbox](https://openmobilehub.github.io/react-native-omh-auth/docs/dropbox)
 
 ## Documentation
 
-- [Quick Start](https://www.openmobilehub.com/react-native-omh-auth/docs/getting-started)
-- [Reference API](https://www.openmobilehub.com/react-native-omh-auth/docs/api)
+- [Quick Start](https://openmobilehub.github.io/react-native-omh-auth/docs/getting-started)
+- [Reference API](https://openmobilehub.github.io/react-native-omh-auth/docs/api)
 
 ## Contributing
 
-- [Overview](https://www.openmobilehub.com/react-native-omh-auth/docs/contributing)
+- [Overview](https://openmobilehub.github.io/react-native-omh-auth/docs/contributing)
 - [Issues](https://github.com/openmobilehub/react-native-omh-auth/issues)
 - [PRs](https://github.com/openmobilehub/react-native-omh-auth/pulls)
 
