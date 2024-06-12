@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://www.openmobilehub.com/">
-    <img width="160px" src="https://github.com/openmobilehub/react-native-omh-auth/blob/main/docs/static/img/logo.png?raw=true"/><br/>
+    <img width="160px" src="https://openmobilehub.github.io/react-native-omh-auth/img/logo.png"/><br/>
   </a>
   <h2 align="center">React Native OMH Auth - Microsoft</h2>
 </p>
