@@ -39,6 +39,42 @@ This is the main directory of the mono-repo for React Native OMH Auth. If you're
 - [Microsoft](https://www.openmobilehub.com/react-native-omh-auth/docs/microsoft)
 - [Dropbox](https://www.openmobilehub.com/react-native-omh-auth/docs/dropbox)
 
+## A single codebase, running seamlessly on any device
+
+For instance, the following screenshots showcase multiple devices with Android, both with GMS and
+Non-GMS, and iOS. The same app works without changing a single line of code, supporting multiple auth
+provider implementations.
+
+<div align="center">
+
+| Android GMS Device                                                                        | Android Non GMS Device                                                                        | iOS Device                                                                                |
+|-------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|
+| ![](https://github.com/openmobilehub/react-native-omh-auth/blob/main/assets/auth_gms.gif) | ![](https://github.com/openmobilehub/react-native-omh-auth/blob/main/assets/auth_non_gms.gif) | ![](https://github.com/openmobilehub/react-native-omh-auth/blob/main/assets/auth_ios.gif) |
+
+</div>
+
+<details>
+  <summary>Show more</summary>
+
+Android:
+
+| Facebook login                                                                                         | Microsoft login                                                                                  | Dropbox login                                                                                         |
+|--------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| ![](https://github.com/openmobilehub/react-native-omh-auth/blob/main/assets/auth_facebook_android.gif) | ![](https://github.com/openmobilehub/react-native-omh-auth/blob/main/assets/auth_ms_android.gif) | ![](https://github.com/openmobilehub/react-native-omh-auth/blob/main/assets/auth_dropbox_android.gif) |
+
+
+iOS:
+
+| Facebook login                                                                                     | Microsoft login                                                                              | Dropbox login                                                                                     |
+|----------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|
+| ![](https://github.com/openmobilehub/react-native-omh-auth/blob/main/assets/auth_facebook_ios.gif) | ![](https://github.com/openmobilehub/react-native-omh-auth/blob/main/assets/auth_ms_ios.gif) | ![](https://github.com/openmobilehub/react-native-omh-auth/blob/main/assets/auth_dropbox_ios.gif) |
+
+
+<div align="center">
+
+</div>
+</details>
+
 ## Documentation
 
 - [Quick Start](https://www.openmobilehub.com/react-native-omh-auth/docs/getting-started)
