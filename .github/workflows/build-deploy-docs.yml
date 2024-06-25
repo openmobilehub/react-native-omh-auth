@@ -1,4 +1,4 @@
-name: Build & Publish Docs - Manual
+name: Build & Deploy Docs
 
 on:
   push:
@@ -37,6 +37,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs/build
+
   deploy-docs:
     needs: build-docs
 
