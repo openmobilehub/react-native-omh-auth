@@ -111,17 +111,23 @@ export default function SignedInScreen() {
         />
 
         <View style={styles.userProfileContents}>
-          <Text testID="name">Name: {userProfile?.name}</Text>
+          <Text style={styles.label} testID="name">
+            Name: {userProfile?.name}
+          </Text>
 
-          <Text testID="surname">Surname: {userProfile?.surname}</Text>
+          <Text style={styles.label} testID="surname">
+            Surname: {userProfile?.surname}
+          </Text>
 
-          <Text testID="email">Email: {userProfile?.email}</Text>
+          <Text style={styles.label} testID="email">
+            Email: {userProfile?.email}
+          </Text>
 
-          <Text>Token:</Text>
+          <Text style={styles.label}>Token:</Text>
         </View>
       </View>
 
-      <Text testID="token" numberOfLines={10}>
+      <Text style={styles.label} testID="token" numberOfLines={10}>
         {accessToken}
       </Text>
 
@@ -173,5 +179,8 @@ const styles = StyleSheet.create({
     marginTop: 'auto',
     alignItems: 'flex-start',
     rowGap: 7.5,
+  },
+  label: {
+    color: 'black',
   },
 });
