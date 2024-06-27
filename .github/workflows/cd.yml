@@ -1,4 +1,4 @@
-name: Distribute Sample App to App Center & Build Docs
+name: Continuous Deployment
 
 on:
   push:
@@ -10,6 +10,8 @@ env:
 
 jobs:
   build-android-sample-app:
+    name: Build Android Sample App
+
     runs-on: ubuntu-latest
 
     steps:
@@ -65,9 +67,10 @@ jobs:
         with:
           name: apk
           path: ${{ env.SAMPLE_APP_PATH }}/android/app/build/outputs/apk/release/app-release.apk
-          retention-days: 1
 
   build-ios-sample-app:
+    name: Build iOS Sample App
+
     runs-on: macos-14
 
     steps:
@@ -164,9 +167,10 @@ jobs:
         with:
           name: ipa
           path: ${{ runner.temp }}/build/RNAuthSample.ipa
-          retention-days: 1
 
   deploy-android-and-ios-sample-app:
+    name: Deploy Android and iOS Sample App to AppCenter
+
     needs: [build-android-sample-app, build-ios-sample-app]
 
     runs-on: ubuntu-latest
@@ -201,3 +205,99 @@ jobs:
           notifyTesters: true
           debug: true
           gitReleaseNotes: true
+
+  check-version:
+    name: Check if version changed
+
+    runs-on: ubuntu-latest
+
+    outputs:
+      package_version: ${{ steps.check_version.outputs.package_version }}
+      version_changed: ${{ steps.check_version.outputs.version_changed }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check if version changed
+        id: check_version
+        run: bash ./.github/scripts/check-version.sh
+
+  publish-packages:
+    name: Publish NPM packages
+
+    needs: check-version
+
+    runs-on: ubuntu-latest
+
+    if: needs.check-version.outputs.version_changed == 'true'
+
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/iron'
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build repo
+        run: yarn build
+
+      - name: 'Setup NPM token'
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: 'Publish packages'
+        run: npx lerna publish from-package --no-changelog --yes
+
+  create-release:
+    name: Create Release and Upload Artifacts
+
+    needs: [build-android-sample-app, build-ios-sample-app, check-version]
+
+    runs-on: ubuntu-latest
+
+    if: needs.check-version.outputs.version_changed == 'true'
+
+    env:
+      TAG_NAME: v${{ needs.check-version.outputs.package_version }}
+
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+
+      - name: 'Setup git user'
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "openmobilehub@users.noreply.github.com"
+
+      - name: 'Create new tag'
+        run: |
+          git tag ${{ env.TAG_NAME }}
+          git push origin ${{ env.TAG_NAME }}
+
+      - name: Download .apk & .ipa files
+        uses: actions/download-artifact@v4
+        with:
+          merge-multiple: true
+
+      - name: Rename .apk & .ipa files
+        run: |
+          mv app-release.apk sample-app.apk
+          mv RNAuthSample.ipa sample-app.ipa
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.TAG_NAME }}
+          files: |
+            sample-app.apk
+            sample-app.ipa

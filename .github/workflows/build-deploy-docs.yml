@@ -10,6 +10,8 @@ env:
 
 jobs:
   build-docs:
+    name: Build Docs
+
     runs-on: ubuntu-latest
 
     steps:
@@ -39,6 +41,8 @@ jobs:
           path: docs/build
 
   deploy-docs:
+    name: Deploy Docs
+
     needs: build-docs
 
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
