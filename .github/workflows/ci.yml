@@ -1,4 +1,4 @@
-name: Lint, typecheck files, run unit tests & build docs
+name: Continuous Integration
 
 on:
   pull_request:
@@ -7,6 +7,8 @@ on:
 
 jobs:
   lint-typecheck-unit-test-build-docs:
+    name: Lint, Typecheck, Unit Test, Build Docs
+
     runs-on: ubuntu-latest
 
     steps:
@@ -18,7 +20,7 @@ jobs:
         with:
           node-version: 'lts/iron'
 
-      - name: Enable corepack
+      - name: Enable JS corepack
         run: corepack enable
 
       - name: Install dependencies
