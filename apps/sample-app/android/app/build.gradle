@@ -90,27 +90,31 @@ android {
         def properties = new Properties()
         properties.load(project.rootProject.file("local.properties").newDataInputStream())
 
-        def clientId = properties.getProperty("MICROSOFT_CLIENT_ID")
-        def hostPath = properties.getProperty("MICROSOFT_HOST_PATH")
-        def signatureHash = URLEncoder.encode(properties.getProperty("MICROSOFT_SIGNATURE_HASH"), "UTF-8")
+        def microsoftClientId = properties.getProperty("MICROSOFT_CLIENT_ID")
+        def microsoftSignatureHash = properties.getProperty("MICROSOFT_SIGNATURE_HASH")
+
+        def rawDir = file("./src/main/res/raw")
+        if (!rawDir.exists()) {
+            rawDir.mkdirs()
+        }
 
         def configJson = """
+            {
+              "client_id": "$microsoftClientId",
+              "authorization_user_agent": "DEFAULT",
+              "redirect_uri": "msauth://$applicationId/${URLEncoder.encode(microsoftSignatureHash, "UTF-8")}",
+              "authorities": [
                 {
-                  "client_id": "$clientId",
-                  "authorization_user_agent": "DEFAULT",
-                  "redirect_uri": "msauth://$hostPath/$signatureHash",
-                  "authorities": [
-                    {
-                      "type": "AAD",
-                      "audience": {
-                        "type": "AzureADandPersonalMicrosoftAccount",
-                        "tenant_id": "common"
-                      }
-                    }
-                  ],
-                  "account_mode": "SINGLE"
+                  "type": "AAD",
+                  "audience": {
+                    "type": "AzureADandPersonalMicrosoftAccount",
+                    "tenant_id": "common"
+                  }
                 }
-                """.strip().stripIndent()
+              ],
+              "account_mode": "SINGLE"
+            }
+        """.stripIndent()
 
         file("./src/main/res/raw/ms_auth_config.json").write(configJson)
     }

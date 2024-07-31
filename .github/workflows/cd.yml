@@ -44,7 +44,6 @@ jobs:
           echo FACEBOOK_CLIENT_ID=${{ secrets.FACEBOOK_CLIENT_ID }} >> ${{ env.SAMPLE_APP_PATH }}/android/local.properties &&
           echo FACEBOOK_CLIENT_SECRET=${{ secrets.FACEBOOK_CLIENT_SECRET }} >> ${{ env.SAMPLE_APP_PATH }}/android/local.properties &&
           echo MICROSOFT_CLIENT_ID=${{ secrets.MICROSOFT_CLIENT_ID }} >> ${{ env.SAMPLE_APP_PATH }}/android/local.properties &&
-          echo MICROSOFT_HOST_PATH=com.openmobilehub.reactnative.auth.sample.MainApplication >> ${{ env.SAMPLE_APP_PATH }}/android/local.properties &&
           echo MICROSOFT_SIGNATURE_HASH=${{ secrets.MICROSOFT_SIGNATURE_HASH }} >> ${{ env.SAMPLE_APP_PATH }}/android/local.properties &&
           echo DROPBOX_CLIENT_ID=${{ secrets.DROPBOX_CLIENT_ID }} >> ${{ env.SAMPLE_APP_PATH }}/android/local.properties
 
