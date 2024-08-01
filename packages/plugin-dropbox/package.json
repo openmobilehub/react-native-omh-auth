@@ -1,7 +1,7 @@
 {
   "name": "@openmobilehub/auth-dropbox",
   "description": "React Native OMH Auth - Dropbox simplifies Dropbox authentication integration into React Native applications.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "lib/commonjs/index.js",
   "react-native": "src/index.tsx",
   "source": "src/index.tsx",

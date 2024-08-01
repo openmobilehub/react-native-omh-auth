@@ -16,7 +16,7 @@ Additionally, the current versions of Android OMH libraries have a minimum Andro
 
 ## Compatibility
 
-| React Native | 1.0.2 |
+| React Native | 1.0.3 |
 | ------------ | ----- |
 | 0.73.6       | ✅    |
 
