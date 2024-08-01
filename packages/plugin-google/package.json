@@ -1,7 +1,7 @@
 {
   "name": "@openmobilehub/auth-google",
   "description": "React Native OMH Auth - Google (GMS/non-GMS) streamlines Google authentication integration into React Native applications, accommodating both GMS and non-GMS devices.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "lib/commonjs/index.js",
   "react-native": "src/index.tsx",
   "source": "src/index.tsx",
