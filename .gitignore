@@ -82,3 +82,6 @@ apps/sample-app/.env
 .nx/
 lib/
 .turbo
+
+# Microsoft
+ms_auth_config.json
