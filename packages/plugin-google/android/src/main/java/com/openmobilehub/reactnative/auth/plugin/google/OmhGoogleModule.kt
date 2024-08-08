@@ -15,19 +15,23 @@
 
 package com.openmobilehub.reactnative.auth.plugin.google
 
+import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.bridge.ReactContextBaseJavaModule
+import com.facebook.react.bridge.ReactMethod
+import com.facebook.react.bridge.ReadableMap
+import com.facebook.react.module.annotations.ReactModule
 import com.openmobilehub.android.auth.core.OmhAuthClient
 import com.openmobilehub.android.auth.core.OmhAuthProvider
-import com.openmobilehub.reactnative.auth.core.OmhAuthModule
+import com.openmobilehub.reactnative.auth.core.OmhAuthModuleImpl
 
-class OmhGoogleModule(private val reactContext: ReactApplicationContext) {
-    fun getOmhGoogleModule(): OmhAuthModule {
-        return OmhAuthModule(
-            reactContext = reactContext,
-            name = NAME,
-            createOmhAuthClient = ::createOmhAuthClient
-        )
-    }
+@ReactModule(name = OmhGoogleModule.NAME)
+class OmhGoogleModule(private val reactContext: ReactApplicationContext) :
+    ReactContextBaseJavaModule(reactContext) {
+    private val moduleImpl = OmhAuthModuleImpl(reactContext, this::createOmhAuthClient)
+
+    val authClient: OmhAuthClient
+        get() = moduleImpl.authClient
 
     private fun createOmhAuthClient(config: HashMap<String, Any>): OmhAuthClient {
         val omhAuthProvider = OmhAuthProvider.Builder()
@@ -37,10 +41,47 @@ class OmhGoogleModule(private val reactContext: ReactApplicationContext) {
         val scopes = config["scopes"] as ArrayList<String>
 
         return omhAuthProvider.provideAuthClient(
-            scopes = scopes,
-            clientId = BuildConfig.GOOGLE_CLIENT_ID,
-            context = reactContext
+            scopes = scopes, clientId = BuildConfig.GOOGLE_CLIENT_ID, context = reactContext
         )
+    }
+
+    @ReactMethod
+    fun initialize(config: ReadableMap, promise: Promise) {
+        moduleImpl.initialize(config, promise)
+    }
+
+    @ReactMethod
+    fun signIn(promise: Promise) {
+        moduleImpl.signIn(currentActivity, promise)
+    }
+
+    @ReactMethod
+    fun getUser(promise: Promise) {
+        moduleImpl.getUser(promise)
+    }
+
+    @ReactMethod
+    fun getAccessToken(promise: Promise) {
+        moduleImpl.getAccessToken(promise)
+    }
+
+    @ReactMethod
+    fun refreshAccessToken(promise: Promise) {
+        moduleImpl.refreshAccessToken(promise)
+    }
+
+    @ReactMethod
+    fun revokeAccessToken(promise: Promise) {
+        moduleImpl.revokeAccessToken(promise)
+    }
+
+    @ReactMethod
+    fun signOut(promise: Promise) {
+        moduleImpl.signOut(promise)
+    }
+
+    override fun getName(): String {
+        return NAME
     }
 
     companion object {

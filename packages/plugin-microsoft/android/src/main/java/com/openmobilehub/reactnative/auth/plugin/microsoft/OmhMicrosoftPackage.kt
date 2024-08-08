@@ -23,7 +23,7 @@ import com.facebook.react.uimanager.ViewManager
 
 class OmhMicrosoftPackage : ReactPackage {
     override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
-        return listOf(OmhMicrosoftModule(reactContext).getOmhMicrosoftModule())
+        return listOf(OmhMicrosoftModule(reactContext))
     }
 
     override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {

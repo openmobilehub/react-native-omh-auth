@@ -23,7 +23,7 @@ import com.facebook.react.uimanager.ViewManager
 
 class OmhDropboxPackage : ReactPackage {
     override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
-        return listOf(OmhDropboxModule(reactContext).getOmhDropboxModule())
+        return listOf(OmhDropboxModule(reactContext))
     }
 
     override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {
