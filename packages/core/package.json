@@ -1,7 +1,7 @@
 {
   "name": "@openmobilehub/auth-core",
   "description": "React Native OMH Auth - Core provides a comprehensive authentication solution for React Native applications. It offers a simple API to integrate authentication workflows seamlessly into both new and existing projects.",
-  "version": "1.0.3",
+  "version": "1.0.4-alpha.0",
   "main": "lib/commonjs/index.js",
   "react-native": "src/index.tsx",
   "source": "src/index.tsx",

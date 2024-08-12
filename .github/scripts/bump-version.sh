@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yarn lerna version --no-push --no-git-tag-version --no-changelog
+yarn lerna version --no-push --no-git-tag-version --no-changelog --no-private
 
 PACKAGE_VERSION=$(jq -r .version < lerna.json)
 
