@@ -29,7 +29,7 @@ class OmhAuthModuleImpl(
     private var _authClient: OmhAuthClient? = null
 
     val authClient: OmhAuthClient
-        get() = _authClient ?: throw Exception("OmhAuthClient is not initialized")
+        get() = _authClient ?: throw IllegalStateException("Accessing OmhAuthClient before OmhAuthModule is initialized")  
 
 
     private val loginActivityEventListener = OmhLoginActivityListener()
