@@ -34,7 +34,7 @@ class OmhLoginActivityListener : BaseActivityEventListener() {
                 Activity.RESULT_CANCELED -> {
                     val error = intent?.getStringExtra("errorMessage")
 
-                    promise.reject(OmhAuthModule.E_SIGN_IN_CANCELED, error)
+                    promise.reject(OmhAuthModuleImpl.E_SIGN_IN_CANCELED, error)
                 }
 
                 Activity.RESULT_OK ->

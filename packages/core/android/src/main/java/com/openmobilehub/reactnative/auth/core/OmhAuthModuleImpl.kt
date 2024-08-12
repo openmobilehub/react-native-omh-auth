@@ -15,44 +15,34 @@
 
 package com.openmobilehub.reactnative.auth.core
 
+import android.app.Activity
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReactContextBaseJavaModule
-import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.ReadableMap
 import com.openmobilehub.android.auth.core.OmhAuthClient
 
-class OmhAuthModule(
-    reactContext: ReactApplicationContext,
-    private val name: String,
-    private val createOmhAuthClient: (config: HashMap<String, Any>) -> OmhAuthClient
-) : ReactContextBaseJavaModule(reactContext) {
-    private var omhAuthClient: OmhAuthClient? = null
-    private fun getAuthClient(): OmhAuthClient {
-        if (omhAuthClient == null) {
-            throw Exception("OmhAuthClient is not initialized")
-        }
+class OmhAuthModuleImpl(
+    context: ReactApplicationContext,
+    private val createAuthClient: (config: HashMap<String, Any>) -> OmhAuthClient
+) {
+    private var _authClient: OmhAuthClient? = null
 
-        return omhAuthClient!!
-    }
+    val authClient: OmhAuthClient
+        get() = _authClient ?: throw IllegalStateException("Accessing OmhAuthClient before OmhAuthModule is initialized")  
+
 
     private val loginActivityEventListener = OmhLoginActivityListener()
 
     init {
-        reactContext.addActivityEventListener(loginActivityEventListener)
+        context.addActivityEventListener(loginActivityEventListener)
     }
 
-    override fun getName(): String {
-        return name
-    }
-
-    @ReactMethod
     fun initialize(config: ReadableMap, promise: Promise) {
-        omhAuthClient = createOmhAuthClient(config.toHashMap())
+        _authClient = createAuthClient(config.toHashMap())
 
         try {
-            getAuthClient().initialize().addOnSuccess {
+            authClient.initialize().addOnSuccess {
                 promise.resolve(null)
             }.addOnFailure {
                 promise.reject(E_INITIALIZED_FAILED, it.message)
@@ -62,11 +52,9 @@ class OmhAuthModule(
         }
     }
 
-    @ReactMethod
-    fun signIn(promise: Promise) {
-        val activity = currentActivity
+    fun signIn(currentActivity: Activity?, promise: Promise) {
 
-        if (activity == null) {
+        if (currentActivity == null) {
             promise.reject(E_ACTIVITY_DOES_NOT_EXIST, "Activity doesn't exist")
             return
         }
@@ -74,17 +62,16 @@ class OmhAuthModule(
         loginActivityEventListener.loginPromise = promise
 
         try {
-            val loginIntent = getAuthClient().getLoginIntent()
-            activity.startActivityForResult(loginIntent, LOGIN_REQUEST)
+            val loginIntent = authClient.getLoginIntent()
+            currentActivity.startActivityForResult(loginIntent, LOGIN_REQUEST)
         } catch (e: Exception) {
             promise.reject(E_SIGN_IN_FAILED, e.message)
         }
     }
 
-    @ReactMethod
     fun getUser(promise: Promise) {
         try {
-            getAuthClient().getUser()
+            authClient.getUser()
                 .addOnSuccess {
                     val jsonObject = Arguments.createMap().apply {
                         putString("name", it.name)
@@ -104,10 +91,9 @@ class OmhAuthModule(
         }
     }
 
-    @ReactMethod
     fun getAccessToken(promise: Promise) {
         try {
-            val credentials = getAuthClient().getCredentials()
+            val credentials = authClient.getCredentials()
 
             promise.resolve(credentials.accessToken)
         } catch (e: Exception) {
@@ -115,10 +101,9 @@ class OmhAuthModule(
         }
     }
 
-    @ReactMethod
     fun refreshAccessToken(promise: Promise) {
         try {
-            val credentials = getAuthClient().getCredentials()
+            val credentials = authClient.getCredentials()
 
             credentials.refreshAccessToken()
                 .addOnSuccess {
@@ -133,10 +118,9 @@ class OmhAuthModule(
         }
     }
 
-    @ReactMethod
     fun revokeAccessToken(promise: Promise) {
         try {
-            getAuthClient().revokeToken()
+            authClient.revokeToken()
                 .addOnSuccess {
                     promise.resolve(null)
                 }
@@ -149,10 +133,9 @@ class OmhAuthModule(
         }
     }
 
-    @ReactMethod
     fun signOut(promise: Promise) {
         try {
-            getAuthClient().signOut()
+            authClient.signOut()
                 .addOnSuccess {
                     promise.resolve(null)
                 }
