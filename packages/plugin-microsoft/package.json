@@ -27,6 +27,7 @@
     "redaxios": "^0.5.1"
   },
   "peerDependencies": {
+    "@openmobilehub/auth-core": "*",
     "react-native": "*"
   },
   "devDependencies": {
