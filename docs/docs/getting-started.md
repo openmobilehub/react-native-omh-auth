@@ -22,7 +22,7 @@ Additionally, the current versions of Android OMH libraries have a minimum Andro
 
 ## Installation
 
-To integrate a React Native OMH Auth provider into your React Native project, you need to install one of the available libraries:
+To integrate a React Native OMH Auth provider into your React Native project, you need to install `@openmobilehub/auth-core` and one of the available libraries:
 
 | Provider  | Package                         |
 | --------- | ------------------------------- |
@@ -31,9 +31,10 @@ To integrate a React Native OMH Auth provider into your React Native project, yo
 | Microsoft | `@openmobilehub/auth-microsoft` |
 | Dropbox   | `@openmobilehub/auth-dropbox`   |
 
-By running the following command:
+By running the following commands:
 
 ```bash
+npm add @openmobilehub/auth-core
 npm add @openmobilehub/auth-<provider-name>
 ```
 
@@ -48,6 +49,11 @@ Each provider requires you to specify different secrets. Please follow the indiv
 
 ## Android configuration
 
+No additional steps required.
+
+<details>
+  <summary>Applicable to @openmobilehub/auth-core versions earlier than 1.0.5</summary>
+  
 Each plugin requires that the `@openmobilehub/auth-core` module to be manually linked inside your Android application. Add the following line to your [**android/settings.gradle**](https://github.com/openmobilehub/react-native-omh-auth/blob/main/apps/sample-app/android/settings.gradle#L3) file:
 
 ```gradle title="android/settings.gradle" {3}
@@ -57,6 +63,7 @@ apply from: file("../node_modules/@openmobilehub/auth-core/android/native_module
 include ':app'
 includeBuild('../node_modules/@react-native/gradle-plugin')
 ```
+</details>
 
 ## iOS configuration
 
