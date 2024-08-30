@@ -109,5 +109,5 @@ dependencies {
 
     // OMH
     implementation "com.openmobilehub.android.auth:plugin-facebook:$omh_facebook_version"
-    api project(":omh-auth-core")
+    api project(":openmobilehub_auth-core")
 }

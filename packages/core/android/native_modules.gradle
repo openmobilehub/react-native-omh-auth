@@ -1,2 +1,3 @@
-include ":omh-auth-core"
-project(":omh-auth-core").projectDir = file(".")
+// Deprecated since 1.0.5 due to the autolinking setup
+include ":openmobilehub_auth-core"
+project(":openmobilehub_auth-core").projectDir = file(".")
