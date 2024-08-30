@@ -1,5 +1,4 @@
 rootProject.name = 'RNAuthSample'
 apply from: file("../../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
-apply from: file("../../../node_modules/@openmobilehub/auth-core/android/native_modules.gradle")
 include ':app'
 includeBuild('../../../node_modules/@react-native/gradle-plugin')

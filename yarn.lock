@@ -3696,6 +3696,7 @@ __metadata:
     redaxios: "npm:^0.5.1"
     typescript: "npm:^5.4.5"
   peerDependencies:
+    "@openmobilehub/auth-core": "*"
     react-native: "*"
   languageName: unknown
   linkType: soft
@@ -3710,6 +3711,7 @@ __metadata:
     redaxios: "npm:^0.5.1"
     typescript: "npm:^5.4.5"
   peerDependencies:
+    "@openmobilehub/auth-core": "*"
     react-native: "*"
   languageName: unknown
   linkType: soft
@@ -3724,6 +3726,7 @@ __metadata:
     redaxios: "npm:^0.5.1"
     typescript: "npm:^5.4.5"
   peerDependencies:
+    "@openmobilehub/auth-core": "*"
     react-native: "*"
   languageName: unknown
   linkType: soft
@@ -3738,6 +3741,7 @@ __metadata:
     redaxios: "npm:^0.5.1"
     typescript: "npm:^5.4.5"
   peerDependencies:
+    "@openmobilehub/auth-core": "*"
     react-native: "*"
   languageName: unknown
   linkType: soft

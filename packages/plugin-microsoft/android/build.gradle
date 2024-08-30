@@ -110,5 +110,5 @@ dependencies {
 
     // OMH
     implementation "com.openmobilehub.android.auth:plugin-microsoft:$omh_microsoft_version"
-    api project(":omh-auth-core")
+    api project(":openmobilehub_auth-core")
 }
