@@ -6,6 +6,7 @@ import {
   FACEBOOK_CLIENT_ID,
   FACEBOOK_CLIENT_SECRET,
   GOOGLE_CLIENT_ID,
+  GOOGLE_WEB_CLIENT_ID,
   MICROSOFT_CLIENT_ID,
 } from '@env';
 import DropboxAuth from '@openmobilehub/auth-dropbox';
@@ -31,6 +32,7 @@ export async function getAuthProvider(provider: Providers) {
       await GoogleAuth.initialize({
         android: {
           scopes: ['openid', 'profile', 'email'],
+          webClientId: GOOGLE_WEB_CLIENT_ID,
         },
         ios: {
           scopes: ['openid', 'profile', 'email'],

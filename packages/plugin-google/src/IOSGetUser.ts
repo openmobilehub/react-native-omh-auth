@@ -20,6 +20,7 @@ export default async function IOSGetUser(
       surname: request.data.family_name,
       email: request.data.email,
       profileImage: request.data.picture,
+      idToken: authData.idToken,
     };
   } catch (error: any) {
     if (error.data.error?.message) {

@@ -93,7 +93,7 @@ export default class IOSAuthModule<C extends PlatformAuthConfig>
         accessTokenExpirationDate,
       };
     } else {
-      const {accessToken, refreshToken, accessTokenExpirationDate} =
+      const {accessToken, idToken, refreshToken, accessTokenExpirationDate} =
         await refresh(config, {refreshToken: authData.refreshToken});
 
       this.authData = {
@@ -101,6 +101,7 @@ export default class IOSAuthModule<C extends PlatformAuthConfig>
         accessToken,
         accessTokenExpirationDate,
         refreshToken: refreshToken || authData.refreshToken,
+        idToken,
       };
     }
 
@@ -128,6 +129,7 @@ export default class IOSAuthModule<C extends PlatformAuthConfig>
     this.authData = {
       ...authData,
       accessToken: '',
+      idToken: '',
     };
 
     await persistAuthData(this.authData);

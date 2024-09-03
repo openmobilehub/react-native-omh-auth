@@ -131,6 +131,11 @@ export default function SignedInScreen() {
         {accessToken}
       </Text>
 
+      <Text style={styles.label}>Id Token:</Text>
+      <Text style={styles.label} testID="token" numberOfLines={10}>
+        {userProfile?.idToken}
+      </Text>
+
       <View style={styles.actionButtons}>
         <Button
           onPress={onGetAccessToken}
