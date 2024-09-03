@@ -5,6 +5,7 @@ export type AuthData = AuthorizeResult;
 
 export type AndroidAuthConfig = {
   scopes: Array<string>;
+  webClientId?: string;
 };
 
 export type IOSAuthConfig = {
@@ -53,4 +54,5 @@ export interface OmhUserProfile {
   surname?: string;
   email?: string;
   profileImage?: string;
+  idToken?: string;
 }

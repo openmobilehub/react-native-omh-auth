@@ -78,6 +78,7 @@ class OmhAuthModuleImpl(
                         putString("surname", it.surname)
                         putString("email", it.email)
                         putString("profileImage", it.profileImage)
+                        putString("idToken", it.idToken)
                     }
 
                     promise.resolve(jsonObject)

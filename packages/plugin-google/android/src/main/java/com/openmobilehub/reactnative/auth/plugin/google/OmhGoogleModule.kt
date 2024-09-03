@@ -39,9 +39,13 @@ class OmhGoogleModule(private val reactContext: ReactApplicationContext) :
             .addGmsPath("com.openmobilehub.android.auth.plugin.google.gms.OmhAuthFactoryImpl")
             .build()
         val scopes = config["scopes"] as ArrayList<String>
-
+        val webClientId: String? =
+            if (config.containsKey("webClientId")) config["webClientId"] as String else null
         return omhAuthProvider.provideAuthClient(
-            scopes = scopes, clientId = BuildConfig.GOOGLE_CLIENT_ID, context = reactContext
+            scopes = scopes,
+            clientId = BuildConfig.GOOGLE_CLIENT_ID,
+            context = reactContext,
+            webClientId = webClientId
         )
     }
 
