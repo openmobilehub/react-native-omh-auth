@@ -59,6 +59,7 @@ import GoogleAuthClient from '@openmobilehub/auth-google';
 await GoogleAuth.initialize({
   android: {
     scopes: ['openid', 'profile', 'email'],
+    webClientId: GOOGLE_WEB_CLIENT_ID,
   },
   ios: {
     scopes: ['openid', 'profile', 'email'],
