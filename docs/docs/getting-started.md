@@ -110,7 +110,7 @@ Before interacting with a provider, initialization is necessary. Each provider r
 ```typescript
 import GoogleAuthClient from '@openmobilehub/auth-google';
 
-await GoogleAuth.initialize({
+await GoogleAuthClient.initialize({
   android: {
     scopes: ['openid', 'profile', 'email'],
     webClientId: GOOGLE_WEB_CLIENT_ID,
