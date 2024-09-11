@@ -42,10 +42,10 @@ npm add @openmobilehub/auth-<provider-name>
 
 Each provider requires you to specify different secrets. Please follow the individual provider configuration:
 
-- [Google](https://www.openmobilehub.com/react-native-omh-auth/docs/google#configuration)
-- [Facebook](https://www.openmobilehub.com/react-native-omh-auth/docs/facebook#configuration)
-- [Microsoft](https://www.openmobilehub.com/react-native-omh-auth/docs/microsoft#configuration)
-- [Dropbox](https://www.openmobilehub.com/react-native-omh-auth/docs/dropbox#configuration)
+- [Google](https://openmobilehub.github.io/react-native-omh-auth/docs/google)
+- [Facebook](https://openmobilehub.github.io/react-native-omh-auth/docs/facebook)
+- [Microsoft](https://openmobilehub.github.io/react-native-omh-auth/docs/microsoft)
+- [Dropbox](https://openmobilehub.github.io/react-native-omh-auth/docs/dropbox)
 
 ## Android configuration
 
