@@ -120,7 +120,11 @@ android {
     }
     signingConfigs {
         debug {
-            storeFile file('debug.keystore')
+            def isCi = providers.environmentVariable("CI").getOrElse("false").toBoolean()
+            def debugKeystorePath = isCi
+            ? "${rootProject.projectDir}/app/debug.keystore"
+            : "${System.getenv('HOME')}/.android/debug.keystore"
+            storeFile file(debugKeystorePath)
             storePassword 'android'
             keyAlias 'androiddebugkey'
             keyPassword 'android'
