@@ -38,6 +38,13 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
+      - name: Decode debug.keystore
+        uses: timheuer/base64-to-file@v1
+        with:
+          fileDir: ${{ env.SAMPLE_APP_PATH }}/android/app
+          fileName: debug.keystore
+          encodedString: ${{ secrets.DEBUG_KEYSTORE_BASE64 }}
+  
       - name: Add secrets to `local.properties`
         run: |
           echo GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }} >> ${{ env.SAMPLE_APP_PATH }}/android/local.properties &&
