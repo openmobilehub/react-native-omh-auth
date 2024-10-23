@@ -99,7 +99,7 @@ npm add @react-native-async-storage/async-storage
 
 :::info
 
-In this guide, we'll use the Google provider as an example. However, feel free to choose any other provider as the exposed methods are identical. They all inherit the [`IAuthModule`](https://www.openmobilehub.com/react-native-omh-auth/docs/api/interfaces/openmobilehub_auth_core.IAuthModule#methods) from the [`@openmobilehub/auth-core`](https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/core), ensuring consistency across different providers. This means you won't need to learn any additional methods regardless of the provider you choose!
+In this guide, we'll use the Google provider as an example. However, feel free to choose any other provider as the exposed methods are identical. They all inherit the [`IAuthModule`](https://openmobilehub.github.io/react-native-omh-auth/docs/api/interfaces/openmobilehub_auth_core.IAuthModule#methods) from the [`@openmobilehub/auth-core`](https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/core), ensuring consistency across different providers. This means you won't need to learn any additional methods regardless of the provider you choose!
 
 :::
 
@@ -143,7 +143,7 @@ const accessToken = await GoogleAuthClient.getAccessToken();
 
 ### Get user
 
-Obtains user information for the current signed-in user. Returns an object of type [`OmhUserProfile`](https://www.openmobilehub.com/react-native-omh-auth/docs/api/interfaces/openmobilehub_auth_core.OmhUserProfile#properties).
+Obtains user information for the current signed-in user. Returns an object of type [`OmhUserProfile`](https://openmobilehub.github.io/react-native-omh-auth/docs/api/interfaces/openmobilehub_auth_core.OmhUserProfile#properties).
 
 ```typescript
 type OmhUserProfile = {
@@ -181,11 +181,11 @@ Initiates the sign-out process with the provider.
 await GoogleAuthClient.signOut();
 ```
 
-For a more in depth view on the available methods, access the [Reference API](https://www.openmobilehub.com/react-native-omh-auth/docs/api/interfaces/openmobilehub_auth_core.IAuthModule#methods).
+For a more in depth view on the available methods, access the [Reference API](https://openmobilehub.github.io/react-native-omh-auth/docs/api/interfaces/openmobilehub_auth_core.IAuthModule#methods).
 
 ## Sample app
 
-Explore the [sample app](https://www.openmobilehub.com/react-native-omh-auth/docs/contributing#sample-app) included in the repository to see the implementation of authentication with Google and other providers.
+Explore the [sample app](https://openmobilehub.github.io/react-native-omh-auth/docs/contributing#sample-app) included in the repository to see the implementation of authentication with Google and other providers.
 
 ## Troubleshooting
 

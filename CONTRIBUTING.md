@@ -40,7 +40,7 @@ cd apps/sample-app/ios && pod install
 
 ### Providers setup
 
-Before proceeding with the setup, please ensure you have created an app for each service provider. Detailed instructions can be found in the [Provider Configuration](https://www.openmobilehub.com/react-native-omh-auth/docs/getting-started/#provider-configuration) section.
+Before proceeding with the setup, please ensure you have created an app for each service provider. Detailed instructions can be found in the [Provider Configuration](https://openmobilehub.github.io/react-native-omh-auth/docs/getting-started/#provider-configuration) section.
 
 Create files from templates that contain secrets for specific providers. If you don't want to setup certain providers, you can leave their values empty.
 
@@ -89,7 +89,7 @@ You can create a new plugin by following the existing plugins structure:
 - [Microsoft](https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/plugin-microsoft)
 - [Dropbox](https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/plugin-dropbox)
 
-All providers should inherit the [`IAuthModule`](https://www.openmobilehub.com/react-native-omh-auth/docs/api/interfaces/openmobilehub_auth_core.IAuthModule#methods) from the [`@openmobilehub/auth-core`](https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/core), to ensure consistency across different providers.
+All providers should inherit the [`IAuthModule`](https://openmobilehub.github.io/react-native-omh-auth/docs/api/interfaces/openmobilehub_auth_core.IAuthModule#methods) from the [`@openmobilehub/auth-core`](https://github.com/openmobilehub/react-native-omh-auth/tree/main/packages/core), to ensure consistency across different providers.
 
 ## Linting
 
